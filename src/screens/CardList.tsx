@@ -2,12 +2,12 @@ import * as React from "react"
 import { StyleSheet, View } from "react-native"
 import { FlatList } from "react-native-gesture-handler"
 
-import { ScreenView } from "components/ScreenView"
+import { ScreenView } from "library/ScreenView"
 
-import { Input } from "components/Input"
-import { Text } from "components/Text"
-import { Card } from "components/Card"
-import { FAB } from "components/FAB"
+import { Input } from "library/Input"
+import { Text } from "library/Text"
+import { Card } from "library/Card"
+import { FAB } from "library/FAB"
 import { getCards } from "api/database"
 import { CardListProps } from "navigation/types"
 import { useToast } from "contexts/ToastContext"
@@ -16,7 +16,7 @@ import { formatDate, formatTime } from "common/helpers"
 
 export const CardList = ({ navigation, route }: CardListProps) => {
     const [search, setSearch] = React.useState("")
-    const [cards, setCards] = React.useState<Card[]>([])
+    const [cards, setCards] = React.useState<FlashCard[]>([])
     const { theme } = useTheme()
     const { showToast } = useToast()
 
@@ -39,7 +39,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         }
     }
 
-    const cardItem = ({ item }: { item: Card }) => (
+    const cardItem = ({ item }: { item: FlashCard }) => (
         <Card direction="row" style={{ marginBottom: 0 }} onPress={() => { }}>
             <View style={{ flexDirection: "column" }}>
                 <Text h2>{item.english}</Text>

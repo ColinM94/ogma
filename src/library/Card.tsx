@@ -1,6 +1,6 @@
 import * as React from "react"
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { StyleProp, StyleSheet, ViewStyle } from "react-native"
+import { useTheme } from "contexts/ThemeContext"
 import { PressableView } from "./PressableView"
 
 type CardProps = {
@@ -20,7 +20,9 @@ export const Card = ({ onPress, children, style, direction = "column" }: CardPro
             padding: theme.spacing.primary,
             elevation: theme.elevation.card,
             borderRadius: theme.roundness,
-            marginBottom: theme.spacing.primary
+            marginBottom: theme.spacing.primary,
+            alignItems: "center",
+            justifyContent: "center"
         }
     })
 

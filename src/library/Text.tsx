@@ -1,6 +1,6 @@
 import * as React from "react"
 import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { useTheme } from "contexts/ThemeContext"
 
 type TextProps = RNTextProps & {
     title?: boolean,

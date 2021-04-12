@@ -1,6 +1,6 @@
 import * as React from "react"
 import { StyleSheet, View } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { useTheme } from "contexts/ThemeContext"
 import { IconButton } from "./IconButton"
 import { Text } from "./Text"
 

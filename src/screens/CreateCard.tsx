@@ -1,8 +1,8 @@
 import * as React from "react"
-import { ScreenView } from "components/ScreenView"
-import { Input } from "components/Input"
+import { ScreenView } from "library/ScreenView"
+import { Input } from "library/Input"
 import { addCard } from "api/database"
-import { Button } from "components/Button"
+import { Button } from "library/Button"
 import { useToast } from "contexts/ToastContext"
 
 export const CreateCard = () => {
@@ -21,7 +21,7 @@ export const CreateCard = () => {
         }
 
         try {
-            let card: Card = { english, german, dateCreated: new Date(), category }
+            let card: FlashCard = { english, german, dateCreated: new Date(), category }
             await addCard(card)
             resetForm()
             showToast("Card Created")

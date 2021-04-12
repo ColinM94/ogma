@@ -8,6 +8,7 @@ export type ScreenParams = {
     Home: undefined,
     CardList: undefined,
     Study: undefined,
+    CardDetails: undefined,
     Settings: undefined,
     CreateCard: undefined
 }
@@ -30,6 +31,11 @@ export type SettingsProps = {
 export type StudyProps = {
     navigation: StackNavigationProp<ScreenParams, 'Study'>,
     route: RouteProp<ScreenParams, 'Study'>
+}
+
+export type CardDetailsProps = {
+    navigation: StackNavigationProp<ScreenParams, 'CardDetails'>,
+    route: RouteProp<ScreenParams, 'CardDetails'>
 }
 
 export type CreateCardProps = {

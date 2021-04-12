@@ -1,8 +1,8 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import * as React from "react"
 import { View } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
+import { useTheme } from "contexts/ThemeContext"
 import { PressableView } from "./PressableView"
 
 type IconButtonProps = {

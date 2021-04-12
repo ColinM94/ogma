@@ -1,12 +1,10 @@
 import * as React from "react"
 import { StyleSheet, View } from "react-native"
-
-import { Card } from "components/Card"
-import { ScreenView } from "components/ScreenView"
-import { Button } from "components/Button"
-import { Text } from "components/Text"
+import { ScreenView } from "library/ScreenView"
+import { Button } from "library/Button"
 import { useTheme } from "contexts/ThemeContext"
 import { StudyProps } from "navigation/types"
+import { FlashCard } from "components/FlashCard"
 
 export const Study = ({ navigation, route }: StudyProps) => {
     const { theme } = useTheme()
@@ -38,9 +36,7 @@ export const Study = ({ navigation, route }: StudyProps) => {
 
     return (
         <ScreenView>
-            <Card style={styles.card}>
-                <Text>Home</Text>
-            </Card>
+            <FlashCard />
             <View style={{ flexDirection: "row" }}>
                 <Button title="Incorrect" style={styles.incorrectBtn} onPress={handleIncorrect} />
                 <Button title="Correct" style={styles.correctBtn} onPress={handleCorrect} />

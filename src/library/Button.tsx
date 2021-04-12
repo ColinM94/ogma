@@ -1,6 +1,6 @@
 import * as React from "react"
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { StyleProp, StyleSheet, ViewStyle } from "react-native"
+import { useTheme } from "contexts/ThemeContext"
 import { PressableView } from "./PressableView"
 import { Text } from "./Text"
 

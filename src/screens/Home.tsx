@@ -2,12 +2,9 @@ import * as React from "react"
 import { StyleSheet, View } from "react-native"
 
 import { useTheme } from "contexts/ThemeContext"
-import { ScreenView } from "components/ScreenView"
-import { Text } from "components/Text"
-import { Card } from "components/Card"
-import { Button } from "components/Button"
 import { HomeProps } from "navigation/types"
-
+import { ScreenView } from "library/ScreenView"
+import { Button } from "library/Button"
 
 export const Home = ({ navigation, route }: HomeProps) => {
     const { theme } = useTheme()

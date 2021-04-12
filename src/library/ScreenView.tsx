@@ -1,7 +1,6 @@
 import * as React from "react"
 import { ListRenderItem, RefreshControl, StyleSheet, View } from "react-native"
 import { FlatList, ScrollView } from "react-native-gesture-handler"
-
 import { useTheme } from "contexts/ThemeContext"
 
 type ScreenViewProps = {

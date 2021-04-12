@@ -1,8 +1,8 @@
 import * as React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { StyleSheet, View } from "react-native"
-import { PressableView } from "components/PressableView"
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
+import { PressableView } from "./PressableView"
 
 type FABProps = {
     onPress: () => void

@@ -1,16 +1,15 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import * as React from "react"
 import { StyleSheet, TextInput, TextInputProps, View } from "react-native"
-import { useTheme } from "../contexts/ThemeContext"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
+import { useTheme } from "contexts/ThemeContext"
 import { Card } from "./Card"
-import { PressableView } from "./PressableView"
 import { Text } from "./Text"
 
 export type InputProps = TextInputProps & {
     label?: string,
     onPress?: () => void,
-    setValue: (value: string) => void,
+    setValue?: (value: string) => void,
     rightIcon?: IconProp
 }
 

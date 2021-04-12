@@ -1,7 +1,7 @@
 import * as React from "react"
 import DateTimePickerModal from "react-native-modal-datetime-picker"
-import { formatDate, formatTime } from "../common/helpers"
-import { Input, InputProps } from "./Input"
+import { formatDate, formatTime } from "common/helpers"
+import { Input } from "./Input"
 
 type DateTimePickerProps = {
     label: string,

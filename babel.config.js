@@ -12,7 +12,8 @@ module.exports = function(api) {
             api: "./src/api",
             screens: "./src/screens",
             navigation: "./src/navigation",
-            common: "./src/common"
+            common: "./src/common",
+            library: "./src/library"
           },
         },
       ],

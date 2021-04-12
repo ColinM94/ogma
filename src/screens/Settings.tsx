@@ -2,9 +2,9 @@ import * as React from "react"
 import { View } from "react-native"
 import { Switch } from "react-native-paper"
 
-import { Card } from "components/Card"
-import { ScreenView } from "components/ScreenView"
-import { Text } from "components/Text"
+import { Card } from "library/Card"
+import { ScreenView } from "library/ScreenView"
+import { Text } from "library/Text"
 import { useTheme } from "contexts/ThemeContext"
 
 export const Settings = () => {
