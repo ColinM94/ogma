@@ -1,20 +1,22 @@
 import * as React from "react"
-import { StyleSheet, TextInput, TextInputProps, View } from "react-native"
+import { StyleProp, StyleSheet, TextInput, TextInputProps, View, ViewStyle } from "react-native"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
 import { Card } from "./Card"
 import { Text } from "./Text"
+import { PressableView } from "./PressableView"
 
 export type InputProps = TextInputProps & {
     label?: string,
     onPress?: () => void,
     setValue?: (value: string) => void,
-    rightIcon?: IconProp
+    rightIcon?: IconProp,
+    containerStyle?: StyleProp<ViewStyle>
 }
 
 export const Input = (props: InputProps) => {
-    const { label, style, onPress, setValue, rightIcon, ...rest } = props
+    const { label, style, containerStyle, onPress, setValue, rightIcon, ...rest } = props
     const { theme } = useTheme()
     let textInput: any = null
 
@@ -22,7 +24,7 @@ export const Input = (props: InputProps) => {
         card: {
             paddingTop: theme.spacing.secondary,
             paddingBottom: theme.spacing.secondary,
-            marginBottom: theme.spacing.primary,
+            alignItems: "flex-start"
         },
         inputRow: {
             flexDirection: "row",
@@ -38,10 +40,6 @@ export const Input = (props: InputProps) => {
         }
     })
 
-    const onChange = (text: string) => {
-        setValue(text)
-    }
-
     const handlePress = () => {
         if (onPress) {
             onPress()
@@ -51,25 +49,14 @@ export const Input = (props: InputProps) => {
     }
 
     return (
-        <Card onPress={handlePress} style={[styles.card, style]}>
-            <>{label && <Text subtitle>{label}</Text>}</>
-            <View style={styles.inputRow}>
-                <TextInput
-                    ref={(input) => { textInput = input; }}
-                    style={styles.input}
-                    onChangeText={onChange}
-                    placeholderTextColor={theme.colors.text.tertiary}
-                    {...rest}
-                />
-                {rightIcon &&
-                    <FontAwesomeIcon
-                        icon={rightIcon}
-                        color={theme.icon.color}
-                        size={theme.icon.size}
-                        style={styles.rightIcon}
-                    />
-                }
-            </View>
+        <Card onPress={handlePress}>
+            <TextInput
+                ref={(input) => { textInput = input; }}
+                style={[styles.input, style]}
+                placeholderTextColor={theme.colors.text.tertiary}
+                {...rest}
+            />
         </Card>
+
     )
 }

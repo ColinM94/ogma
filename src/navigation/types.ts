@@ -8,7 +8,7 @@ export type ScreenParams = {
     Home: undefined,
     CardList: undefined,
     Study: undefined,
-    CardDetails: undefined,
+    CardDetails: { item: FlashCard },
     Settings: undefined,
     CreateCard: undefined
 }

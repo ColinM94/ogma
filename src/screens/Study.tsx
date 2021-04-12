@@ -36,7 +36,7 @@ export const Study = ({ navigation, route }: StudyProps) => {
 
     return (
         <ScreenView>
-            <FlashCard />
+            {/*            <FlashCard /> */}
             <View style={{ flexDirection: "row" }}>
                 <Button title="Incorrect" style={styles.incorrectBtn} onPress={handleIncorrect} />
                 <Button title="Correct" style={styles.correctBtn} onPress={handleCorrect} />

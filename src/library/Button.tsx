@@ -1,31 +1,33 @@
 import * as React from "react"
 import { StyleProp, StyleSheet, ViewStyle } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
-import { PressableView } from "./PressableView"
+import { PressableView, PressableViewProps } from "./PressableView"
 import { Text } from "./Text"
 
-type ButtonProps = {
-    title: string,
-    onPress: () => void,
-    style?: StyleProp<ViewStyle>
+type ButtonProps = PressableViewProps & {
+    title: string
 }
 
-export const Button = (props: ButtonProps) => {
-    const { title, style, onPress } = props
+export const Button = ({ title, style, onPress }: ButtonProps) => {
     const { theme } = useTheme()
 
     const styles = StyleSheet.create({
         button: {
             backgroundColor: theme.colors.primary,
-            padding: theme.spacing.primary,
-            alignItems: "center",
             borderRadius: theme.roundness,
+            padding: theme.spacing.primary
+        },
+        text: {
+            textAlign: "center"
         }
     })
 
     return (
-        <PressableView style={[styles.button, style]} onPress={onPress}>
-            <Text button>{title}</Text>
+        <PressableView
+            style={styles.button}
+            onPress={onPress ?? (() => { })}
+        >
+            <Text button style={styles.text}>{title}</Text>
         </PressableView>
     )
 }

@@ -6,10 +6,10 @@ import { Text } from "library/Text"
 import { Divider } from "library/Divider"
 
 type FlashCardProps = {
-
+    item: FlashCard
 }
 
-export const FlashCard = (props: FlashCardProps) => {
+export const FlashCard = ({ item }: FlashCardProps) => {
     const { theme } = useTheme()
 
     const styles = StyleSheet.create({
@@ -32,12 +32,12 @@ export const FlashCard = (props: FlashCardProps) => {
     return (
         <Card style={styles.card}>
             <View style={styles.cardSection}>
-                <Text h1 style={styles.title}>House</Text>
+                <Text h1 style={styles.title}>{item.english}</Text>
                 <Text subtitle>I like houses.</Text>
             </View>
             <Divider style={styles.divider} />
             <View style={styles.cardSection}>
-                <Text h1 style={styles.title}>das Haus</Text>
+                <Text h1 style={styles.title}>{item.german}</Text>
                 <Text subtitle>Ich mag Haüser.</Text>
             </View>
         </Card>

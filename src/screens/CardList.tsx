@@ -40,7 +40,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
     }
 
     const cardItem = ({ item }: { item: FlashCard }) => (
-        <Card direction="row" style={{ marginBottom: 0 }} onPress={() => { }}>
+        <Card direction="row" style={{ marginBottom: 0 }} onPress={() => navigation.navigate("CardDetails", { item: item })}>
             <View style={{ flexDirection: "column" }}>
                 <Text h2>{item.english}</Text>
                 <Text subtitle>{item.german}</Text>

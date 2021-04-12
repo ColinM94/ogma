@@ -1,7 +1,13 @@
-type FlashCard = {
+type FlashCardData = {
     id?: string,
-    english: string,
-    german: string,
+    front: {
+        title: string,
+        subtitle: string
+    },
+    back: {
+        title: string,
+        subtitle: string
+    },
     dateCreated: Date,
     category?: string
 }

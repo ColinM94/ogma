@@ -1,9 +1,12 @@
 import * as React from "react"
+import { StyleSheet } from "react-native"
+import { addCard } from "api/database"
+import { useToast } from "contexts/ToastContext"
+import { useTheme } from "contexts/ThemeContext"
 import { ScreenView } from "library/ScreenView"
 import { Input } from "library/Input"
-import { addCard } from "api/database"
 import { Button } from "library/Button"
-import { useToast } from "contexts/ToastContext"
+import { Text } from "library/Text"
 
 export const CreateCard = () => {
     const [english, setEnglish] = React.useState("")
@@ -11,6 +14,7 @@ export const CreateCard = () => {
     const [category, setCategory] = React.useState("")
 
     const { showToast } = useToast()
+    const { theme } = useTheme()
 
     const handleAdd = async () => {
         if (english === "") {
@@ -21,7 +25,7 @@ export const CreateCard = () => {
         }
 
         try {
-            let card: FlashCard = { english, german, dateCreated: new Date(), category }
+            let card: FlashCardData = { english, german, dateCreated: new Date(), category }
             await addCard(card)
             resetForm()
             showToast("Card Created")
@@ -36,11 +40,21 @@ export const CreateCard = () => {
         setCategory("")
     }
 
+    const styles = StyleSheet.create({
+        sectionTitle: {
+            marginBottom: theme.spacing.tertiary
+        },
+    })
+
     return (
         <ScreenView>
-            <Input label="English" value={english} setValue={setEnglish} />
-            <Input label="German" value={german} setValue={setGerman} />
-            <Input label="Category" value={category} setValue={setCategory} />
+            <Text subtitle style={styles.sectionTitle}>Front</Text>
+            <Input label="Title" value={english} setValue={setEnglish} />
+            <Input label="Subtitle" value={german} setValue={setGerman} />
+
+            <Text subtitle style={styles.sectionTitle}>Back</Text>
+            <Input label="Title" value={category} setValue={setCategory} />
+            <Input label="Subtitle" value={category} setValue={setCategory} />
             <Button title="Create Card" onPress={handleAdd} />
         </ScreenView>
     )
