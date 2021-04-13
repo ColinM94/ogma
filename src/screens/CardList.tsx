@@ -39,13 +39,13 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         }
     }
 
-    const cardItem = ({ item }: { item: FlashCard }) => (
-        <Card direction="row" style={{ marginBottom: 0 }} onPress={() => navigation.navigate("CardDetails", { item: item })}>
-            <View style={{ flexDirection: "column" }}>
-                <Text h2>{item.english}</Text>
-                <Text subtitle>{item.german}</Text>
+    const cardItem = ({ item }: { item: any }) => (
+        <Card row onPress={() => navigation.navigate("CardDetails", { item: item })} style={{marginBottom: 0}}>
+            <View>
+                <Text h2>{item.frontTitle}</Text>
+                <Text subtitle>{item.frontSubtitle}</Text>
             </View>
-            <View style={{ flexDirection: "column", justifyContent: "center", marginLeft: "auto" }}>
+            <View style={{ justifyContent: "center", marginLeft: "auto" }}>
                 <Text body>{item.category}</Text>
                 <Text subtitle>{formatDate(item.dateCreated)}</Text>
             </View>

@@ -2,7 +2,7 @@ import * as React from "react"
 import { StyleSheet, Pressable, PressableAndroidRippleConfig, PressableProps, StyleProp, ViewStyle, View } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
 
-export interface PressableViewProps extends PressableProps {
+interface PressableViewProps extends PressableProps {
     /** Components rendered inside this view. */
     children?: JSX.Element | JSX.Element[] | null
     /** Color of press feedback. */
@@ -24,6 +24,7 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, row
 
     const styles = StyleSheet.create({
         container: {
+            ...style as {},
             overflow: "hidden",
             // Prevents padding being applied to container, as this breaks the ripple effect. 
             padding: undefined,
@@ -33,14 +34,13 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, row
             paddingBottom: undefined,
             paddingLeft: undefined,
             paddingRight: undefined,
-            marginBottom: mb ?? style?.marginBottom
         },
         pressable: {
             flexDirection: row ? "row" : "column",
             // Applies padding to pressable instead of container so ripple works correctly. 
             paddingVertical: style?.paddingVertical,
             paddingHorizontal: style?.paddingHorizontal,
-            padding: style?.padding,
+            padding: style?.padding ?? undefined,
             paddingTop: style?.paddingTop,
             paddingBottom: style?.paddingBottom,
             paddingLeft: style?.paddingLeft,
@@ -49,7 +49,7 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, row
     })
 
     return (
-        <View style={[style, styles.container]}>
+        <View style={styles.container}>
             <Pressable
                 onPress={onPress}
                 android_ripple={rippleConfig}

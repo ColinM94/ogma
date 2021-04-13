@@ -5,18 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
 import { Card } from "./Card"
 import { Text } from "./Text"
-import { PressableView } from "./PressableView"
+import { PressableView, PressableViewProps } from "./PressableView"
 
-export type InputProps = TextInputProps & {
+export interface InputProps extends TextInputProps {
     label?: string,
     onPress?: () => void,
     setValue?: (value: string) => void,
     rightIcon?: IconProp,
-    containerStyle?: StyleProp<ViewStyle>
+    containerStyle?: StyleProp<ViewStyle>,
 }
 
 export const Input = (props: InputProps) => {
-    const { label, style, containerStyle, onPress, setValue, rightIcon, ...rest } = props
+    const { label, style, containerStyle, onPress, setValue, rightIcon, mb, ...rest } = props
     const { theme } = useTheme()
     let textInput: any = null
 
@@ -44,16 +44,22 @@ export const Input = (props: InputProps) => {
         if (onPress) {
             onPress()
         } else {
+            textInput.blur()
             textInput.focus()
         }
+    }
+
+    const handleChange = (text: string) => {
+        setValue(text)
     }
 
     return (
         <Card onPress={handlePress}>
             <View pointerEvents="none">
-                <Text subtitle2>{label}</Text>
+                {label && <Text subtitle2 style={{marginBottom: theme.spacing.tertiary}}>{label}</Text>}
                 <TextInput
                     ref={(input) => { textInput = input }}
+                    onChangeText={handleChange}
                     style={[styles.input, style]}
                     placeholderTextColor={theme.colors.text.tertiary}
                     pointerEvents="none"

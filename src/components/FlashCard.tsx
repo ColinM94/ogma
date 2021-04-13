@@ -6,7 +6,7 @@ import { Text } from "library/Text"
 import { Divider } from "library/Divider"
 
 type FlashCardProps = {
-    item: FlashCard
+    item: any
 }
 
 export const FlashCard = ({ item }: FlashCardProps) => {
@@ -15,6 +15,7 @@ export const FlashCard = ({ item }: FlashCardProps) => {
     const styles = StyleSheet.create({
         card: {
             flex: 1,
+            alignItems: "center",
             marginBottom: theme.spacing.primary,
         },
         cardSection: {
@@ -32,13 +33,13 @@ export const FlashCard = ({ item }: FlashCardProps) => {
     return (
         <Card style={styles.card}>
             <View style={styles.cardSection}>
-                <Text h1 style={styles.title}>{item.english}</Text>
-                <Text subtitle>I like houses.</Text>
+                <Text h1 style={styles.title}>{item.frontTitle}</Text>
+                <Text subtitle>{item.frontSubtitle}</Text>
             </View>
             <Divider style={styles.divider} />
             <View style={styles.cardSection}>
-                <Text h1 style={styles.title}>{item.german}</Text>
-                <Text subtitle>Ich mag Haüser.</Text>
+                <Text h1 style={styles.title}>{item.backTitle}</Text>
+                <Text subtitle>{item.backSubtitle}</Text>
             </View>
         </Card>
     )

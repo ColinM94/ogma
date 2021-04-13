@@ -42,8 +42,9 @@ export const Home = ({ navigation, route }: HomeProps) => {
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </Text>
                 </Card>
+                <Input label="Text Input" mb={24}/>
                 <Input label="Text Input" />
-                <DateTimePicker label="Date Input"/>
+                <DateTimePicker label="Date Input" />
                 <Button title="Press Me" />
             </ScreenView>
         </>

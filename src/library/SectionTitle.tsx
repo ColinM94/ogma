@@ -12,7 +12,6 @@ export const SectionTitle = ({ title }: SectionTitleProps) => {
 
     const styles = StyleSheet.create({
         container: {
-            marginBottom: theme.spacing.tertiary
         }
     })
 

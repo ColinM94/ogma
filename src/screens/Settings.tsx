@@ -16,7 +16,7 @@ export const Settings = () => {
 
     return (
         <ScreenView>
-            <Card onPress={toggleDarkTheme} direction="row">
+            <Card onPress={toggleDarkTheme} row>
                 <View>
                     <Text h2>Dark Mode</Text>
                     <Text subtitle>Toggle dark theme</Text>

@@ -64,7 +64,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const [isDark, setIsDark] = React.useState(true)
 
     const colors = {
-        primary: "#2EA043",
+        primary: "#03b1fc",
         secondary: "#2e8ba0",
         background: isDark ? "#121212" : "#EEEEEE",
         card: isDark ? "#272727" : "white",
@@ -112,7 +112,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
             subtitle: {
                 fontSize: 16,
                 letterSpacing: 0.15,
-                color: colors.text.secondary,
+                color: colors.primary,
             },
             subtitle2: {
                 fontSize: 14,
@@ -120,7 +120,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
                 color: colors.text.secondary,
             },
             input: {
-                fontSize: 16,
+                fontSize: 17,
                 letterSpacing: 0.5,
                 color: colors.text.primary,
             },
