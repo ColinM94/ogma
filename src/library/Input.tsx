@@ -22,8 +22,8 @@ export const Input = (props: InputProps) => {
 
     const styles = StyleSheet.create({
         card: {
-            paddingTop: theme.spacing.secondary,
-            paddingBottom: theme.spacing.secondary,
+            paddingTop: 0,
+            paddingBottom: 0,
             alignItems: "flex-start"
         },
         inputRow: {
@@ -50,12 +50,16 @@ export const Input = (props: InputProps) => {
 
     return (
         <Card onPress={handlePress}>
-            <TextInput
-                ref={(input) => { textInput = input; }}
-                style={[styles.input, style]}
-                placeholderTextColor={theme.colors.text.tertiary}
-                {...rest}
-            />
+            <View pointerEvents="none">
+                <Text subtitle2>{label}</Text>
+                <TextInput
+                    ref={(input) => { textInput = input }}
+                    style={[styles.input, style]}
+                    placeholderTextColor={theme.colors.text.tertiary}
+                    pointerEvents="none"
+                    {...rest}
+                />
+            </View> 
         </Card>
 
     )

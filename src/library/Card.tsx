@@ -16,7 +16,9 @@ export const Card = ({ style, children, ...rest }: CardProps) => {
             elevation: theme.elevation.card,
             borderRadius: theme.roundness,
             marginBottom: theme.spacing.primary,
-            padding: 20
+            padding: theme.spacing.secondary,
+            paddingTop: theme.spacing.primary,
+            paddingBottom: theme.spacing.secondary
         }
     })
 
