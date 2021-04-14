@@ -40,7 +40,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
     }
 
     const cardItem = ({ item }: { item: any }) => (
-        <Card row onPress={() => navigation.navigate("CardDetails", { item: item })}>
+        <Card direction="row" mb={0} onPress={() => navigation.navigate("CardDetails", { item: item })} >
             <View>
                 <Text h2>{item.frontTitle}</Text>
                 <Text subtitle>{item.frontSubtitle}</Text>

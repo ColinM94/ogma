@@ -1,24 +1,24 @@
 import * as React from "react"
-import { StyleSheet, View, TouchableWithoutFeedbackProps } from "react-native"
+import { StyleSheet, View, TouchableWithoutFeedbackProps, ViewProps } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
 import { TouchableNativeFeedback, TouchableWithoutFeedback } from "react-native-gesture-handler"
 
 
-export interface PressableViewProps extends TouchableWithoutFeedbackProps {
+export interface PressableViewProps extends ViewProps {
     onPress?: () => void,
     /** Components rendered inside this view. */
-    children?: JSX.Element | JSX.Element[] | null
+    children?: React.ReactNode | React.ReactNode[]
     /** Color of press feedback. */
     feedbackColor?: string
-    /** Flex direction row. Default direction is column. */
-    row?: boolean
-    /** Flex direction. */
+    /** Flex direction column */
     column?: boolean
+    /** Flex direction. Default is 'column'.*/
+    direction?: "row" | "column"
     /** Bottom Margin */
     mb?: number
 }
 
-export const PressableView = ({ children, onPress, style, feedbackColor, mb, row, ...rest }: PressableViewProps) => {
+export const PressableView = ({ children, onPress, style, feedbackColor, mb, direction = "column", ...rest }: PressableViewProps) => {
     const { theme } = useTheme()
 
     // Combines objects in style array into one object. 
@@ -44,32 +44,34 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, row
             marginBottom: undefined,
             marginLeft: undefined,
             marginRight: undefined,
-        }
+            flexDirection: direction,
+        },
     })
 
     return (
-        <View style={styles.rippleFix}>
-            {onPress &&
-                <TouchableNativeFeedback
-                    onPress={onPress}
-                    background={TouchableNativeFeedback.Ripple(feedbackColor ?? theme.colors.accent, false)}
-                    style={[flattenStyle, styles.touchable]}
-                    {...rest}
-                >
-                    {children}
-                </TouchableNativeFeedback>
+        <>
+            {
+                onPress &&
+                <View style={styles.rippleFix}>
+                    <TouchableNativeFeedback
+                        onPress={onPress}
+                        background={TouchableNativeFeedback.Ripple(onPress ? feedbackColor ?? theme.colors.accent : "rgba(0,0,0,0)", false)}
+                        style={[flattenStyle, styles.touchable]}
+                        {...rest}
+                    >
+                        {children}
+                    </TouchableNativeFeedback>
+                </View>
             }
-
             {
                 !onPress &&
-                <TouchableWithoutFeedback
-                    onPress={onPress}
-                    style={style}
+                <View
+                    style={[style, { flexDirection: direction }]}
                     {...rest}
                 >
                     {children}
-                </TouchableWithoutFeedback>
+                </View>
             }
-        </View>
+        </>
     )
 }
