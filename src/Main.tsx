@@ -10,6 +10,7 @@ import { ToastProvider } from "contexts/ToastContext"
 // Icons.
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCog, faHome, faSearch, faThList, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Home } from "screens/Home"
 library.add(faHome, faCog, faThList, faSearch, faPlus)
 
 export const Main = () => {

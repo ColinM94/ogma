@@ -1,14 +1,15 @@
 import * as React from "react"
-import { StyleSheet, Pressable, PressableAndroidRippleConfig, PressableProps, StyleProp, ViewStyle, View } from "react-native"
+import { StyleSheet, View, TouchableWithoutFeedbackProps } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
+import { TouchableNativeFeedback, TouchableWithoutFeedback } from "react-native-gesture-handler"
 
-interface PressableViewProps extends PressableProps {
+
+export interface PressableViewProps extends TouchableWithoutFeedbackProps {
+    onPress?: () => void,
     /** Components rendered inside this view. */
     children?: JSX.Element | JSX.Element[] | null
     /** Color of press feedback. */
     feedbackColor?: string
-    /** Styling for this view. */
-    style?: StyleProp<ViewStyle>
     /** Flex direction row. Default direction is column. */
     row?: boolean
     /** Flex direction. */
@@ -20,45 +21,55 @@ interface PressableViewProps extends PressableProps {
 export const PressableView = ({ children, onPress, style, feedbackColor, mb, row, ...rest }: PressableViewProps) => {
     const { theme } = useTheme()
 
-    const rippleConfig: PressableAndroidRippleConfig | null = onPress ? { color: feedbackColor ? feedbackColor : "lightgrey" } : null
+    // Combines objects in style array into one object. 
+    const flattenStyle = StyleSheet.flatten(style)
 
     const styles = StyleSheet.create({
-        container: {
-            ...style as {},
+        rippleFix: {  // Prevents padding being applied to container, as this breaks the ripple effect. 
             overflow: "hidden",
-            // Prevents padding being applied to container, as this breaks the ripple effect. 
-            padding: undefined,
-            paddingVertical: undefined,
-            paddingHorizontal: undefined,
-            paddingTop: undefined,
-            paddingBottom: undefined,
-            paddingLeft: undefined,
-            paddingRight: undefined,
+            borderRadius: flattenStyle?.borderRadius,
+            margin: flattenStyle?.margin,
+            marginVertical: flattenStyle?.marginVertical,
+            marginHorizontal: flattenStyle?.marginHorizontal,
+            marginTop: flattenStyle?.marginTop,
+            marginBottom: mb ?? flattenStyle?.marginBottom,
+            marginLeft: flattenStyle?.marginLeft,
+            marginRight: flattenStyle?.marginRight,
         },
-        pressable: {
-            flexDirection: row ? "row" : "column",
-            // Applies padding to pressable instead of container so ripple works correctly. 
-            paddingVertical: style?.paddingVertical,
-            paddingHorizontal: style?.paddingHorizontal,
-            padding: style?.padding ?? undefined,
-            paddingTop: style?.paddingTop,
-            paddingBottom: style?.paddingBottom,
-            paddingLeft: style?.paddingLeft,
-            paddingRight: style?.paddingRight,
+        touchable: {
+            margin: undefined,
+            marginVertical: undefined,
+            marginHorizontal: undefined,
+            marginTop: undefined,
+            marginBottom: undefined,
+            marginLeft: undefined,
+            marginRight: undefined,
         }
     })
 
     return (
-        <View style={styles.container}>
-            <Pressable
-                onPress={onPress}
-                android_ripple={rippleConfig}
-                style={styles.pressable}
-                {...rest}
-            >
-                {children}
-            </Pressable>
-        </View>
+        <View style={styles.rippleFix}>
+            {onPress &&
+                <TouchableNativeFeedback
+                    onPress={onPress}
+                    background={TouchableNativeFeedback.Ripple(feedbackColor ?? theme.colors.accent, false)}
+                    style={[flattenStyle, styles.touchable]}
+                    {...rest}
+                >
+                    {children}
+                </TouchableNativeFeedback>
+            }
 
+            {
+                !onPress &&
+                <TouchableWithoutFeedback
+                    onPress={onPress}
+                    style={style}
+                    {...rest}
+                >
+                    {children}
+                </TouchableWithoutFeedback>
+            }
+        </View>
     )
 }

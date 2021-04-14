@@ -1,22 +1,22 @@
 import * as React from "react"
-import { StyleProp, StyleSheet, TextInput, TextInputProps, View, ViewStyle } from "react-native"
+import { StyleProp, StyleSheet, TextInput, TextInputProps, View } from "react-native"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
-import { Card } from "./Card"
+import { Card, CardProps } from "./Card"
 import { Text } from "./Text"
-import { PressableView, PressableViewProps } from "./PressableView"
+import { ViewStyle } from "react-native"
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 
-export interface InputProps extends TextInputProps {
+export interface InputProps extends Omit<TextInputProps, "onBlur" | "onFocus">, CardProps {
     label?: string,
-    onPress?: () => void,
-    setValue?: (value: string) => void,
+    setValue: (value: string) => void,
     rightIcon?: IconProp,
+    style?: StyleProp<ViewStyle>,
     containerStyle?: StyleProp<ViewStyle>,
 }
 
 export const Input = (props: InputProps) => {
-    const { label, style, containerStyle, onPress, setValue, rightIcon, mb, ...rest } = props
+    const { label, style, onPress, setValue, containerStyle, rightIcon, onBlur, ...rest } = props
     const { theme } = useTheme()
     let textInput: any = null
 
@@ -44,7 +44,6 @@ export const Input = (props: InputProps) => {
         if (onPress) {
             onPress()
         } else {
-            textInput.blur()
             textInput.focus()
         }
     }
@@ -54,19 +53,25 @@ export const Input = (props: InputProps) => {
     }
 
     return (
-        <Card onPress={handlePress}>
+        <Card style={containerStyle} onPress={handlePress}>
             <View pointerEvents="none">
-                {label && <Text subtitle2 style={{marginBottom: theme.spacing.tertiary}}>{label}</Text>}
+                <>{label && <Text subtitle2 style={{ marginBottom: theme.spacing.tertiary }}>{label}</Text>}</>
                 <TextInput
                     ref={(input) => { textInput = input }}
                     onChangeText={handleChange}
                     style={[styles.input, style]}
                     placeholderTextColor={theme.colors.text.tertiary}
-                    pointerEvents="none"
                     {...rest}
                 />
-            </View> 
+                {rightIcon &&
+                    <FontAwesomeIcon
+                        icon={rightIcon}
+                        color={theme.icon.color}
+                        size={theme.icon.size}
+                        style={styles.rightIcon}
+                    />
+                }
+            </View>
         </Card>
-
     )
 }
