@@ -1,20 +1,19 @@
-import { db, Doc, DocData } from "./config"
-import { FlashCard } from "common/types"
+import { db, FirestoreDoc, FirestoreDocData } from "./config"
+import { FlashCardData } from "common/types"
 
-function docToCard(doc: Doc) {
-    let data: DocData = doc.data()
-
-    if (!data) return
+/** Converts a Firebase document into a FlashCardData object. */
+function docToCard(doc: FirestoreDoc): FlashCardData {
+    let data: FirestoreDocData = doc.data()
 
     let card = {
         id: doc.id,
         front: {
-            title: data.front.title,
-            subtitle: data.front.subtitle,
+            title: data?.front.title,
+            subtitle: data?.front.subtitle,
         },
         back: {
-            title: data.back.title,
-            subtitle: data.back.subtitle
+            title: data?.back.title,
+            subtitle: data?.back.subtitle
         },
         category: data?.category,
         dateCreated: data?.dateCreated.toDate()
@@ -23,25 +22,17 @@ function docToCard(doc: Doc) {
     return card
 }
 
-export async function addCard(frontTitle: string, frontSubtitle: string, backTitle: string, backSubtitle: string, category: string) {
-    await db.collection("cards").add({
-        front: {
-            title: frontTitle,
-            subtitle: frontSubtitle,
-        },
-        back: {
-            title: backTitle,
-            subtitle: backSubtitle
-        },
-        category,
-        dateCreated: new Date()
-    })
+export async function addCard(card: FlashCardData) {
+    await db.collection("cards").add(card)
 }
 
+/** Retrieves all cards from database. */
 export async function getCards() {
     const docs = await db.collection("cards").get()
-    let cards: FlashCard = []
 
+    if (docs.empty) return null
+
+    const cards: FlashCardData[] = []
     docs.forEach(doc => {
         cards.push(docToCard(doc))
     })

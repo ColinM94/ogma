@@ -29,7 +29,21 @@ export const CreateCard = () => {
         }
 
         try {
-            await addCard(frontTitle, frontSubtitle, backTitle, backSubtitle, category)
+            const flashCard: FlashCardData = {
+                front: {
+                    title: frontTitle,
+                    subtitle: frontSubtitle,
+                },
+                back:
+                {
+                    title: backTitle,
+                    subtitle: backSubtitle
+                },
+                category: category,
+                dateCreated: new Date()
+            }
+
+            await addCard(flashCard)
             resetForm()
             showToast("Card Created")
         } catch (error) {

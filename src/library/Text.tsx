@@ -14,7 +14,7 @@ type TextProps = RNTextProps & {
     input?: boolean,
     button?: boolean,
     style?: StyleProp<TextStyle>,
-    children?: JSX.Element | JSX.Element[] | string
+    children?: React.ReactNode | React.ReactNode[]
 }
 
 export const Text = (props: TextProps) => {

@@ -1,4 +1,4 @@
-type FlashCardData = {
+export type FlashCardData = {
     id?: string,
     front: {
         title: string,

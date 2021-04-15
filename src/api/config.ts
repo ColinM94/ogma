@@ -20,5 +20,6 @@ export const db = firebase.firestore()
 export const storage = firebase.storage()
 
 // Types
-export type Doc = firebase.firestore.DocumentSnapshot
-export type DocData = firebase.firestore.DocumentData | undefined
+export type FirestoreDoc = firebase.firestore.DocumentSnapshot
+export type FirestoreDocData = firebase.firestore.DocumentData | undefined
+export type FirebaseUser = firebase.User

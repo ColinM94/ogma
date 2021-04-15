@@ -15,6 +15,8 @@ import { CardList } from "screens/CardList"
 import { Study } from "screens/Study"
 import { CardDetails } from "screens/CardDetails"
 import { Header } from "library/Header"
+import { useAuth } from "contexts/AuthContext"
+import { Signin } from "screens/Signin"
 
 // <..Params> adds Type checking for initialParams screen prop. 
 const Stack = createStackNavigator<ScreenParams>()
@@ -22,6 +24,7 @@ const Tab = createMaterialTopTabNavigator<ScreenParams>()
 
 export const Navigation = () => {
     const { theme } = useTheme()
+    const { isSignedIn } = useAuth()
 
     const navTheme = {
         dark: true,
@@ -75,10 +78,22 @@ export const Navigation = () => {
                     header: () => <Header />
                 }}
             >
-                <Stack.Screen name="Tab" component={tabNavigation} />
-                <Stack.Screen name="CardDetails" component={CardDetails} />
-                <Stack.Screen name="Study" component={Study} />
-                <Stack.Screen name="CreateCard" component={CreateCard} />
+                {
+                    !isSignedIn &&
+                    <>
+                        <Stack.Screen name="Signin" component={Signin} />
+                    </>
+                }
+                {
+                    isSignedIn &&
+                    <>
+                        <Stack.Screen name="Tab" component={tabNavigation} />
+                        <Stack.Screen name="CardDetails" component={CardDetails} />
+                        <Stack.Screen name="Study" component={Study} />
+                        <Stack.Screen name="CreateCard" component={CreateCard} />
+                    </>
+                }
+
             </Stack.Navigator>
         </NavigationContainer >
 

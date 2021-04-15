@@ -6,15 +6,12 @@ import { enableScreens } from 'react-native-screens'
 import { Navigation } from "navigation/Navigation"
 import { ThemeProvider } from "contexts/ThemeContext"
 import { ToastProvider } from "contexts/ToastContext"
-
-import Constants from 'expo-constants';
+import { AuthProvider } from "contexts/AuthContext"
 
 // Icons.
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Home } from "screens/Home"
-import { Header } from "library/Header"
-library.add(faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV)
+import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock)
 
 export const Main = () => {
     LogBox.ignoreLogs(['Setting a timer'])
@@ -22,10 +19,12 @@ export const Main = () => {
 
     return (
         <ThemeProvider>
-            <ToastProvider>
-                <Navigation />
-                <StatusBar style="light" translucent={false} />
-            </ToastProvider>
+            <AuthProvider>
+                <ToastProvider>
+                    <Navigation />
+                    <StatusBar style="light" translucent={false} />
+                </ToastProvider>
+            </AuthProvider>
         </ThemeProvider>
     )
 }

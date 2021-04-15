@@ -36,8 +36,11 @@ export const Input = (props: InputProps) => {
             flexGrow: 1,
         },
         rightIcon: {
-            alignSelf: "flex-end",
+            alignSelf: "center",
             marginRight: theme.spacing.tertiary
+        },
+        leftIcon: {
+            alignSelf: "center",
         }
     })
 
@@ -45,6 +48,7 @@ export const Input = (props: InputProps) => {
         if (onPress) {
             onPress()
         } else {
+            textInput.blur()
             textInput.focus()
         }
     }
@@ -55,26 +59,25 @@ export const Input = (props: InputProps) => {
 
     return (
         <Card onPress={handlePress} style={styles.container}>
-            <View pointerEvents="none" style={{ width: "100%" }}>
+            <MyView pointerEvents="none" direction="row">
                 {label && <Text subtitle2 style={styles.label}>{label}</Text>}
-                <MyView direction="row">
-                    <TextInput
-                        ref={(input) => { textInput = input }}
-                        onChangeText={handleChange}
-                        style={[styles.input, theme.typography.input, style]}
-                        placeholderTextColor={theme.colors.text.tertiary}
-                        {...rest}
+                <TextInput
+                    ref={(input) => { textInput = input }}
+                    onChangeText={handleChange}
+                    style={[styles.input, theme.typography.input, style]}
+                    placeholderTextColor={theme.colors.text.tertiary}
+                    {...rest}
+                />
+                {rightIcon &&
+                    <FontAwesomeIcon
+                        icon={rightIcon}
+                        color={theme.icon.color}
+                        size={theme.icon.size}
+                        style={styles.rightIcon}
                     />
-                    {rightIcon &&
-                        <FontAwesomeIcon
-                            icon={rightIcon}
-                            color={theme.icon.color}
-                            size={theme.icon.size}
-                            style={styles.rightIcon}
-                        />
-                    }
-                </MyView>
-            </View>
+                }
+
+            </MyView>
         </Card>
 
     )

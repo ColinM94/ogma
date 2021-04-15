@@ -5,7 +5,6 @@ import { FlashCard } from "components/FlashCard"
 
 
 export const CardDetails = ({ navigation, route }: CardDetailsProps) => {
-    console.log(route.params.item)
     return (
         <>
             <ScreenView>

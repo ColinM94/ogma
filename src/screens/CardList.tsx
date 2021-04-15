@@ -53,7 +53,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         </Card>
     )
 
-    const searchBox = <Input value={search} setValue={setSearch} style={styles.search} placeholder="Search" rightIcon="search" />
+    const searchBox = <Input value={search} setValue={setSearch} style={styles.search} placeholder="Search" rightIcon="search" returnKeyType="search" />
 
     async function handleFAB() {
         navigation.navigate("CreateCard")
