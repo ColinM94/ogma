@@ -4,7 +4,7 @@ import { useTheme } from "contexts/ThemeContext"
 import { TouchableNativeFeedback, TouchableWithoutFeedback } from "react-native-gesture-handler"
 
 
-export interface PressableViewProps extends ViewProps {
+export interface MyViewProps extends ViewProps {
     onPress?: () => void,
     /** Components rendered inside this view. */
     children?: React.ReactNode | React.ReactNode[]
@@ -18,11 +18,11 @@ export interface PressableViewProps extends ViewProps {
     mb?: number
 }
 
-export const PressableView = ({ children, onPress, style, feedbackColor, mb, direction = "column", ...rest }: PressableViewProps) => {
+export const MyView = ({ children, onPress, style, feedbackColor, mb, direction = "column", ...rest }: MyViewProps) => {
     const { theme } = useTheme()
 
     // Combines objects in style array into one object. 
-    const flattenStyle = StyleSheet.flatten(style)
+    const flattenStyle = StyleSheet.flatten([style])
 
     const styles = StyleSheet.create({
         rippleFix: {  // Prevents padding being applied to container, as this breaks the ripple effect. 
@@ -35,16 +35,19 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, dir
             marginBottom: mb ?? flattenStyle?.marginBottom,
             marginLeft: flattenStyle?.marginLeft,
             marginRight: flattenStyle?.marginRight,
+            padding: 0,
         },
         touchable: {
-            margin: undefined,
-            marginVertical: undefined,
-            marginHorizontal: undefined,
-            marginTop: undefined,
-            marginBottom: undefined,
-            marginLeft: undefined,
-            marginRight: undefined,
+            padding: flattenStyle?.padding,
+            paddingVertical: flattenStyle?.paddingVertical,
+            paddingHorizontal: flattenStyle?.paddingHorizontal,
+            paddingTop: flattenStyle?.paddingTop,
+            paddingBottom: flattenStyle?.paddingBottom,
+            paddingLeft: flattenStyle?.paddingLeft,
+            paddingRight: flattenStyle?.paddingRight,
             flexDirection: direction,
+            elevation: flattenStyle?.elevation,
+            margin: 0,
         },
     })
 
@@ -52,11 +55,11 @@ export const PressableView = ({ children, onPress, style, feedbackColor, mb, dir
         <>
             {
                 onPress &&
-                <View style={styles.rippleFix}>
+                <View style={[flattenStyle, styles.rippleFix]}>
                     <TouchableNativeFeedback
                         onPress={onPress}
                         background={TouchableNativeFeedback.Ripple(onPress ? feedbackColor ?? theme.colors.accent : "rgba(0,0,0,0)", false)}
-                        style={[flattenStyle, styles.touchable]}
+                        style={styles.touchable}
                         {...rest}
                     >
                         {children}

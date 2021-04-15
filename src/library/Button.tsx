@@ -1,10 +1,10 @@
 import * as React from "react"
 import { StyleProp, StyleSheet, ViewStyle } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
-import { PressableView, PressableViewProps } from "./PressableView"
+import { MyView, MyViewProps } from "./MyView"
 import { Text } from "./Text"
 
-type ButtonProps = PressableViewProps & {
+type ButtonProps = MyViewProps & {
     title: string
 }
 
@@ -23,11 +23,11 @@ export const Button = ({ title, style, onPress }: ButtonProps) => {
     })
 
     return (
-        <PressableView
-            style={styles.button}
+        <MyView
+            style={[styles.button, style]}
             onPress={onPress ?? (() => { })}
         >
             <Text button style={styles.text}>{title}</Text>
-        </PressableView>
+        </MyView>
     )
 }

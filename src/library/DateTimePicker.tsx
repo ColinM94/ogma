@@ -2,6 +2,7 @@ import * as React from "react"
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import { formatDate, formatTime } from "common/helpers"
 import { Input, InputProps } from "./Input"
+import { useTheme } from "contexts/ThemeContext"
 
 type DateTimePickerProps = InputProps & {
     label: string,
@@ -13,6 +14,7 @@ type DateTimePickerProps = InputProps & {
 export const DateTimePicker = (props: DateTimePickerProps) => {
     const { value, setValue, mode = "date", label = "Date", ...rest } = props
 
+    const { isDark } = useTheme()
     const [isVisible, setIsVisible] = React.useState(false)
 
     const showDatePicker = () => {
@@ -41,6 +43,11 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
                 mode={mode}
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
+                isDarkModeEnabled={true}
+                style={{
+                    backgroundColor: "orange"
+                }}
+                timePickerModeAndroid='default'
             />
         </>
     )

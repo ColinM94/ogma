@@ -13,6 +13,8 @@ import { CardListProps } from "navigation/types"
 import { useToast } from "contexts/ToastContext"
 import { useTheme } from "contexts/ThemeContext"
 import { formatDate, formatTime } from "common/helpers"
+import { FlashCard } from "common/types"
+import { Header } from "library/Header"
 
 export const CardList = ({ navigation, route }: CardListProps) => {
     const [search, setSearch] = React.useState("")
@@ -39,15 +41,14 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         }
     }
 
-    const cardItem = ({ item }: { item: any }) => (
-        <Card direction="row" mb={0} onPress={() => navigation.navigate("CardDetails", { item: item })} >
+    const cardItem = ({ item }: { item: FlashCard }) => (
+        <Card direction="row" mb={0} onPress={() => navigation.navigate("CardDetails", { item: item })}>
             <View>
-                <Text h2>{item.frontTitle}</Text>
-                <Text subtitle>{item.frontSubtitle}</Text>
+                <Text h2>{item.front.title}</Text>
+                <Text subtitle>{item.front.subtitle}</Text>
             </View>
-            <View style={{ justifyContent: "center", marginLeft: "auto" }}>
-                <Text body>{item.category}</Text>
-                <Text subtitle>{formatDate(item.dateCreated)}</Text>
+            <View style={{ justifyContent: "center", marginLeft: "auto", alignItems: "flex-start" }}>
+                <Text subtitle2 >{item.category}</Text>
             </View>
         </Card>
     )
@@ -60,6 +61,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
 
     return (
         <>
+            {/*       <Header title={"Your Deck"} /> */}
             <ScreenView data={cards} renderItem={cardItem} headerComponent={searchBox} onRefresh={loadData} />
             <FAB onPress={handleFAB} />
         </>

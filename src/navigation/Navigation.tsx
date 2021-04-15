@@ -14,6 +14,7 @@ import { CreateCard } from "screens/CreateCard"
 import { CardList } from "screens/CardList"
 import { Study } from "screens/Study"
 import { CardDetails } from "screens/CardDetails"
+import { Header } from "library/Header"
 
 // <..Params> adds Type checking for initialParams screen prop. 
 const Stack = createStackNavigator<ScreenParams>()
@@ -38,10 +39,8 @@ export const Navigation = () => {
         <Tab.Navigator
             tabBarPosition="bottom"
             tabBarOptions={{
-
                 showIcon: true,
                 showLabel: false,
-
             }}
         >
             <Tab.Screen
@@ -72,7 +71,8 @@ export const Navigation = () => {
         <NavigationContainer theme={navTheme}>
             <Stack.Navigator
                 screenOptions={{
-                    headerShown: false
+                    headerShown: false,
+                    header: () => <Header />
                 }}
             >
                 <Stack.Screen name="Tab" component={tabNavigation} />

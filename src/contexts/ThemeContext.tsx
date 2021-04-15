@@ -65,7 +65,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     const colors = {
         primary: "#03b1fc",
-        secondary: "#2e8ba0",
+        secondary: "red",
         background: isDark ? "#121212" : "#EEEEEE",
         card: isDark ? "#272727" : "white",
         accent: isDark ? "grey" : "lightgrey",
@@ -97,7 +97,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
             h3: {
                 fontSize: 20,
                 letterSpacing: 0,
-                color: colors.text.secondary
+                color: colors.text.primary
             },
             body: {
                 fontSize: 16,
@@ -120,7 +120,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
                 color: colors.text.secondary,
             },
             input: {
-                fontSize: 17,
+                fontSize: 16,
                 letterSpacing: 0.5,
                 color: colors.text.primary,
             },
@@ -143,7 +143,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         roundness: 4,
         elevation: {
             header: 4,
-            card: 4,
+            card: 2,
         },
     }
 

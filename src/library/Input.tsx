@@ -6,14 +6,15 @@ import { Card, CardProps } from "./Card"
 import { Text } from "./Text"
 import { ViewStyle } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
-import { PressableView } from "./PressableView"
+import { MyView } from "./MyView"
 
-export interface InputProps extends Omit<TextInputProps, "onBlur" | "onFocus">, CardProps {
+export interface InputProps extends TextInputProps {
     label?: string,
     setValue?: (value: string) => void,
     rightIcon?: IconProp,
     style?: StyleProp<ViewStyle>,
     containerStyle?: StyleProp<ViewStyle>,
+    onPress?: () => void
 }
 
 export const Input = (props: InputProps) => {
@@ -22,18 +23,17 @@ export const Input = (props: InputProps) => {
     let textInput: any = null
 
     const styles = StyleSheet.create({
-        card: {
-            paddingTop: 0,
-            paddingBottom: 0,
-            alignItems: "flex-start"
+        container: {
+
         },
         inputRow: {
             flexDirection: "row",
         },
+        label: {
+        },
         input: {
             color: theme.colors.text.primary,
             flexGrow: 1,
-            ...theme.typography.input as {},
         },
         rightIcon: {
             alignSelf: "flex-end",
@@ -54,14 +54,14 @@ export const Input = (props: InputProps) => {
     }
 
     return (
-        <Card style={containerStyle} onPress={handlePress}>
-            <View pointerEvents="none">
-                {label && <Text subtitle2 style={{ marginBottom: theme.spacing.tertiary }}>{label}</Text>}
-                <PressableView direction="row">
+        <Card onPress={handlePress} style={styles.container}>
+            <View pointerEvents="none" style={{ width: "100%" }}>
+                {label && <Text subtitle2 style={styles.label}>{label}</Text>}
+                <MyView direction="row">
                     <TextInput
                         ref={(input) => { textInput = input }}
                         onChangeText={handleChange}
-                        style={[styles.input, style]}
+                        style={[styles.input, theme.typography.input, style]}
                         placeholderTextColor={theme.colors.text.tertiary}
                         {...rest}
                     />
@@ -73,8 +73,9 @@ export const Input = (props: InputProps) => {
                             style={styles.rightIcon}
                         />
                     }
-                </PressableView>
+                </MyView>
             </View>
         </Card>
+
     )
 }

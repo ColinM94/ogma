@@ -2,7 +2,7 @@ import * as React from "react"
 import { StyleSheet, View } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
-import { PressableView } from "./PressableView"
+import { MyView } from "./MyView"
 
 type FABProps = {
     onPress: () => void
@@ -27,9 +27,9 @@ export const FAB = ({ onPress }: FABProps) => {
 
     return (
         <View style={styles.container}>
-            <PressableView style={styles.fab} onPress={onPress}>
+            <MyView style={styles.fab} onPress={onPress}>
                 <FontAwesomeIcon icon="plus" size={20} color="white" />
-            </PressableView>
+            </MyView>
         </View>
     )
 }

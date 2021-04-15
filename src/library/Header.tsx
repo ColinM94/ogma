@@ -3,8 +3,9 @@ import { StyleSheet, View } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
 import { IconButton } from "./IconButton"
 import { Text } from "./Text"
+import { Input } from "./Input"
 
-export const Header = () => {
+export const Header = ({ title }) => {
     const { theme } = useTheme()
 
     const styles = StyleSheet.create({
@@ -14,7 +15,7 @@ export const Header = () => {
             justifyContent: "center",
             paddingHorizontal: theme.spacing.tertiary,
             width: "100%",
-            height: 60,
+            height: 55,
             backgroundColor: theme.colors.card,
             elevation: theme.elevation.header,
         },
@@ -28,6 +29,14 @@ export const Header = () => {
         },
         rightIcon: {
             marginLeft: "auto"
+        },
+        searchContainer: {
+            flex: 1,
+            height: 45,
+            backgroundColor: theme.colors.background
+        },
+        search: {
+            backgroundColor: theme.colors.background
         }
     })
 
@@ -37,7 +46,7 @@ export const Header = () => {
                 <IconButton icon="bars" onPress={() => { }} />
             </View>
             <View style={styles.title}>
-                <Text title>Title</Text>
+                <Text title>{title}</Text>
             </View>
             <View style={styles.rightIcon}>
                 <IconButton icon="ellipsis-v" onPress={() => { }} />

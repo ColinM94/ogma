@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleSheet } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { addCard } from "api/database"
 import { useToast } from "contexts/ToastContext"
 import { useTheme } from "contexts/ThemeContext"
@@ -7,6 +7,8 @@ import { ScreenView } from "library/ScreenView"
 import { Input } from "library/Input"
 import { Button } from "library/Button"
 import { Text } from "library/Text"
+import { SectionTitle } from "library/SectionTitle"
+import { Divider } from "library/Divider"
 
 export const CreateCard = () => {
     const [frontTitle, setFrontTitle] = React.useState("")
@@ -45,24 +47,24 @@ export const CreateCard = () => {
 
     const styles = StyleSheet.create({
         sectionTitle: {
-            marginBottom: theme.spacing.tertiary
+            marginBottom: theme.spacing.primary
         },
     })
 
     return (
         <ScreenView>
-            <Text subtitle style={styles.sectionTitle}>Front</Text>
-            <Input label="Title" value={frontTitle} setValue={setFrontTitle} />
-            <Input label="Subtitle" value={frontSubtitle} setValue={setFrontSubtitle} />
+            <SectionTitle title="Front" />
+            <Input placeholder="Title" value={frontTitle} setValue={setFrontTitle} />
+            <Input placeholder="Subtitle" value={frontSubtitle} setValue={setFrontSubtitle} />
 
-            <Text subtitle style={styles.sectionTitle}>Back</Text>
-            <Input label="Title" value={backTitle} setValue={setBackTitle} />
-            <Input label="Subtitle" value={backSubtitle} setValue={setBackSubtitle} />
+            <SectionTitle title="Back" />
+            <Input placeholder="Title" value={backTitle} setValue={setBackTitle} />
+            <Input placeholder="Subtitle" value={backSubtitle} setValue={setBackSubtitle} />
 
-            <Text subtitle style={styles.sectionTitle}>General</Text>
-            <Input label="Category" value={category} setValue={setCategory} />
+            <SectionTitle title="General" />
+            <Input placeholder="Category" value={category} setValue={setCategory} />
 
-            <Button title="Create Card" onPress={handleAdd} />
+            <Button title="Create Card" onPress={handleAdd} style={{ marginTop: "auto" }} />
         </ScreenView>
     )
 }

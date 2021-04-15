@@ -7,11 +7,14 @@ import { Navigation } from "navigation/Navigation"
 import { ThemeProvider } from "contexts/ThemeContext"
 import { ToastProvider } from "contexts/ToastContext"
 
+import Constants from 'expo-constants';
+
 // Icons.
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faHome, faSearch, faThList, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Home } from "screens/Home"
-library.add(faHome, faCog, faThList, faSearch, faPlus)
+import { Header } from "library/Header"
+library.add(faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV)
 
 export const Main = () => {
     LogBox.ignoreLogs(['Setting a timer'])

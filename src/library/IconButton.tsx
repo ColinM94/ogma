@@ -3,7 +3,7 @@ import { View } from "react-native"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { useTheme } from "contexts/ThemeContext"
-import { PressableView } from "./PressableView"
+import { MyView } from "./MyView"
 
 type IconButtonProps = {
     icon: IconProp,
@@ -36,9 +36,9 @@ export const IconButton = (props: IconButtonProps) => {
 
     return (
         <View style={styles.container}>
-            <PressableView onPress={onPress} feedbackColor={feedbackColor} style={styles.iconButton}>
+            <MyView onPress={onPress} feedbackColor={feedbackColor} style={styles.iconButton}>
                 <FontAwesomeIcon icon={icon} size={size} color={color} />
-            </PressableView>
+            </MyView>
         </View>
     )
 }

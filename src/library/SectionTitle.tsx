@@ -12,12 +12,17 @@ export const SectionTitle = ({ title }: SectionTitleProps) => {
 
     const styles = StyleSheet.create({
         container: {
+            marginLeft: theme.spacing.tertiary,
+            marginBottom: theme.spacing.tertiary
+        },
+        text: {
+            color: theme.colors.primary
         }
     })
 
     return (
         <View style={styles.container}>
-            <Text h3>{title}</Text>
+            <Text h3 style={styles.text}>{title}</Text>
         </View>
     )
 }
