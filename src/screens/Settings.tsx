@@ -27,7 +27,7 @@ export const Settings = () => {
             justifyContent: "center",
             alignItems: "center",
             alignContent: "center",
-            marginRight: 4
+            marginRight: 20
         }
     })
 
@@ -35,8 +35,8 @@ export const Settings = () => {
         <ScreenView>
             <Card onPress={toggleDarkTheme} direction="row">
                 <View style={{ flex: 1 }}>
-                    <Text h2>{isDark ? "Dark Mode" : "Light Mode"}</Text>
-                    <Text subtitle>{isDark ? "Switch to light theme" : "Switch to dark theme"}</Text>
+                    <Text h3>{isDark ? "Light Mode" : "Dark Mode"}</Text>
+                    <Text subtitle2 style={{color: theme.colors.primary}}>{isDark ? "Switch to light theme" : "Switch to dark theme"}</Text>
                 </View>
                 {/*                 <View style={styles.rightColumn}>
                     <Switch value={isDark} onValueChange={toggleDarkTheme} color={theme.colors.primary} />
@@ -45,10 +45,10 @@ export const Settings = () => {
                     <FontAwesomeIcon icon={isDark ? "sun" : "moon"} color={theme.icon.color} size={iconSize} />
                 </View>
             </Card>
-            <Card onPress={handleSignOut} direction="row">
+            <Card onPress={handleSignOut} direction="row" >
                 <View style={{ flex: 1 }}>
-                    <Text h2>Sign Out</Text>
-                    <Text subtitle>Return to signin screen</Text>
+                    <Text h3>Sign Out</Text>
+                    <Text subtitle2 style={{color: theme.colors.primary}}>Return to signin screen</Text>
                 </View>
                 <View style={[styles.rightColumn]}>
                     <FontAwesomeIcon icon="sign-out-alt" color={theme.icon.color} size={iconSize} />

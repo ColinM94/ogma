@@ -10,8 +10,9 @@ import { AuthProvider } from "contexts/AuthContext"
 
 // Icons.
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock)
+import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faEnvelopeSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { LoadingProvider } from "contexts/LoadingContext"
+library.add(faEnvelope, faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye)
 
 export const Main = () => {
     LogBox.ignoreLogs(['Setting a timer'])
@@ -19,12 +20,14 @@ export const Main = () => {
 
     return (
         <ThemeProvider>
-            <AuthProvider>
-                <ToastProvider>
-                    <Navigation />
-                    <StatusBar style="light" translucent={false} />
-                </ToastProvider>
-            </AuthProvider>
+            <LoadingProvider>
+                <AuthProvider>
+                    <ToastProvider>
+                        <Navigation />
+                        <StatusBar style="light" translucent={false} />
+                    </ToastProvider>
+                </AuthProvider>
+            </LoadingProvider>
         </ThemeProvider>
     )
 }

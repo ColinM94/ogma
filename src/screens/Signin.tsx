@@ -7,11 +7,11 @@ import { useTheme } from "contexts/ThemeContext"
 import { useToast } from "contexts/ToastContext"
 import { ScreenView } from "library/ScreenView"
 import { Text } from "library/Text"
-import { Card } from "library/Card"
 import { Input } from "library/Input"
 import { Button } from "library/Button"
 import { signIn, signUp } from "api/auth"
 import { SigninProps } from "navigation/types"
+import { useLoading } from "contexts/LoadingContext"
 
 export const Signin = (props: SigninProps) => {
     const [email, setEmail] = React.useState("colinmaher94@gmail.com")
@@ -24,6 +24,7 @@ export const Signin = (props: SigninProps) => {
     // Contexts.
     const { showToast } = useToast()
     const { theme } = useTheme()
+    const { loading } = useLoading()
 
     // Refs.
     const emailInput = React.createRef()
@@ -48,7 +49,8 @@ export const Signin = (props: SigninProps) => {
     // Regex.
     const emailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    const handleCreateAccount = async () => {
+    const handleSignUp = async () => {
+        loading(true)
         if (!emailError && !nameError && !passwordError && !password2Error) {
             try {
                 await signUp(email, password)
@@ -59,14 +61,17 @@ export const Signin = (props: SigninProps) => {
         } else {
             showToast("Invalid details")
         }
+        loading(false)
     }
 
     const handleSignIn = async () => {
+        loading(true)
         try {
             await signIn(email, password)
         } catch (error) {
             showToast(error.message)
         }
+        loading(false)
     }
 
     // Handlers
@@ -178,7 +183,7 @@ export const Signin = (props: SigninProps) => {
             </>
             <Button
                 title={showSignIn ? "Sign In" : "Sign Up"}
-                onPress={showSignIn ? handleSignIn : handleCreateAccount}
+                onPress={showSignIn ? handleSignIn : handleSignUp}
             />
             <Text
                 style={{

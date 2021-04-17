@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleProp, StyleSheet, ViewStyle } from "react-native"
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native"
 import { useTheme } from "contexts/ThemeContext"
 import { MyView, MyViewProps } from "./MyView"
 
@@ -12,11 +12,14 @@ export const Card = ({ style, children, ...rest }: CardProps) => {
 
     const styles = StyleSheet.create({
         card: {
+            //backgroundColor: "rgba(255,255, 255, 0.05)",
+            //backgroundColor: "#1E1E1E",
             backgroundColor: theme.colors.card,
-            elevation: theme.elevation.card,
             borderRadius: theme.roundness,
+            elevation: theme.elevation.card,
             marginBottom: theme.spacing.primary,
-            padding: theme.spacing.primary
+            padding: theme.spacing.primary,
+            
         }
     })
 
