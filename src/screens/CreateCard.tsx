@@ -9,6 +9,10 @@ import { Button } from "library/Button"
 import { Text } from "library/Text"
 import { SectionTitle } from "library/SectionTitle"
 import { Divider } from "library/Divider"
+import { FlashCardData } from "common/types"
+import { Card } from "library/Card"
+import { Formik } from "formik"
+import { TextInput } from "react-native-paper"
 
 export const CreateCard = () => {
     const [frontTitle, setFrontTitle] = React.useState("")
@@ -20,7 +24,7 @@ export const CreateCard = () => {
     const { showToast } = useToast()
     const { theme } = useTheme()
 
-    const handleAdd = async () => {
+    const handleSubmit = async (values) => {
         if (frontTitle === "") {
             showToast("Please enter a front title.")
             return
@@ -67,18 +71,46 @@ export const CreateCard = () => {
 
     return (
         <ScreenView>
-            <SectionTitle title="Front" />
-            <Input placeholder="Title" value={frontTitle} setValue={setFrontTitle} />
-            <Input placeholder="Subtitle" value={frontSubtitle} setValue={setFrontSubtitle} />
-
-            <SectionTitle title="Back" />
-            <Input placeholder="Title" value={backTitle} setValue={setBackTitle} />
-            <Input placeholder="Subtitle" value={backSubtitle} setValue={setBackSubtitle} />
-
-            <SectionTitle title="General" />
-            <Input placeholder="Category" value={category} setValue={setCategory} />
-
-            <Button title="Create Card" onPress={handleAdd} style={{ marginTop: "auto" }} />
+            <Formik
+                initialValues={{ frontTitle: "", frontSubtitle: "", backTitle: "", backSubtitle: "", category: "" }}
+                onSubmit={values => handleSubmit(values)}
+            >
+                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                    <Card>
+                        <Input
+                            label="Front Title"
+                            onChangeText={handleChange('frontTitle')}
+                            onBlur={() => handleBlur('title')}
+                            value={values.frontTitle}
+                        />
+                        <Input
+                            label="Front Subtitle"
+                            onChangeText={handleChange('frontSubtitle')}
+                            onBlur={() => handleBlur('frontSubtitle')}
+                            value={values.frontSubtitle}
+                        />
+                        <Input
+                            label="Back Title"
+                            onChangeText={handleChange('backTitle')}
+                            onBlur={() => handleBlur('backTitle')}
+                            value={values.backTitle}
+                        />
+                        <Input
+                            label="Back Subtitle"
+                            onChangeText={handleChange('backSubtitle')}
+                            onBlur={() => handleBlur('backSubtitle')}
+                            value={values.backSubtitle}
+                        />
+                        <Input
+                            label="Category"
+                            onChangeText={handleChange('category')}
+                            onBlur={() => handleBlur('category')}
+                            value={values.category}
+                        />
+                        <Button title="Create Card" onPress={handleSubmit} />
+                    </Card>
+                )}
+            </Formik>
         </ScreenView>
     )
 }

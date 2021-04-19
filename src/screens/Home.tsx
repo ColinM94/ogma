@@ -13,7 +13,8 @@ import { DateTimePicker } from "library/DateTimePicker"
 import { ImagePicker } from "library/ImagePicker"
 import { Button } from "library/Button"
 import { Header } from "library/Header"
-
+import { TextInput } from "react-native"
+import { Formik } from "formik"
 
 export const Home = ({ navigation, route }: HomeProps) => {
     const [text, setText] = React.useState()
@@ -30,27 +31,22 @@ export const Home = ({ navigation, route }: HomeProps) => {
     }
 
     return (
-        <>
-            {/*   <Header title="Home" /> */}
-            <ScreenView>
-                <Card onPress={() => {}}>
-                    <Text h1>Heading 1</Text>
-                    <Text h2>Heading 2</Text>
-                    <Text h3>Heading 3</Text>
-                </Card>
-                <Card>
-                    <Text h3>Heading</Text>
-                    <Text body>I am a big 'ol body of text.</Text>
-                    <Text subtitle>I am a subtitle</Text>
-                </Card>
-                <Card>
-                    <Text body>I am a big 'ol body of text.</Text>
-                    <Text subtitle>I am a subtitle</Text>
-                </Card>
-                <Input placeholder="Input" />
-                <Input placeholder="Input" />
-                <Button title="Study" onPress={() => navigation.navigate("Study")} />
-            </ScreenView>
-        </>
+        <ScreenView>
+            <Card onPress={() => { }}>
+                <Text h1>Heading 1</Text>
+                <Text h2>Heading 2</Text>
+                <Text h3>Heading 3</Text>
+            </Card>
+            <Card>
+                <Text h3>Heading</Text>
+                <Text body>I am a big 'ol body of text.</Text>
+                <Text subtitle>I am a subtitle</Text>
+            </Card>
+            <Card>
+                <Text body>I am a big 'ol body of text.</Text>
+                <Text subtitle>I am a subtitle</Text>
+            </Card>
+            <Button title="Study" onPress={() => navigation.navigate("Study")} />
+        </ScreenView>
     )
 }

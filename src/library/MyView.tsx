@@ -16,9 +16,11 @@ export interface MyViewProps extends ViewProps {
     direction?: "row" | "column"
     /** Bottom Margin */
     mb?: number
+    /** Enabled/Disabled onPress feedback. Default is true.  */
+    feedbackEnabled?: boolean
 }
 
-export const MyView = ({ children, onPress, style, feedbackColor, mb, direction = "column", ...rest }: MyViewProps) => {
+export const MyView = ({ children, onPress, style, feedbackColor, mb, direction = "column", feedbackEnabled = true, ...rest }: MyViewProps) => {
     const { theme } = useTheme()
 
     // Combines objects in style array into one object. 
@@ -54,7 +56,7 @@ export const MyView = ({ children, onPress, style, feedbackColor, mb, direction 
     return (
         <>
             {
-                onPress &&
+                feedbackEnabled &&
                 <View style={[flattenStyle, styles.rippleFix]}>
                     <TouchableNativeFeedback
                         onPress={onPress}
@@ -67,13 +69,14 @@ export const MyView = ({ children, onPress, style, feedbackColor, mb, direction 
                 </View>
             }
             {
-                !onPress &&
-                <View
+                !feedbackEnabled &&
+                <TouchableWithoutFeedback
                     style={[style, { flexDirection: direction }]}
+                    onPress={onPress}
                     {...rest}
                 >
                     {children}
-                </View>
+                </TouchableWithoutFeedback>
             }
         </>
     )

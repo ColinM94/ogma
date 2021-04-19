@@ -14,7 +14,6 @@ type DateTimePickerProps = InputProps & {
 export const DateTimePicker = (props: DateTimePickerProps) => {
     const { value, setValue, mode = "date", label = "Date", ...rest } = props
 
-    const { isDark } = useTheme()
     const [isVisible, setIsVisible] = React.useState(false)
 
     const showDatePicker = () => {
@@ -37,7 +36,7 @@ export const DateTimePicker = (props: DateTimePickerProps) => {
 
     return (
         <>
-            <Input label={label} editable={false} value={format()} onPress={showDatePicker} {...rest} />
+            <Input label={label} value={format()} onPress={showDatePicker} {...rest} />
             <DateTimePickerModal
                 isVisible={isVisible}
                 mode={mode}

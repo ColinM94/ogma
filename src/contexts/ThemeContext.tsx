@@ -64,9 +64,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     const [isDark, setIsDark] = React.useState(true)
 
     const colors = {
-        primary: "#e84545",
+        primary: "#3E84E0",
         secondary: "red",
-        background: isDark ? "#121212" : "#EEEEEE",
+        background: isDark ? "#121212" : "white",  // "#EEEEEE"
         card: isDark ? "#1E1E1E" : "white",
         accent: isDark ? "grey" : "lightgrey",
         text: {

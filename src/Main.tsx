@@ -10,9 +10,9 @@ import { AuthProvider } from "contexts/AuthContext"
 
 // Icons.
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faEnvelopeSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faEnvelopeSquare, faEnvelope, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { LoadingProvider } from "contexts/LoadingContext"
-library.add(faEnvelope, faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye)
+library.add(faEnvelope, faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faCalendar)
 
 export const Main = () => {
     LogBox.ignoreLogs(['Setting a timer'])

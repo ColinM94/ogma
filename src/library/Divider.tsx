@@ -14,7 +14,7 @@ export const Divider = ({ style }: DividerProps) => {
             height: 1,
             width: "100%",
             backgroundColor: theme.colors.text.tertiary,
-            marginTop: theme.spacing.primary
+            marginBottom: theme.spacing.primary
         }
     })
 

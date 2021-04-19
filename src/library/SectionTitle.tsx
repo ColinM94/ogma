@@ -13,16 +13,29 @@ export const SectionTitle = ({ title }: SectionTitleProps) => {
     const styles = StyleSheet.create({
         container: {
             marginLeft: theme.spacing.tertiary,
-            marginBottom: theme.spacing.tertiary
+        },
+        line: {
+            height: 1,
+            backgroundColor: theme.colors.text.tertiary
+        },
+        leftLine: {
+            flex: 1
+        },
+        rightLine: {
+            flex: 20,
         },
         text: {
-            color: theme.colors.primary
+            color: theme.colors.primary,
+            marginVertical: theme.spacing.tertiary,
+            marginHorizontal: theme.spacing.tertiary
         }
     })
 
     return (
-        <View style={styles.container}>
-            <Text h3 style={styles.text}>{title}</Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+            {/*             <View style={[styles.line, styles.leftLine]} /> */}
+            <Text subtitle style={styles.text}>{title}</Text>
+            {/*             <View style={[styles.line, styles.rightLine]} /> */}
         </View>
     )
 }
