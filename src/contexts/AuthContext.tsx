@@ -1,41 +1,65 @@
 import * as React from "react"
-import { auth, FirebaseUser } from "api/config"
+import { auth } from "api/config"
+import { getUser } from "api/firestore"
 
-const AuthContext = React.createContext<UseAuthProps | undefined>(undefined)
-export const useAuth = () => {
-    return React.useContext(AuthContext)
+interface CurrentUser {
+    id: string | null
+    email: string | null
+    isSignedIn: boolean
+    darkMode: boolean
+    dateFormat: string
 }
 
 type AuthProviderProps = {
-    children?: JSX.Element | JSX.Element[]
+    children?: React.ReactNode | React.ReactNode[]
 }
 
-type UseAuthProps = {
-    currentUser: FirebaseUser | null,
-    isSignedIn: boolean
+interface State {
+    currentUser: CurrentUser
+}
+
+const initialState: State = {
+    currentUser: {
+        id: null,
+        email: null,
+        isSignedIn: false,
+        darkMode: true,
+        dateFormat: "DD/MM/YY",
+    },
+}
+
+export const AuthContext = React.createContext({} as State)
+
+export const useAuth = (): State => {
+    return React.useContext(AuthContext)
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [currentUser, setCurrentUser] = React.useState<FirebaseUser | null>(null)
-    const [isSignedIn, setIsSignedIn] = React.useState(false)
+    const [currentUser, setCurrentUser] = React.useState(initialState.currentUser)
 
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user)
-            setIsSignedIn(user ? true : false)
+            if (user) {
+                getUser(user.uid).then((userData) => {
+                    setCurrentUser({
+                        id: user.uid,
+                        email: user.email,
+                        isSignedIn: true,
+                        darkMode: userData?.darkMode ?? initialState.currentUser.darkMode,
+                        dateFormat:
+                            userData?.dateFormat ?? initialState.currentUser.dateFormat,
+                    })
+                })
+            } else {
+                setCurrentUser(initialState.currentUser)
+            }
         })
-
-        return unsubscribe
+        return () => unsubscribe()
     }, [])
 
-    const value: UseAuthProps = {
+    const value: State = {
         currentUser,
-        isSignedIn
     }
 
-    return (
-        <AuthContext.Provider value={value}>
-            {children}
-        </AuthContext.Provider>
-    )
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

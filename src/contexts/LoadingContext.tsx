@@ -1,17 +1,18 @@
 import * as React from "react"
-import { ActivityIndicator, StyleSheet } from "react-native"
+import { StyleSheet, ActivityIndicator } from "react-native"
 
 type LoadingProviderProps = {
-    children: JSX.Element | JSX.Element[]
+    children?: React.ReactNode | React.ReactNode[]
 }
 
-type Value = {
-    loading: (active: boolean) => void,
+interface State {
+    //** While true shows a loading spinner at the center of the screen. */
+    loading: (show: boolean) => void
 }
 
-const LoadingContext = React.createContext<Value>({} as Value)
+export const LoadingContext = React.createContext({} as State)
 
-export const useLoading = () => {
+export const useLoading = (): State => {
     return React.useContext(LoadingContext)
 }
 
@@ -22,24 +23,25 @@ export const LoadingProvider = ({ children }: LoadingProviderProps) => {
         setIsLoading(active)
     }
 
-    const value: Value = {
-        loading
+    const value: State = {
+        loading,
     }
-
-    const styles = StyleSheet.create({
-        loading: {
-            position: 'absolute',
-            top: "45%",
-            left: "50%",
-            right: "50%",
-        }
-    })
 
     return (
         <LoadingContext.Provider value={value}>
             {children}
-            {isLoading && <ActivityIndicator size="large" color="red" style={styles.loading} />}
+            {isLoading && (
+                <ActivityIndicator size="large" color="red" style={styles.loading} />
+            )}
         </LoadingContext.Provider>
     )
 }
 
+const styles = StyleSheet.create({
+    loading: {
+        position: "absolute",
+        top: "45%",
+        left: "50%",
+        right: "50%",
+    },
+})

@@ -1,45 +1,34 @@
 import * as React from "react"
-import { Alert, ToastAndroid, Platform } from "react-native"
+import { Alert, Platform, ToastAndroid } from "react-native"
 
-type ProviderProps = {
-    children?: JSX.Element | JSX.Element[],
+interface ToastProviderProps {
+    children?: React.ReactNode | React.ReactNode[]
 }
 
-type ContextProps = {
-    showToast: (msg: string) => void
+interface ToastState {
+    toast: (msg: string) => void
 }
 
-const ToastContext = React.createContext<ContextProps>({} as ContextProps)
+const ToastContext = React.createContext({} as ToastState)
 
 export const useToast = () => {
     return React.useContext(ToastContext)
 }
 
-export const ToastProvider = ({ children }: ProviderProps) => {
-    const showToast = (msg: string) => {
+export const ToastProvider = ({ children }: ToastProviderProps) => {
+    const toast = (msg: string) => {
         if (Platform.OS === "android") {
             ToastAndroid.show(msg, ToastAndroid.SHORT)
         } else {
-            Alert.alert(
-                "Alert",
-                msg,
-                [
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ]
-            );
+            Alert.alert("Alert", msg, [
+                { text: "OK", onPress: () => console.log("OK Pressed") },
+            ])
         }
     }
 
-    const value = {
-        showToast,
+    const value: ToastState = {
+        toast,
     }
 
-    return (
-        <ToastContext.Provider value={value}>
-            {children}
-        </ToastContext.Provider>
-    )
+    return <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
 }
-
-
-

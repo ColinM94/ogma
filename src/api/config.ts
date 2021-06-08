@@ -1,10 +1,10 @@
 // The core firebase client.
-import firebase from 'firebase/app'
+import firebase from "firebase/app"
 
-// Importing the required individual services. 
-import 'firebase/firestore'
-import 'firebase/auth'
-import 'firebase/storage'
+// Importing the required individual services.
+import "firebase/firestore"
+import "firebase/auth"
+import "firebase/storage"
 
 export const app = firebase.initializeApp({
     apiKey: "AIzaSyBQ3pL79TzzgGPW1xcwt_Yaf-1YTSbPqZE",
@@ -12,7 +12,7 @@ export const app = firebase.initializeApp({
     projectId: "ogma-dbc7f",
     storageBucket: "ogma-dbc7f.appspot.com",
     messagingSenderId: "107088163222",
-    appId: "1:107088163222:web:97623098a48bb7a297edb7"
+    appId: "1:107088163222:web:97623098a48bb7a297edb7",
 })
 
 export const auth = firebase.auth()

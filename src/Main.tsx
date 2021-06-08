@@ -1,33 +1,50 @@
 import * as React from "react"
-import { StatusBar } from 'expo-status-bar'
 import { LogBox } from "react-native"
-import { enableScreens } from 'react-native-screens'
-
-import { Navigation } from "navigation/Navigation"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import {
+    faArrowLeft,
+    faArrowsAlt,
+    faCog,
+    faEye,
+    faEyeSlash,
+    faHome,
+    faList,
+    faPlus,
+    faSeedling,
+    faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons"
 import { ThemeProvider } from "contexts/ThemeContext"
+import { StatusBar } from "library/StatusBar"
+import { LoadingProvider } from "contexts/LoadingContext"
 import { ToastProvider } from "contexts/ToastContext"
 import { AuthProvider } from "contexts/AuthContext"
-
-// Icons.
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCog, faHome, faSearch, faThList, faPlus, faEllipsisV, faBars, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faEnvelopeSquare, faEnvelope, faCalendar } from '@fortawesome/free-solid-svg-icons'
-import { LoadingProvider } from "contexts/LoadingContext"
-library.add(faEnvelope, faHome, faCog, faThList, faSearch, faPlus, faBars, faEllipsisV, faSignOutAlt, faLightbulb, faSun, faMoon, faSquare, faCheckSquare, faTimes, faCheck, faUser, faLock, faEye, faCalendar)
+import { Navigation } from "navigation/Navigation"
 
 export const Main = () => {
-    LogBox.ignoreLogs(['Setting a timer'])
-    enableScreens() // https://reactnavigation.org/docs/react-native-screens/
+    LogBox.ignoreLogs(["Setting a timer", "index.tsx", "Require cycle"])
+    library.add(
+        faEye,
+        faEyeSlash,
+        faSeedling,
+        faSignOutAlt,
+        faArrowsAlt,
+        faHome,
+        faCog,
+        faPlus,
+        faArrowLeft,
+        faList
+    )
 
     return (
-        <ThemeProvider>
-            <LoadingProvider>
+        <LoadingProvider>
+            <ToastProvider>
                 <AuthProvider>
-                    <ToastProvider>
+                    <ThemeProvider>
                         <Navigation />
-                        <StatusBar style="light" translucent={false} />
-                    </ToastProvider>
+                        <StatusBar />
+                    </ThemeProvider>
                 </AuthProvider>
-            </LoadingProvider>
-        </ThemeProvider>
+            </ToastProvider>
+        </LoadingProvider>
     )
 }

@@ -1,101 +1,30 @@
 import * as React from "react"
-import { createStackNavigator } from "@react-navigation/stack"
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
+import { StyleSheet, View } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 
-import { ScreenParams } from "./types"
 import { useTheme } from "contexts/ThemeContext"
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
-
-// Screens.
-import { Home } from "screens/Home"
-import { Settings } from "screens/Settings"
-import { CreateCard } from "screens/CreateCard"
-import { CardList } from "screens/CardList"
-import { Study } from "screens/Study"
-import { CardDetails } from "screens/CardDetails"
-import { Header } from "library/Header"
-import { useAuth } from "contexts/AuthContext"
-import { Signin } from "screens/Signin"
-
-// <..Params> adds Type checking for initialParams screen prop. 
-const Stack = createStackNavigator<ScreenParams>()
-const Tab = createMaterialTopTabNavigator<ScreenParams>()
+import { StackNavigation } from "./StackNavigation"
 
 export const Navigation = () => {
-    const { theme } = useTheme()
-    const { isSignedIn } = useAuth()
+    const { theme, isDark } = useTheme()
 
     const navTheme = {
-        dark: true,
+        dark: isDark,
         colors: {
             primary: theme.colors.primary,
             background: theme.colors.background,
             card: theme.colors.card,
-            text: theme.colors.text.tertiary,
+            text: theme.colors.text.primary,
             border: theme.colors.card,
             notification: theme.colors.secondary,
-        }
+        },
     }
 
-    const tabNavigation = () => (
-        <Tab.Navigator
-            tabBarPosition="bottom"
-            tabBarOptions={{
-                showIcon: true,
-                showLabel: false,
-            }}
-        >
-            <Tab.Screen
-                name="Home"
-                component={Home}
-                options={{
-                    tabBarIcon: () => <FontAwesomeIcon icon="home" size={24} color={theme.colors.text.secondary} />
-                }}
-            />
-            <Tab.Screen
-                name="CardList"
-                component={CardList}
-                options={{
-                    tabBarIcon: () => <FontAwesomeIcon icon="th-list" size={24} color={theme.colors.text.secondary} />
-                }}
-            />
-            <Tab.Screen
-                name="Settings"
-                component={Settings}
-                options={{
-                    tabBarIcon: () => <FontAwesomeIcon icon="cog" size={24} color={theme.colors.text.secondary} />
-                }}
-            />
-        </Tab.Navigator>
-    )
-
     return (
-        <NavigationContainer theme={navTheme}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                    header: () => <Header />
-                }}
-            >
-                {
-                    !isSignedIn &&
-                    <>
-                        <Stack.Screen name="Signin" component={Signin} />
-                    </>
-                }
-                {
-                    isSignedIn &&
-                    <>
-                        <Stack.Screen name="Tab" component={tabNavigation} />
-                        <Stack.Screen name="CardDetails" component={CardDetails} />
-                        <Stack.Screen name="Study" component={Study} />
-                        <Stack.Screen name="CreateCard" component={CreateCard} />
-                    </>
-                }
-
-            </Stack.Navigator>
-        </NavigationContainer >
-
+        <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+            <NavigationContainer theme={navTheme}>
+                <StackNavigation />
+            </NavigationContainer>
+        </View>
     )
 }

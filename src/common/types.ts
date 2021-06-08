@@ -1,13 +1,13 @@
 export type FlashCardData = {
-    id?: string,
+    id?: string
     front: {
-        title: string,
+        title: string
         subtitle: string
-    },
+    }
     back: {
-        title: string,
+        title: string
         subtitle: string
-    },
-    dateCreated: Date,
+    }
+    dateCreated: Date
     category?: string
 }
