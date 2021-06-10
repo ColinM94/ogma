@@ -1,11 +1,12 @@
 import * as React from "react"
-import { StyleSheet } from "react-native"
+import { StyleSheet, View } from "react-native"
 
 import { useTheme } from "contexts/ThemeContext"
 import { ScreenContainer } from "library/ScreenContainer"
 import { SigninProps } from "navigation/types"
 import { SignInHeading } from "./SignInHeading"
 import { SignInForm } from "./SignInForm"
+import { ScrollView } from "react-native-gesture-handler"
 
 export const Signin = ({ navigation, route }: SigninProps) => {
     const { theme } = useTheme()
@@ -18,10 +19,10 @@ export const Signin = ({ navigation, route }: SigninProps) => {
     })
 
     return (
-        <ScreenContainer style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <SignInHeading />
             <SignInForm />
-        </ScreenContainer>
+        </ScrollView>
     )
 }
 

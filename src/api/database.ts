@@ -13,17 +13,17 @@ function docToCard(doc: FirestoreDoc): FlashCardData {
         },
         back: {
             title: data?.back.title,
-            subtitle: data?.back.subtitle
+            subtitle: data?.back.subtitle,
         },
         category: data?.category,
-        dateCreated: data?.dateCreated.toDate()
+        dateCreated: data?.dateCreated.toDate(),
     }
 
     return card
 }
 
-export async function addCard(card: FlashCardData) {
-    await db.collection("cards").add(card)
+export async function addCard(card: FlashCardData, userId: string) {
+    await db.collection("users").doc(userId).collection("cards").add(card)
 }
 
 /** Retrieves all cards from database. */
@@ -33,7 +33,7 @@ export async function getCards() {
     if (docs.empty) return null
 
     const cards: FlashCardData[] = []
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
         cards.push(docToCard(doc))
     })
 

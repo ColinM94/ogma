@@ -9,6 +9,7 @@ import {
     faEyeSlash,
     faHome,
     faList,
+    faPaperclip,
     faPlus,
     faSeedling,
     faSignOutAlt,
@@ -32,7 +33,8 @@ export const Main = () => {
         faCog,
         faPlus,
         faArrowLeft,
-        faList
+        faList,
+        faPaperclip
     )
 
     return (

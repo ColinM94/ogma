@@ -1,23 +1,21 @@
 import * as React from "react"
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, ScrollView } from "react-native"
 import { useToast } from "contexts/ToastContext"
 import { useTheme } from "contexts/ThemeContext"
-import { Input } from "library/Input"
-import { ScreenContainer } from "library/ScreenContainer"
 import { Button } from "library/Button"
 import { Header } from "library/Header"
-import { IconButton } from "library/IconButton"
 import { useNavigation } from "@react-navigation/native"
+import { CreateCardInput } from "./CreateCardInput"
 
 export const CreateCard = () => {
     const { toast } = useToast()
     const { theme } = useTheme()
     const navigation = useNavigation()
 
-    const [frontTitle, setFrontTitle] = React.useState("")
-    const [frontSubtitle, setFrontSubtitle] = React.useState("")
-    const [backTitle, setBackTitle] = React.useState("")
-    const [backSubtitle, setBackSubtitle] = React.useState("")
+    const [frontLine1, setFrontLine1] = React.useState("")
+    const [frontLine2, setFrontLine2] = React.useState("")
+    const [backLine1, setBackLine1] = React.useState("")
+    const [backLine2, setBackLine2] = React.useState("")
     const [category, setCategory] = React.useState("")
 
     const handleSubmit = () => {
@@ -32,26 +30,41 @@ export const CreateCard = () => {
 
     return (
         <>
-            <Header>
-                <IconButton icon="arrow-left" onPress={() => navigation.goBack()} />
-            </Header>
-            <View style={styles.container}>
-                <Input value={frontTitle} setValue={setFrontTitle} label="Front Title" />
-                <Input
-                    value={frontSubtitle}
-                    setValue={setFrontSubtitle}
-                    label="Front Subtitle"
+            <Header
+                leftBtnIcon="arrow-left"
+                leftBtnOnPress={() => navigation.goBack()}
+                title="Create Card"
+            />
+            <ScrollView contentContainerStyle={styles.container}>
+                <CreateCardInput
+                    value={frontLine1}
+                    setValue={setFrontLine1}
+                    label="Front Line 1"
                 />
-                <Input value={backTitle} setValue={setBackTitle} label="Back Title" />
-                <Input
-                    value={backSubtitle}
-                    setValue={setBackSubtitle}
-                    label="Front Title"
+                <CreateCardInput
+                    value={frontLine2}
+                    setValue={setFrontLine2}
+                    label="Front Line 2"
                 />
-                <Input value={category} setValue={setCategory} label="Category" />
+                <CreateCardInput
+                    value={backLine1}
+                    setValue={setBackLine1}
+                    label="Back Line 1"
+                />
+                <CreateCardInput
+                    value={backLine2}
+                    setValue={setBackLine2}
+                    label="Back Line 2"
+                />
+                <CreateCardInput
+                    value={category}
+                    setValue={setCategory}
+                    label="Category"
+                    enableAttachBtn={false}
+                />
 
                 <Button title="Create Card" onPress={handleSubmit} />
-            </View>
+            </ScrollView>
         </>
     )
 }

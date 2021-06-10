@@ -87,14 +87,13 @@ export const SignInForm = () => {
         bottomText: {
             marginTop: 20,
             padding: theme.spacing.primary,
-            alignItems: "center",
             alignSelf: "center",
             borderRadius: theme.roundness,
         },
         forgotPassword: {
-            marginTop: "auto",
-            marginBottom: 8,
             alignSelf: "center",
+            marginTop: theme.spacing.primary,
+            marginBottom: 12,
             padding: theme.spacing.primary,
             borderRadius: theme.roundness,
         },
