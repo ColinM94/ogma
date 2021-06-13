@@ -1,16 +1,17 @@
 import * as React from "react"
-import { LogBox } from "react-native"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import {
     faArrowLeft,
     faArrowsAlt,
     faCog,
+    faEllipsisV,
     faEye,
     faEyeSlash,
     faHome,
     faList,
     faPaperclip,
     faPlus,
+    faSearch,
     faSeedling,
     faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons"
@@ -22,7 +23,6 @@ import { AuthProvider } from "contexts/AuthContext"
 import { Navigation } from "navigation/Navigation"
 
 export const Main = () => {
-    LogBox.ignoreLogs(["Setting a timer", "index.tsx", "Require cycle"])
     library.add(
         faEye,
         faEyeSlash,
@@ -34,7 +34,9 @@ export const Main = () => {
         faPlus,
         faArrowLeft,
         faList,
-        faPaperclip
+        faPaperclip,
+        faSearch,
+        faEllipsisV
     )
 
     return (

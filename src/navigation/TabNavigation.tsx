@@ -13,6 +13,7 @@ export const TabsNavigation = () => {
         <Tab.Navigator
             tabBarPosition="bottom"
             tabBarOptions={{ showIcon: true, showLabel: false }}
+            initialRouteName="CardList"
         >
             <Tab.Screen
                 name="Home"

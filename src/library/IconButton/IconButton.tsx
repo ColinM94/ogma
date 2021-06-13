@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleProp, View, ViewStyle } from "react-native"
+import { StyleProp, View, ViewStyle, StyleSheet } from "react-native"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { Icon } from "../Icon"
 import { useTheme } from "contexts/ThemeContext"
@@ -24,12 +24,12 @@ export const IconButton = (props: IconButtonProps) => {
         style,
     } = props
 
-    const styles = {
+    const styles = StyleSheet.create({
         container: {
             padding: 10,
             borderRadius: 60,
         },
-    }
+    })
 
     return (
         <Pressable

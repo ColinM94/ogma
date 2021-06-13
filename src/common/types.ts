@@ -1,12 +1,26 @@
-export type FlashCardData = {
+type FlashCardData = {
     id?: string
     front: {
-        title: string
-        subtitle: string
+        line1: {
+            text: string
+        }
+        line2: {
+            text: string
+        }
+        notes: {
+            text: string
+        }
     }
     back: {
-        title: string
-        subtitle: string
+        line1: {
+            text: string
+        }
+        line2: {
+            text: string
+        }
+        notes: {
+            text: string
+        }
     }
     dateCreated: Date
     category?: string

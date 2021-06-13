@@ -13,7 +13,6 @@ export const Card = ({ style, children, ...rest }: CardProps) => {
             backgroundColor: theme.colors.card,
             borderRadius: theme.roundness,
             elevation: theme.elevation.card,
-            marginBottom: theme.spacing.primary,
             padding: theme.spacing.primary,
         },
     })

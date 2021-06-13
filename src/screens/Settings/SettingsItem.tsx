@@ -23,6 +23,7 @@ export const SettingsItem = (props: SettingsItemProps) => {
             flexDirection: "row",
             alignItems: "center",
             backgroundColor: theme.colors.card,
+            marginBottom: theme.spacing.primary,
         },
         cardRight: {
             marginLeft: "auto",
@@ -45,9 +46,7 @@ export const SettingsItem = (props: SettingsItemProps) => {
                 </View>
             )}
 
-            {rightContent && (
-                <View style={styles.cardRight}>{rightContent}</View>
-            )}
+            {rightContent && <View style={styles.cardRight}>{rightContent}</View>}
         </Card>
     )
 }
