@@ -10,6 +10,7 @@ export type ScreenParams = {
     CardList: undefined
     Settings: undefined
     CreateCard: undefined
+    CardDetails: undefined
 }
 
 export type SigninProps = {
@@ -20,6 +21,11 @@ export type SigninProps = {
 export type CreateCardProps = {
     navigation: StackNavigationProp<ScreenParams, "CreateCard">
     route: RouteProp<ScreenParams, "CreateCard">
+}
+
+export type CardDetailsProps = {
+    navigation: StackNavigationProp<ScreenParams, "CardDetails">
+    route: RouteProp<ScreenParams, "CardDetails">
 }
 
 export type TabNavigation = {

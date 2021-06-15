@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleSheet, View } from "react-native"
+import { SafeAreaView, StyleSheet, View } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 
 import { useTheme } from "contexts/ThemeContext"
@@ -21,10 +21,10 @@ export const Navigation = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
             <NavigationContainer theme={navTheme}>
                 <StackNavigation />
             </NavigationContainer>
-        </View>
+        </SafeAreaView>
     )
 }

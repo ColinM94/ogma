@@ -1,8 +1,8 @@
 import { useToast } from "contexts/ToastContext"
-import { Input } from "library/Input"
+import { Input, InputProps } from "library/Input"
 import * as React from "react"
 
-interface CreateCardInputProps {
+export interface CreateCardInputProps extends InputProps {
     value: string
     setValue: (value: string) => void
     label: string
@@ -11,8 +11,7 @@ interface CreateCardInputProps {
 
 export const CreateCardInput = (props: CreateCardInputProps) => {
     const { toast } = useToast()
-
-    const { value, setValue, label, enableAttachBtn = true } = props
+    const { value, setValue, label, enableAttachBtn = true, ...rest } = props
 
     return (
         <Input
@@ -24,6 +23,7 @@ export const CreateCardInput = (props: CreateCardInputProps) => {
             rightIconOnPress={
                 enableAttachBtn ? () => toast("Attach coming soon") : undefined
             }
+            {...rest}
         />
     )
 }

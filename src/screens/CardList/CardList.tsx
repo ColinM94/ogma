@@ -1,5 +1,5 @@
 import * as React from "react"
-import { View, Text, StyleSheet, FlatList } from "react-native"
+import { View, StyleSheet, FlatList } from "react-native"
 import { CardListProps } from "navigation/types"
 import { useTheme } from "contexts/ThemeContext"
 import { FAB } from "library/FAB"
@@ -7,7 +7,6 @@ import { getCards } from "api/firestore"
 import { useToast } from "contexts/ToastContext"
 import { CardListItem } from "./CardListItem"
 import { useAuth } from "contexts/AuthContext"
-import { Header } from "library/Header"
 import { Input } from "library/Input"
 import { ScreenContainer } from "library/ScreenContainer"
 import { IconButton } from "library/IconButton"
@@ -58,12 +57,14 @@ export const CardList = ({ navigation, route }: CardListProps) => {
             >
                 <Input
                     leftIcon="search"
+                    rightIcon="ellipsis-v"
+                    rightIconOnPress={() => {}}
                     containerStyle={{
                         flex: 1,
                         marginBottom: 0,
                     }}
                 />
-                <IconButton icon="ellipsis-v" style={{ marginHorizontal: 4 }} />
+                {/*                 <IconButton icon="ellipsis-v" style={{ marginHorizontal: 4 }} /> */}
             </View>
 
             <FlatList

@@ -21,8 +21,11 @@ import { LoadingProvider } from "contexts/LoadingContext"
 import { ToastProvider } from "contexts/ToastContext"
 import { AuthProvider } from "contexts/AuthContext"
 import { Navigation } from "navigation/Navigation"
+import { LogBox } from "react-native"
 
 export const Main = () => {
+    LogBox.ignoreLogs(["Setting a timer"])
+
     library.add(
         faEye,
         faEyeSlash,

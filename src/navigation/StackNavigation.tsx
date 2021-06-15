@@ -8,6 +8,7 @@ import { TabsNavigation } from "./TabNavigation"
 import { useNavigation } from "@react-navigation/native"
 import { useAuth } from "contexts/AuthContext"
 import { CreateCard } from "screens/CreateCard/CreateCard"
+import { CardDetails } from "screens/CardDetails/CardDetails"
 
 // <..Params> adds Type checking for initialParams screen prop.
 const Stack = createStackNavigator<ScreenParams>()
@@ -40,6 +41,7 @@ export const StackNavigation = () => {
                 <>
                     <Stack.Screen name="TabNavigation" component={TabsNavigation} />
                     <Stack.Screen name="CreateCard" component={CreateCard} />
+                    <Stack.Screen name="CardDetails" component={CardDetails} />
                 </>
             )}
         </Stack.Navigator>

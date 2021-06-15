@@ -9,6 +9,7 @@ import { CreateCardInput } from "./CreateCardInput"
 import { addCard } from "api/firestore"
 import { FlashCardData } from "common/types"
 import { useAuth } from "contexts/AuthContext"
+import { CreateCardCategoryPicker } from "./CreateCardCategoryPicker"
 
 export const CreateCard = () => {
     const { toast } = useToast()
@@ -74,17 +75,20 @@ export const CreateCard = () => {
                 leftBtnOnPress={() => navigation.goBack()}
                 title="Create Card"
             />
-            <ScrollView contentContainerStyle={styles.container}>
+            <ScrollView
+                contentContainerStyle={styles.container}
+                keyboardShouldPersistTaps="handled"
+            >
                 <CreateCardInput
                     value={frontLine1}
                     setValue={setFrontLine1}
                     label="English"
                 />
-                {/*                 <CreateCardInput
+                <CreateCardInput
                     value={frontLine2}
                     setValue={setFrontLine2}
                     label="2nd English Word"
-                /> */}
+                />
 
                 <CreateCardInput
                     value={backLine1}
@@ -107,7 +111,7 @@ export const CreateCard = () => {
                     label="German Example"
                 />
 
-                <CreateCardInput
+                <CreateCardCategoryPicker
                     value={category}
                     setValue={setCategory}
                     label="Category"

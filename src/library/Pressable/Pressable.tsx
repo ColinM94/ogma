@@ -21,7 +21,7 @@ export const Pressable = (props: PressableProps) => {
     const {
         children,
         style,
-        feedback = true,
+        feedback = props.onPress ? true : false,
         feedbackColor = theme.colors.feedback,
         ...rest
     } = props

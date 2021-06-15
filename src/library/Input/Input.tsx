@@ -25,6 +25,8 @@ export interface InputProps extends TextInputProps {
     onPress?: () => void
     /*onBlur?: () => void, */
     error?: boolean
+    /* Show border as if this input is focused */
+    isFocus?: boolean
 }
 
 export const Input = (props: InputProps) => {
@@ -38,18 +40,25 @@ export const Input = (props: InputProps) => {
         rightIcon,
         rightIconOnPress,
         error,
+        isFocus = false,
         ...rest
     } = props
-    const { theme } = useTheme()
 
-    const [focused, setFocused] = React.useState(false)
+    const { theme } = useTheme()
+    const [isFocused, setIsFocused] = React.useState(false)
 
     let inputRef: any
 
     const styles = StyleSheet.create({
         container: {
             borderWidth: 1,
-            borderColor: error ? "red" : focused ? theme.colors.primary : "rgba(0,0,0,0)",
+            borderColor: error
+                ? "red"
+                : isFocus
+                ? theme.colors.primary
+                : isFocused
+                ? theme.colors.primary
+                : "rgba(0,0,0,0)",
             backgroundColor: theme.colors.card,
             padding: theme.spacing.primary,
             paddingTop: label ? theme.spacing.tertiary : undefined,
@@ -80,17 +89,18 @@ export const Input = (props: InputProps) => {
 
     const handlePress = () => {
         onPress && onPress()
-        setFocused(true)
+        !onPress && setIsFocused(true)
         inputRef?.blur()
         inputRef?.focus()
+        onPress && inputRef?.blur()
     }
 
     const handleFocus = () => {
-        setFocused(true)
+        setIsFocused(true)
     }
 
     const handleBlur = () => {
-        setFocused(false)
+        setIsFocused(false)
     }
 
     const handleTextChange = (text: string) => {
@@ -130,8 +140,9 @@ export const Input = (props: InputProps) => {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         ref={(r) => (inputRef = r)}
-                        showSoftInputOnFocus={onPress ? true : undefined}
                         testID="inputField"
+                        caretHidden={onPress ? true : false}
+                        showSoftInputOnFocus={onPress ? false : true}
                         {...rest}
                     />
                     {rightIcon && (
