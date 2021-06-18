@@ -4,6 +4,7 @@ import Constants from "expo-constants"
 import { useTheme } from "contexts/ThemeContext"
 import { IconButton, IconButtonProps } from "library/IconButton"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { HeaderBackBtn } from "./HeaderBackBtn"
 
 interface HeaderProps {
     style?: StyleProp<ViewStyle>
@@ -12,13 +13,21 @@ interface HeaderProps {
     leftBtnOnPress?: () => void
     rightBtnIcon?: IconProp
     rightBtnOnPress?: () => void
+    backBtnEnabled?: boolean
 }
 
 export const Header = (props: HeaderProps) => {
     const { theme } = useTheme()
 
-    const { style, title, leftBtnIcon, leftBtnOnPress, rightBtnIcon, rightBtnOnPress } =
-        props
+    const {
+        style,
+        title,
+        leftBtnIcon,
+        leftBtnOnPress,
+        rightBtnIcon,
+        rightBtnOnPress,
+        backBtnEnabled,
+    } = props
 
     const styles = StyleSheet.create({
         container: {
@@ -54,6 +63,8 @@ export const Header = (props: HeaderProps) => {
                     size={22}
                 />
             )}
+
+            {backBtnEnabled && <HeaderBackBtn style={styles.leftBtn} />}
 
             <Text style={[theme.typography.h1, styles.title]}>{title}</Text>
 

@@ -4,7 +4,8 @@ import { useTheme } from "contexts/ThemeContext"
 import { Pressable } from "../Pressable"
 
 export type PickerItem = {
-    text: string
+    /** If set, this text will be shown in the picker instead of value. */
+    text?: string
     value: string
 }
 
@@ -14,7 +15,7 @@ export interface PickerProps {
     show: boolean
     setShow: (show: boolean) => void
     data: PickerItem[]
-    /* Default: true. Whether picker has a cancel button or not.*/
+    /** Default: true. Whether picker has a cancel button or not. */
     cancelBtnEnabled?: boolean
 }
 
@@ -68,7 +69,7 @@ export const Picker = (props: PickerProps) => {
                     },
                 ]}
             >
-                {item.text}
+                {item.text ?? item.value}
             </Text>
         </Pressable>
     )

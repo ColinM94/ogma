@@ -22,11 +22,16 @@ export const CardListItem = ({ item }: CardListItemProps) => {
         row: {
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
         },
         rowItem: {
             flex: 1,
+            justifyContent: "center",
         },
     })
+
+    const displayLine = (text: string) =>
+        text ? <Text style={theme.typography.body}>{text}</Text> : <></>
 
     return (
         <Card
@@ -34,23 +39,8 @@ export const CardListItem = ({ item }: CardListItemProps) => {
             style={styles.card}
         >
             <View style={[styles.row, { marginBottom: 4 }]}>
-                <View style={styles.rowItem}>
-                    <Text style={theme.typography.body}>{item.front.line1.text}</Text>
-                </View>
-                <View style={styles.rowItem}>
-                    <Text style={theme.typography.body}>{item.back.line1.text}</Text>
-                </View>
-            </View>
-            <View style={styles.row}>
-                {item.front.line2.text !== "" && (
-                    <View style={styles.rowItem}>
-                        <Text style={theme.typography.body}>{item.front.line2.text}</Text>
-                    </View>
-                )}
-
-                <View style={styles.rowItem}>
-                    <Text style={theme.typography.body}>{item.back.line2.text}</Text>
-                </View>
+                <View style={styles.rowItem}>{displayLine(item.front.line1.text)}</View>
+                <View style={styles.rowItem}>{displayLine(item.back.line1.text)}</View>
             </View>
         </Card>
     )

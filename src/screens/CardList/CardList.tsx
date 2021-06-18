@@ -9,19 +9,18 @@ import { CardListItem } from "./CardListItem"
 import { useAuth } from "contexts/AuthContext"
 import { Input } from "library/Input"
 import { ScreenContainer } from "library/ScreenContainer"
+import { db } from "api/config"
+import { useLoading } from "contexts/LoadingContext"
 
 export const CardList = ({ navigation, route }: CardListProps) => {
     const { theme } = useTheme()
     const { toast } = useToast()
+    const { loading } = useLoading()
     const { currentUser } = useAuth()
 
     const [cards, setCards] = React.useState<FlashCardData[]>([])
     const [filteredCards, setFilteredCards] = React.useState<FlashCardData[]>([])
     const [search, setSearch] = React.useState("")
-
-    React.useEffect(() => {
-        loadData()
-    }, [])
 
     React.useEffect(() => {
         const lowercaseSearch = search.toLowerCase()
@@ -41,7 +40,29 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         }
     }, [search])
 
-    const loadData = async () => {
+    React.useEffect(() => {
+        const unsubscribe = db
+            .collection("users")
+            .doc(currentUser.id!)
+            .collection("cards")
+            .onSnapshot((querySnapshot) => {
+                loading(true)
+                let tempCards: FlashCardData[] = []
+
+                querySnapshot.forEach((doc) => {
+                    let tempCard: FlashCardData = doc.data()
+                    tempCard.id = doc.id
+                    tempCards.push(tempCard)
+                })
+                setCards(tempCards)
+                setFilteredCards(tempCards)
+                loading(false)
+            })
+
+        return () => unsubscribe()
+    }, [])
+
+    /*     const loadData = async () => {
         try {
             let cards = await getCards(currentUser.id!)
             setFilteredCards(cards)
@@ -49,7 +70,7 @@ export const CardList = ({ navigation, route }: CardListProps) => {
         } catch (error) {
             toast(error.message)
         }
-    }
+    } */
 
     const itemSeparator = () => <View style={styles.itemSeparator} />
 

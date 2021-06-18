@@ -14,6 +14,7 @@ import {
     faSearch,
     faSeedling,
     faSignOutAlt,
+    faTrash,
 } from "@fortawesome/free-solid-svg-icons"
 import { ThemeProvider } from "contexts/ThemeContext"
 import { StatusBar } from "library/StatusBar"
@@ -39,7 +40,8 @@ export const Main = () => {
         faList,
         faPaperclip,
         faSearch,
-        faEllipsisV
+        faEllipsisV,
+        faTrash
     )
 
     return (

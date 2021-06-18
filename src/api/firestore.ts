@@ -35,3 +35,7 @@ export async function getCards(userId: string) {
 
     return cards
 }
+
+export async function deleteCard(userId: string, cardId: string) {
+    await db.collection("users").doc(userId).collection("cards").doc(cardId).delete()
+}

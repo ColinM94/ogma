@@ -11,8 +11,14 @@ export const CreateCardCategoryPicker = (props: CreateCardCategoryPickerProps) =
 
     const options: PickerItem[] = [
         {
-            text: "Noun",
-            value: "noun",
+            text: "No Category",
+            value: "",
+        },
+        {
+            value: "Noun",
+        },
+        {
+            value: "Verb",
         },
     ]
 
@@ -30,6 +36,7 @@ export const CreateCardCategoryPicker = (props: CreateCardCategoryPickerProps) =
                 setValue={setValue}
                 show={showPicker}
                 setShow={setShowPicker}
+                cancelBtnEnabled={false}
             />
         </>
     )
