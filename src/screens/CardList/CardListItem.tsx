@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { useTheme } from "contexts/ThemeContext"
 import { Card } from "library/Card"
-import { Pressable } from "library/Pressable"
 
 interface CardListItemProps {
     item: FlashCardData

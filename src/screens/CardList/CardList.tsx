@@ -9,7 +9,6 @@ import { CardListItem } from "./CardListItem"
 import { useAuth } from "contexts/AuthContext"
 import { Input } from "library/Input"
 import { ScreenContainer } from "library/ScreenContainer"
-import { IconButton } from "library/IconButton"
 
 export const CardList = ({ navigation, route }: CardListProps) => {
     const { theme } = useTheme()
@@ -17,14 +16,35 @@ export const CardList = ({ navigation, route }: CardListProps) => {
     const { currentUser } = useAuth()
 
     const [cards, setCards] = React.useState<FlashCardData[]>([])
+    const [filteredCards, setFilteredCards] = React.useState<FlashCardData[]>([])
+    const [search, setSearch] = React.useState("")
 
     React.useEffect(() => {
         loadData()
     }, [])
 
+    React.useEffect(() => {
+        const lowercaseSearch = search.toLowerCase()
+
+        let result = cards.filter(
+            (card) =>
+                card.front.line1.text.toLowerCase().includes(lowercaseSearch) ||
+                card.front.line2.text.toLowerCase().includes(lowercaseSearch) ||
+                card.back.line1.text.toLowerCase().includes(lowercaseSearch) ||
+                card.back.line2.text.toLowerCase().includes(lowercaseSearch)
+        )
+
+        if (search === "") {
+            setFilteredCards(cards)
+        } else {
+            setFilteredCards(result)
+        }
+    }, [search])
+
     const loadData = async () => {
         try {
             let cards = await getCards(currentUser.id!)
+            setFilteredCards(cards)
             setCards(cards)
         } catch (error) {
             toast(error.message)
@@ -56,6 +76,8 @@ export const CardList = ({ navigation, route }: CardListProps) => {
                 }}
             >
                 <Input
+                    value={search}
+                    setValue={setSearch}
                     leftIcon="search"
                     rightIcon="ellipsis-v"
                     rightIconOnPress={() => {}}
@@ -64,11 +86,11 @@ export const CardList = ({ navigation, route }: CardListProps) => {
                         marginBottom: 0,
                     }}
                 />
-                {/*                 <IconButton icon="ellipsis-v" style={{ marginHorizontal: 4 }} /> */}
+                {/*<IconButton icon="ellipsis-v" style={{ marginHorizontal: 4 }} />*/}
             </View>
 
             <FlatList
-                data={cards}
+                data={filteredCards}
                 renderItem={({ item }) => <CardListItem item={item} />}
                 ItemSeparatorComponent={itemSeparator}
             />
