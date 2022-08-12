@@ -1,0 +1,20 @@
+@use "styles/vars";
+
+.button {
+  background-color: vars.$color-card;
+  padding-top: vars.$spacing-tertiary;
+  padding-bottom: vars.$spacing-tertiary;
+  padding-left: vars.$spacing-secondary;
+  padding-right: vars.$spacing-secondary;
+  border-radius: vars.$roundness;
+  cursor: pointer;
+  background-color: vars.$color-primary;
+
+  &:active {
+    transform: scale(0.975);
+  }
+
+  .label {
+    color: vars.$color-text-primary;
+  }
+}

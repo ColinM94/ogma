@@ -1,0 +1,40 @@
+@use "styles/vars";
+
+* :not(head) {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+html,
+#root,
+body {
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: vars.$color-background;
+  color: vars.$color-text-primary;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  font-family: Calibri, "Trebuchet MS", sans-serif;
+  line-height: 1.2;
+  font-size: calc(15px + 0.390625vw);
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}

@@ -1,0 +1,12 @@
+@use "styles/vars";
+
+.container {
+  flex-direction: row;
+  background-color: vars.$color-card;
+  gap: vars.$spacing-primary;
+  padding: vars.$spacing-primary;
+
+  .navBtn {
+    width: 100px;
+  }
+}
