@@ -1,0 +1,21 @@
+@use "styles/vars";
+
+.button {
+  position: fixed;
+  height: vars.$spacing-primary * 3;
+  width: vars.$spacing-primary * 3;
+  bottom: vars.$spacing-primary;
+  right: vars.$spacing-primary;
+  background-color: vars.$color-primary;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    transform: scale(0.975);
+  }
+
+  .label {
+    color: vars.$color-text-primary;
+  }
+}
