@@ -1,0 +1,11 @@
+@use "styles/vars";
+
+.list {
+  gap: vars.$spacing-primary;
+  padding: vars.$spacing-primary;
+
+  .listItem {
+    overflow: hidden;
+    flex-direction: row;
+  }
+}
