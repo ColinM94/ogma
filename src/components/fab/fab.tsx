@@ -1,18 +1,18 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { HtmlButton } from "types/general"
 import { classes } from "utils/classes"
 
 import styles from "./styles.module.scss"
 
 interface FABProps extends HtmlButton {
-  label: string
+  icon: IconProp
 }
 
-export const FAB = ({ label, className, ...rest }: FABProps) => {
+export const FAB = ({ icon, className, ...rest }: FABProps) => {
   return (
     <button className={styles.button} {...rest}>
-      {label && (
-        <div className={classes(styles.button, className)}>{label}</div>
-      )}
+      {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
     </button>
   )
 }

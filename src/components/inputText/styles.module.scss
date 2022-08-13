@@ -5,4 +5,8 @@
   padding: vars.$spacing-secondary;
   border-radius: vars.$roundness;
   color: vars.$color-text-primary;
+
+  &:focus {
+    outline: 1px solid vars.$color-primary;
+  }
 }

@@ -1,6 +1,6 @@
 import { Button } from "components/button/button"
 import { Card } from "components/card/card"
-import { deleteFlashCard } from "services"
+import { deleteFlashcard } from "services"
 import { FlashCard } from "types"
 
 import styles from "./styles.module.scss"
@@ -11,10 +11,11 @@ interface FlashCardItemProps {
 }
 
 export const FlashCardsItem = ({ item, onClick }: FlashCardItemProps) => {
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: string, e: React.MouseEvent) => {
     try {
+      e.stopPropagation()
       const isConfirmed = confirm("Are you sure?")
-      isConfirmed && deleteFlashCard(id)
+      isConfirmed && deleteFlashcard(id)
     } catch (error) {
       console.log(error)
     }
@@ -28,7 +29,7 @@ export const FlashCardsItem = ({ item, onClick }: FlashCardItemProps) => {
       </div>
       <Button
         icon="trash"
-        onClick={() => handleDelete(item.id)}
+        onClick={(e) => handleDelete(item.id, e)}
         className={styles.deleteBtn}
       />
     </Card>

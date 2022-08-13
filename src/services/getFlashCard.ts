@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore"
 import { db } from "inits"
 import { FlashCard } from "types"
 
-export const getFlashCard = async (id: string) => {
+export const getFlashcard = async (id: string) => {
   const docRef = doc(db, "cards", id)
   const docSnap = await getDoc(docRef)
 

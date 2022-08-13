@@ -6,8 +6,7 @@
   ],
   "settings": {
     "search.exclude": {
-      "**/*.": true,
-      "**/src": true
+      "**/*.": true
     }
   }
 }

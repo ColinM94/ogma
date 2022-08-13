@@ -2,7 +2,7 @@ import * as React from "react"
 // import { useNavigate } from "react-router-dom"
 
 import { FlashCard } from "types/flashCard"
-import { getCardsSnapshot } from "services"
+import { getFlashcardsSnapshot } from "services"
 import { List } from "components/list/list"
 
 import { FlashCardsItem } from "./components/flashCardsItem/flashCardsItem"
@@ -16,7 +16,7 @@ export const FlashCards = () => {
 
   React.useEffect(() => {
     const loadData = async () => {
-      const unsubscribe = await getCardsSnapshot(setData)
+      const unsubscribe = await getFlashcardsSnapshot(setData)
 
       return () => {
         unsubscribe()
@@ -35,7 +35,11 @@ export const FlashCards = () => {
       <List
         items={data}
         renderItem={({ item }) => (
-          <FlashCardsItem item={item} onClick={() => handleClick(item.id)} />
+          <FlashCardsItem
+            item={item}
+            onClick={() => handleClick(item.id)}
+            key={item.id}
+          />
         )}
         className={styles.list}
       />

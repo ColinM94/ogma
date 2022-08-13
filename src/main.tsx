@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Settings } from "pages/settings/settings"
 import { Creator } from "pages/creator/creator"
 import { FlashCards } from "pages/flashCards/flashCards"
+import { FlashCardDetails } from "pages/flashcard/flashcard"
 import { ProtectedLayout } from "layouts/protectedLayout/protectedLayout"
 import { initIconsLibrary } from "inits"
-import { FlashCardDetails } from "pages/flashCardDetails/flashCardDetails"
 
 import "styles/global.scss"
 

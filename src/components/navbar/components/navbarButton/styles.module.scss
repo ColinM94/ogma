@@ -6,6 +6,10 @@
   justify-content: center;
   background-color: vars.$color-card;
 
+  &:active {
+    transform: scale(0.95);
+  }
+
   .label {
     text-align: center;
   }

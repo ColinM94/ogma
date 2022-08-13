@@ -6,6 +6,10 @@
   border-radius: vars.$roundness;
   cursor: pointer;
   background-color: vars.$color-primary;
+  height: vars.$spacing-primary * 3;
+  min-width: vars.$spacing-primary * 3;
+  align-items: center;
+  justify-content: center;
 
   &:active {
     transform: scale(0.975);

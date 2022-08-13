@@ -1,9 +1,9 @@
 @use "styles/vars";
 
 .button {
-  position: fixed;
-  height: vars.$spacing-primary * 3;
-  width: vars.$spacing-primary * 3;
+  position: absolute;
+  height: vars.$spacing-primary * 3.5;
+  width: vars.$spacing-primary * 3.5;
   bottom: vars.$spacing-primary;
   right: vars.$spacing-primary;
   background-color: vars.$color-primary;
@@ -15,7 +15,7 @@
     transform: scale(0.975);
   }
 
-  .label {
+  .icon {
     color: vars.$color-text-primary;
   }
 }

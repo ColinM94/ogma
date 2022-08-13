@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom"
 
 import { getCurrentRoute } from "utils/getCurrentRoute"
 import { FlashCard } from "types"
-import { getFlashCard } from "services"
 import { Card } from "components/card/card"
+import { getFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 
@@ -20,7 +20,7 @@ export const FlashCardDetails = () => {
   React.useEffect(() => {
     const loadData = async () => {
       const id = getCurrentRoute(pathname)
-      const _flashCard = await getFlashCard(id)
+      const _flashCard = await getFlashcard(id)
       setFlashCard(_flashCard)
     }
 
@@ -29,8 +29,9 @@ export const FlashCardDetails = () => {
 
   return (
     <Card className={styles.container}>
-      {flashCard.front}
-      {flashCard.back}
+      <div className={styles.front}>{flashCard.front}</div>
+      <div className={styles.divider} />
+      <div className={styles.back}>{flashCard.back}</div>
     </Card>
   )
 }

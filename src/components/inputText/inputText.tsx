@@ -1,4 +1,5 @@
 import { HtmlInput, SetState } from "types"
+import { classes } from "utils/classes"
 import styles from "./styles.module.scss"
 
 interface InputTextProps extends HtmlInput {
@@ -16,7 +17,7 @@ export const InputText = (props: InputTextProps) => {
     <input
       value={value}
       onChange={handleChange}
-      className={styles.input}
+      className={classes(styles.input, className)}
       {...rest}
     />
   )
