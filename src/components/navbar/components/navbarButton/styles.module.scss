@@ -1,9 +1,18 @@
+@use "styles/vars";
+
 .container {
   flex: 1;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: vars.$color-card;
 
   .label {
     text-align: center;
+  }
+
+  .icon {
+    color: vars.$color-text-primary;
+    height: 45%;
+    width: 45%;
   }
 }

@@ -2,6 +2,7 @@
 
 .input {
   background-color: vars.$color-background;
-  padding: vars.$spacing-tertiary;
+  padding: vars.$spacing-secondary;
   border-radius: vars.$roundness;
+  color: vars.$color-text-primary;
 }

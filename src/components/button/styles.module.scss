@@ -2,10 +2,7 @@
 
 .button {
   background-color: vars.$color-card;
-  padding-top: vars.$spacing-tertiary;
-  padding-bottom: vars.$spacing-tertiary;
-  padding-left: vars.$spacing-secondary;
-  padding-right: vars.$spacing-secondary;
+  padding: vars.$spacing-secondary;
   border-radius: vars.$roundness;
   cursor: pointer;
   background-color: vars.$color-primary;

@@ -1,3 +1,4 @@
+@use "styles/reset";
 @use "styles/vars";
 
 * :not(head) {
@@ -16,7 +17,6 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background-color: vars.$color-background;
-  color: vars.$color-text-primary;
 
   ::-webkit-scrollbar {
     display: none;
@@ -27,12 +27,5 @@ body {
   font-family: Calibri, "Trebuchet MS", sans-serif;
   line-height: 1.2;
   font-size: calc(15px + 0.390625vw);
-}
-
-button {
-  all: unset;
-}
-
-input {
-  all: unset;
+  color: vars.$color-text-primary;
 }

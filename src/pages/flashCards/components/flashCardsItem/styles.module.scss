@@ -1,2 +1,25 @@
+@use "styles/vars";
+
 .container {
+  flex-direction: row;
+  align-items: center;
+
+  .info {
+    flex: 1;
+  }
+
+  .front {
+    color: vars.$color-text-primary;
+    font-size: vars.$font-size-body;
+  }
+
+  .back {
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-body2;
+  }
+
+  .deleteBtn {
+    background-color: red;
+    color: vars.$color-text-primary;
+  }
 }

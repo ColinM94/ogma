@@ -1,4 +1,4 @@
-import { db } from "config/firebase"
+import { db } from "inits/firebase"
 import { collection, onSnapshot, query } from "firebase/firestore"
 import { FlashCard } from "types/flashCard"
 

@@ -6,8 +6,12 @@ import { Settings } from "pages/settings/settings"
 import { Creator } from "pages/creator/creator"
 import { FlashCards } from "pages/flashCards/flashCards"
 import { ProtectedLayout } from "layouts/protectedLayout/protectedLayout"
+import { initIconsLibrary } from "inits"
+import { FlashCardDetails } from "pages/flashCardDetails/flashCardDetails"
 
 import "styles/global.scss"
+
+initIconsLibrary()
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -15,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <Routes>
         <Route path="/" element={<ProtectedLayout />}>
           <Route path="flashcards" element={<FlashCards />} />
+          <Route path="flashcards/:id" element={<FlashCardDetails />} />
           <Route path="settings" element={<Settings />} />
           <Route path="creator" element={<Creator />} />
         </Route>

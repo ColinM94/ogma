@@ -1,4 +1,4 @@
-import { db } from "config"
+import { db } from "inits"
 import { doc, deleteDoc } from "firebase/firestore"
 
 export const deleteFlashCard = async (id: string) => {

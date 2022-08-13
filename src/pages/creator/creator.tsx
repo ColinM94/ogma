@@ -17,7 +17,7 @@ export const Creator = () => {
   const handleAddClick = () => {
     try {
       addFlashCard({ front, back })
-      navigate("/home")
+      navigate("/flashcards")
     } catch (error) {
       console.log(error)
     }

@@ -7,23 +7,30 @@ import styles from "./styles.module.scss"
 
 interface FlashCardItemProps {
   item: FlashCard
+  onClick: () => void
 }
 
-export const FlashCardsItem = ({ item }: FlashCardItemProps) => {
+export const FlashCardsItem = ({ item, onClick }: FlashCardItemProps) => {
   const handleDelete = (id: string) => {
     try {
-      deleteFlashCard(id)
+      const isConfirmed = confirm("Are you sure?")
+      isConfirmed && deleteFlashCard(id)
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
-    <Card key={item.id} className={styles.container}>
-      <div>{item.id}</div>
-      <div>{item.front}</div>
-      <div>{item.back}</div>
-      <Button label="Delete" onClick={() => handleDelete(item.id)} />
+    <Card key={item.id} className={styles.container} onClick={onClick}>
+      <div className={styles.info}>
+        <div className={styles.front}>{item.front}</div>
+        <div className={styles.back}>{item.back}</div>
+      </div>
+      <Button
+        icon="trash"
+        onClick={() => handleDelete(item.id)}
+        className={styles.deleteBtn}
+      />
     </Card>
   )
 }
