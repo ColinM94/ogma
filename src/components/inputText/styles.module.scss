@@ -1,0 +1,7 @@
+@use "styles/vars";
+
+.input {
+  background-color: vars.$color-background;
+  padding: vars.$spacing-tertiary;
+  border-radius: vars.$roundness;
+}

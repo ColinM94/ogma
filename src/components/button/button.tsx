@@ -10,9 +10,7 @@ interface ButtonProps extends HtmlButton {
 export const Button = ({ label, className, ...rest }: ButtonProps) => {
   return (
     <button className={styles.button} {...rest}>
-      {label && (
-        <div className={classes(styles.button, className)}>{label}</div>
-      )}
+      {label && <div className={classes(styles.label, className)}>{label}</div>}
     </button>
   )
 }
