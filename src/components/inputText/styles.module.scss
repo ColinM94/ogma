@@ -1,12 +1,21 @@
 @use "styles/vars";
 
-.input {
-  background-color: vars.$color-background;
-  padding: vars.$spacing-secondary;
-  border-radius: vars.$roundness;
-  color: vars.$color-text-primary;
+.inputContainer {
+  .input {
+    background-color: vars.$color-background;
+    padding: vars.$spacing-secondary;
+    border-radius: vars.$roundness;
+    color: vars.$color-text-primary;
 
-  &:focus {
-    outline: 1px solid vars.$color-primary;
+    &:focus {
+      outline: 1px solid vars.$color-primary;
+    }
+  }
+
+  .searchIcon {
+    position: absolute;
+    right: vars.$spacing-primary;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

@@ -1,6 +1,11 @@
 @use "styles/vars";
 
 .container {
+  .searchInputContainer {
+    align-items: center;
+    justify-content: center;
+  }
+
   .searchInput {
     background-color: vars.$color-card;
   }

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom"
 import { addFlashcard } from "services"
 import { InputText } from "components/inputText/inputText"
 import { Card } from "components/card/card"
-import { FAB } from "components/fab/fab"
 
 import styles from "./styles.module.scss"
+import { Button } from "components/button/button"
 
 export const Creator = () => {
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ export const Creator = () => {
         <InputText placeholder="Back" value={back} setValue={setBack} />
       </Card>
 
-      <FAB icon="plus" onClick={handleAddClick} />
+      <Button label="Save" onClick={handleAddClick} />
     </>
   )
 }

@@ -10,6 +10,7 @@
   min-width: vars.$spacing-primary * 3;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 
   &:active {
     transform: scale(0.975);

@@ -41,7 +41,10 @@ export const ListControls = (props: ListControlsProps) => {
       <InputText
         value={search}
         setValue={setSearch}
-        className={styles.searchInput}
+        className={styles.searchInputContainer}
+        inputClassName={styles.searchInput}
+        type="text"
+        icon="magnifying-glass"
       />
     </div>
   )
