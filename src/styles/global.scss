@@ -8,6 +8,8 @@
   position: relative;
   flex-direction: column;
   box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,

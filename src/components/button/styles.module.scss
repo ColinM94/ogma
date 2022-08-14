@@ -1,23 +1,29 @@
 @use "styles/vars";
 
 .button {
-  background-color: vars.$color-card;
-  padding: vars.$spacing-secondary;
-  border-radius: vars.$roundness;
   cursor: pointer;
-  background-color: vars.$color-primary;
-  height: vars.$spacing-primary * 3;
-  min-width: vars.$spacing-primary * 3;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  padding: vars.$spacing-primary;
 
   &:active {
-    transform: scale(0.975);
+    transform: scale(0.95);
   }
 
   .label {
     color: vars.$color-text-primary;
     text-align: center;
   }
+
+  .icon {
+    color: vars.$color-text-primary;
+  }
+}
+
+.defaultBtn {
+  border-radius: vars.$roundness;
+}
+
+.iconBtn {
 }

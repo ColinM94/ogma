@@ -1,0 +1,12 @@
+@use "styles/vars";
+
+.container {
+  height: vars.$layout-header-height;
+  width: 100%;
+  flex-direction: row;
+  background-color: vars.$color-card;
+
+  .backBtn {
+    height: 100%;
+  }
+}
