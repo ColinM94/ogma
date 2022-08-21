@@ -1,12 +1,10 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
+import { Button, Card, InputText } from "components"
 import { addFlashcard } from "services"
-import { InputText } from "components/inputText/inputText"
-import { Card } from "components/card/card"
 
 import styles from "./styles.module.scss"
-import { Button } from "components/button/button"
 
 export const Creator = () => {
   const navigate = useNavigate()

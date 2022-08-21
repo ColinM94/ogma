@@ -1,5 +1,4 @@
-import { Button } from "components/button/button"
-import { Card } from "components/card/card"
+import { Button, Card } from "components"
 import { deleteFlashcard } from "services"
 import { FlashCard } from "types"
 

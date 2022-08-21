@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { InputText } from "components/inputText/inputText"
+import { InputText } from "components"
 import { FlashCard, SetState } from "types"
 
 import styles from "./styles.module.scss"

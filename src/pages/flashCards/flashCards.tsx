@@ -1,9 +1,9 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
+import { List } from "components"
 import { FlashCard } from "types/flashCard"
 import { getFlashcardsSnapshot } from "services"
-import { List } from "components/list/list"
 
 import { FlashCardsItem } from "./components/flashCardsItem/flashCardsItem"
 import styles from "./styles.module.scss"
