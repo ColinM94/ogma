@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   background-color: vars.$color-card;
+  cursor: pointer;
 
   &:active {
     transform: scale(0.95);

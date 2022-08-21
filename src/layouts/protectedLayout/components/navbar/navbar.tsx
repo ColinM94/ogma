@@ -6,12 +6,6 @@ import styles from "./styles.module.scss"
 interface NavbarProps {}
 
 export const Navbar = ({}: NavbarProps) => {
-  const navigate = useNavigate()
-
-  const handleClick = (route: string) => {
-    navigate(route)
-  }
-
   return (
     <div className={styles.container}>
       <NavbarButton icon="list" page="flashcards" />

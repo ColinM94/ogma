@@ -8,7 +8,7 @@
   padding: vars.$spacing-primary;
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.99);
   }
 
   .label {
@@ -23,7 +23,16 @@
 
 .defaultBtn {
   border-radius: vars.$roundness;
+  background-color: vars.$color-primary;
 }
 
 .iconBtn {
+}
+
+.floatingBtn {
+  position: absolute;
+  bottom: vars.$spacing-primary;
+  right: vars.$spacing-primary;
+  background-color: vars.$color-primary;
+  border-radius: vars.$roundness;
 }

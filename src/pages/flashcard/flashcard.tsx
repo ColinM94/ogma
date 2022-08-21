@@ -1,14 +1,14 @@
 import * as React from "react"
 import { useLocation } from "react-router-dom"
 
-import { getCurrentRoute } from "utils/getCurrentRoute"
+import { Card } from "components"
+import { getCurrentRoute } from "utils"
 import { FlashCard } from "types"
-import { Card } from "components/card/card"
 import { getFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 
-export const FlashCardDetails = () => {
+export const Flashcard = () => {
   const { pathname } = useLocation()
 
   const [flashCard, setFlashCard] = React.useState<FlashCard>({

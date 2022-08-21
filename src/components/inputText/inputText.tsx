@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FormField } from "components"
 
-import { InputContainer } from "components/inputContainer/inputContainer"
 import { ClassName, HtmlInput, SetState } from "types"
 import { classes } from "utils/classes"
 
@@ -21,7 +21,7 @@ export const InputText = (props: InputTextProps) => {
   }
 
   return (
-    <InputContainer className={styles.inputContainer}>
+    <FormField className={styles.inputContainer}>
       <input
         value={value}
         onChange={handleChange}
@@ -35,6 +35,6 @@ export const InputText = (props: InputTextProps) => {
           pointerEvents="none"
         />
       )}
-    </InputContainer>
+    </FormField>
   )
 }

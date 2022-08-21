@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom"
-
-import { Button } from "components/button/button"
-
+import { Button } from "components"
 import styles from "./styles.module.scss"
 
 interface HeaderProps {}
