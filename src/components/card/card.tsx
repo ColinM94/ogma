@@ -12,6 +12,7 @@ export const Card = ({ children, className, onClick, ...rest }: CardProps) => {
   return (
     <div
       className={classes(styles.card, className, onClick && styles.clickable)}
+      onClick={onClick}
       {...rest}
     >
       {children}

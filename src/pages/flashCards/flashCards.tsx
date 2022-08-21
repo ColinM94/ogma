@@ -15,10 +15,14 @@ export const Flashcards = () => {
 
   React.useEffect(() => {
     const loadData = async () => {
-      const unsubscribe = await getFlashcardsSnapshot(setData)
+      try {
+        const unsubscribe = await getFlashcardsSnapshot(setData)
 
-      return () => {
-        unsubscribe()
+        return () => {
+          unsubscribe()
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
 
