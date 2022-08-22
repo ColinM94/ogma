@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  padding: vars.$spacing-primary;
 
   &:active {
     transform: scale(0.99);
@@ -18,19 +17,24 @@
 
   .icon {
     color: vars.$color-text-primary;
+    font-size: vars.$icon-size-medium;
   }
 }
 
 .defaultBtn {
   border-radius: vars.$roundness;
   background-color: vars.$color-primary;
+  padding: vars.$spacing-primary;
 }
 
 .iconBtn {
 }
 
 .floatingBtn {
-  position: absolute;
+  position: fixed;
+  height: vars.$spacing-primary * 4;
+  width: vars.$spacing-primary * 4;
+  padding: vars.$spacing-primary;
   bottom: vars.$spacing-primary;
   right: vars.$spacing-primary;
   background-color: vars.$color-primary;

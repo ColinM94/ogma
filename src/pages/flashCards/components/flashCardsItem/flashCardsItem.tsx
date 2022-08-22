@@ -26,11 +26,6 @@ export const FlashCardsItem = ({ item, onClick }: FlashCardItemProps) => {
         <div className={styles.front}>{item.front}</div>
         <div className={styles.back}>{item.back}</div>
       </div>
-      <Button
-        icon="trash"
-        onClick={(e) => handleDelete(item.id, e)}
-        className={styles.deleteBtn}
-      />
     </Card>
   )
 }

@@ -2,13 +2,11 @@
 
 .container {
   position: fixed;
-  bottom: 0;
-  height: vars.$layout-header-height;
-  width: 100%;
+  bottom: vars.$spacing-primary;
   flex-direction: row;
-  background-color: vars.$color-card;
-
-  .navBtn {
-    width: 100px;
-  }
+  background-color: rgba(20, 20, 20, 0.95);
+  align-self: center;
+  border-radius: vars.$roundness;
+  padding: vars.$spacing-primary;
+  gap: vars.$spacing-primary * 2;
 }

@@ -18,7 +18,7 @@ export const ProtectedLayout = () => {
       <div className={styles.content}>
         <Outlet />
       </div>
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   )
 }

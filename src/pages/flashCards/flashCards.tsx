@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
-import { List } from "components"
+import { Button, List } from "components"
 import { FlashCard } from "types/flashCard"
 import { getFlashcardsSnapshot } from "services"
 
@@ -29,8 +29,12 @@ export const Flashcards = () => {
     loadData()
   }, [])
 
-  const handleClick = (route: string) => {
+  const handleItemClick = (route: string) => {
     navigate(route)
+  }
+
+  const handleAddClick = () => {
+    navigate("/creator")
   }
 
   return (
@@ -40,12 +44,13 @@ export const Flashcards = () => {
         renderItem={({ item }) => (
           <FlashCardsItem
             item={item}
-            onClick={() => handleClick(item.id)}
+            onClick={() => handleItemClick(item.id)}
             key={item.id}
           />
         )}
         className={styles.list}
       />
+      <Button icon="plus" type="floating" onClick={handleAddClick} />
     </>
   )
 }

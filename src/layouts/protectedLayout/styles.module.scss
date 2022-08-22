@@ -1,8 +1,8 @@
 @use "styles/vars";
 
 .content {
+  flex: 1;
   padding: vars.$spacing-primary;
   gap: vars.$spacing-primary;
-  flex: 1;
-  margin-bottom: vars.$layout-header-height;
+  margin-top: vars.$layout-height-header;
 }

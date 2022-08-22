@@ -31,7 +31,7 @@ export const InputText = (props: InputTextProps) => {
       {icon && (
         <FontAwesomeIcon
           icon={icon}
-          className={styles.searchIcon}
+          className={styles.icon}
           pointerEvents="none"
         />
       )}

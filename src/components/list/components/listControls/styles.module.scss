@@ -8,5 +8,6 @@
 
   .searchInput {
     background-color: vars.$color-card;
+    @extend %body;
   }
 }

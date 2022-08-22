@@ -44,6 +44,7 @@ export const ListControls = (props: ListControlsProps) => {
         className={styles.searchInputContainer}
         inputClassName={styles.searchInput}
         type="text"
+        placeholder="Search..."
         icon="magnifying-glass"
       />
     </div>

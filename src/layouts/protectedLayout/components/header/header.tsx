@@ -19,6 +19,7 @@ export const Header = ({}: HeaderProps) => {
         className={styles.backBtn}
         type="icon"
       />
+      <div className={styles.avatar} />
     </div>
   )
 }

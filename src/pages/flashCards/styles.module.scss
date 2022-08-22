@@ -8,3 +8,23 @@
     flex-direction: row;
   }
 }
+
+.h1 {
+  @extend %h1;
+}
+
+.h2 {
+  @extend %h2;
+}
+
+.h3 {
+  @extend %h3;
+}
+
+.body {
+  @extend %body;
+}
+
+.body2 {
+  @extend %body2;
+}

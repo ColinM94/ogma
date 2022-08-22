@@ -10,12 +10,20 @@ interface ButtonProps {
   label?: string
   icon?: IconProp
   type?: "default" | "icon" | "floating"
-  className?: ClassName
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  className?: ClassName
+  iconClassName?: ClassName
 }
 
 export const Button = (props: ButtonProps) => {
-  const { label, className, icon, type = "default", onClick } = props
+  const {
+    label,
+    icon,
+    type = "default",
+    onClick,
+    className,
+    iconClassName,
+  } = props
 
   const style = () => {
     switch (type) {
@@ -34,7 +42,12 @@ export const Button = (props: ButtonProps) => {
       onClick={onClick}
     >
       {label && <div className={styles.label}>{label}</div>}
-      {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
+      {icon && (
+        <FontAwesomeIcon
+          icon={icon}
+          className={classes(styles.icon, iconClassName)}
+        />
+      )}
     </button>
   )
 }

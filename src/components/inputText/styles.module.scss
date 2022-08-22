@@ -12,10 +12,11 @@
     }
   }
 
-  .searchIcon {
+  .icon {
     position: absolute;
     right: vars.$spacing-primary;
     top: 50%;
     transform: translateY(-50%);
+    color: vars.$color-text-tertiary;
   }
 }

@@ -1,12 +1,23 @@
 @use "styles/vars";
 
 .container {
-  height: vars.$layout-header-height;
+  height: vars.$layout-height-navbar;
   width: 100%;
   flex-direction: row;
-  background-color: vars.$color-card;
+  position: fixed;
+  z-index: 1;
+  padding: vars.$spacing-primary;
+  background-color: vars.$color-background;
+  align-items: center;
 
   .backBtn {
+  }
+
+  .avatar {
     height: 100%;
+    background-color: lightgreen;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    margin-left: auto;
   }
 }

@@ -9,17 +9,10 @@
   }
 
   .front {
-    color: vars.$color-text-primary;
-    font-size: vars.$font-size-body;
+    @extend %body;
   }
 
   .back {
-    color: vars.$color-text-secondary;
-    font-size: vars.$font-size-body2;
-  }
-
-  .deleteBtn {
-    color: vars.$color-text-primary;
-    background-color: rgba(0, 0, 0, 0);
+    @extend %body2;
   }
 }
