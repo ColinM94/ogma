@@ -8,7 +8,7 @@ import { getFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 
-export const Flashcard = () => {
+export const FlashcardPage = () => {
   const { pathname } = useLocation()
 
   const [flashCard, setFlashCard] = React.useState<FlashCard>({

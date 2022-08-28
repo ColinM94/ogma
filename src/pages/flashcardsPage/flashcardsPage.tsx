@@ -5,10 +5,10 @@ import { Button, List } from "components"
 import { FlashCard } from "types/flashCard"
 import { getFlashcardsSnapshot } from "services"
 
-import { FlashCardsItem } from "./components/flashCardsItem/flashCardsItem"
+import { FlashCardsItem } from "./components/flashCardsItem/flashcardsItem"
 import styles from "./styles.module.scss"
 
-export const Flashcards = () => {
+export const FlashcardsPage = () => {
   const navigate = useNavigate()
 
   const [data, setData] = React.useState<FlashCard[]>([])

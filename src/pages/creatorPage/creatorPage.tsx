@@ -6,7 +6,7 @@ import { addFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 
-export const Creator = () => {
+export const CreatorPage = () => {
   const navigate = useNavigate()
 
   const [front, setFront] = React.useState("")
