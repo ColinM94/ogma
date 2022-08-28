@@ -1,1 +1,11 @@
 @use "styles/vars";
+
+.card {
+  flex: 1;
+  margin: vars.$spacing-primary;
+  gap: vars.$spacing-primary;
+
+  .loginBtn {
+    margin-top: auto;
+  }
+}

@@ -1,4 +1,5 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom"
+import { LoginPage } from "pages"
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom"
 
 import { Header } from "./components/header/header"
 import { Navbar } from "./components/navbar/navbar"
@@ -6,10 +7,11 @@ import { Navbar } from "./components/navbar/navbar"
 import styles from "./styles.module.scss"
 
 export const ProtectedLayout = () => {
-  const location = useLocation()
+  const { pathname } = useLocation()
+  const user = undefined
 
-  if (location.pathname === "/") {
-    return <Navigate to="flashcards" state={{ from: location }} replace />
+  if (!user) {
+    return <LoginPage />
   }
 
   return (
