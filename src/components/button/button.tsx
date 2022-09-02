@@ -41,13 +41,13 @@ export const Button = (props: ButtonProps) => {
       className={classes(styles.button, className, style())}
       onClick={onClick}
     >
-      {label && <div className={styles.label}>{label}</div>}
       {icon && (
         <FontAwesomeIcon
           icon={icon}
           className={classes(styles.icon, iconClassName)}
         />
       )}
+      {label && <div className={styles.label}>{label}</div>}
     </button>
   )
 }

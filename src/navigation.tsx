@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ProtectedLayout } from "layouts"
 import {
+  ComponentsPage,
   CreatorPage,
   FlashcardPage,
   FlashcardsPage,
@@ -12,6 +13,7 @@ export const Navigation = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/components" element={<ComponentsPage />} />
       <Route path="/" element={<ProtectedLayout />}>
         <Route path="flashcards" element={<FlashcardsPage />} />
         <Route path="flashcards/:id" element={<FlashcardPage />} />

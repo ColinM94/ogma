@@ -1,14 +1,20 @@
 import { useNavigate } from "react-router-dom"
 import { Button } from "components"
 import styles from "./styles.module.scss"
+import { useAuth } from "hooks"
 
 interface HeaderProps {}
 
 export const Header = ({}: HeaderProps) => {
   const navigate = useNavigate()
+  const { signOut, user } = useAuth()
 
   const handleBackClick = () => {
     navigate(-1)
+  }
+
+  const handleAvatarClick = () => {
+    signOut()
   }
 
   return (
@@ -19,7 +25,8 @@ export const Header = ({}: HeaderProps) => {
         className={styles.backBtn}
         type="icon"
       />
-      <div className={styles.avatar} />
+      <div>{user?.email}</div>
+      <div className={styles.avatar} onClick={handleAvatarClick} />
     </div>
   )
 }

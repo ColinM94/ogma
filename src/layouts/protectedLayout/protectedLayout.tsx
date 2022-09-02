@@ -1,3 +1,4 @@
+import { useAuth } from "hooks"
 import { LoginPage } from "pages"
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom"
 
@@ -8,7 +9,7 @@ import styles from "./styles.module.scss"
 
 export const ProtectedLayout = () => {
   const { pathname } = useLocation()
-  const user = undefined
+  const { user } = useAuth()
 
   if (!user) {
     return <LoginPage />
