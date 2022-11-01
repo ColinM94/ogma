@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom"
+
+import { classes } from "utils"
 import { Button } from "components"
-import styles from "./styles.module.scss"
 import { useAuth } from "hooks"
 
-interface HeaderProps {}
+import styles from "./styles.module.scss"
 
-export const Header = ({}: HeaderProps) => {
+interface HeaderProps {
+  className: string
+}
+
+export const Header = ({ className }: HeaderProps) => {
   const navigate = useNavigate()
   const { signOut, user } = useAuth()
 
@@ -18,7 +23,7 @@ export const Header = ({}: HeaderProps) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={classes(styles.container, className)}>
       <Button
         icon="arrow-left"
         onClick={handleBackClick}

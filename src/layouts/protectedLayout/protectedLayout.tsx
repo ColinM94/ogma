@@ -13,11 +13,11 @@ export const ProtectedLayout = () => {
 
   return (
     <>
-      <Header />
+      <Header className={styles.header} />
       <div className={styles.content}>
         <Outlet />
       </div>
-      <Navbar />
+      <Navbar className={styles.navbar} />
     </>
   )
 }

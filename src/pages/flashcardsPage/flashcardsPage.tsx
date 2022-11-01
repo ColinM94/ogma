@@ -46,6 +46,7 @@ export const FlashcardsPage = () => {
             item={item}
             onClick={() => handleItemClick(item.id)}
             key={item.id}
+            className={styles.listItem}
           />
         )}
         className={styles.list}

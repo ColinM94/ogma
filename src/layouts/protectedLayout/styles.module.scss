@@ -1,10 +1,25 @@
 @use "styles/vars";
 
+.header {
+  position: fixed;
+  height: vars.$layout-height-header;
+  width: 100%;
+  z-index: 1;
+}
+
 .content {
-  flex: 1;
   padding: vars.$spacing-primary;
   gap: vars.$spacing-primary;
-  margin-top: vars.$layout-height-header;
+  padding-top: calc(vars.$layout-height-header + vars.$spacing-primary);
+  padding-bottom: calc(vars.$layout-height-navbar + vars.$spacing-primary);
   width: 100%;
-  background-color: red;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: vars.$layout-height-navbar;
 }

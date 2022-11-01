@@ -1,13 +1,15 @@
-import { useNavigate } from "react-router-dom"
+import { classes } from "utils"
 
 import { NavbarButton } from "./components/navbarButton/navbarButton"
 import styles from "./styles.module.scss"
 
-interface NavbarProps {}
+interface NavbarProps {
+  className: string
+}
 
-export const Navbar = ({}: NavbarProps) => {
+export const Navbar = ({ className }: NavbarProps) => {
   return (
-    <div className={styles.container}>
+    <div className={classes(styles.container, className)}>
       <NavbarButton icon="list" page="flashcards" />
       <NavbarButton icon="plus" page="creator" />
       <NavbarButton icon="cog" page="settings" />
