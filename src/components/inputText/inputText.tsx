@@ -21,7 +21,7 @@ export const InputText = <T extends string>(props: InputTextProps<T>) => {
   }
 
   return (
-    <FormField className={styles.inputContainer}>
+    <FormField className={classes(styles.inputContainer, className)}>
       <input
         value={value}
         onChange={handleChange}

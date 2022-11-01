@@ -1,15 +1,15 @@
 import * as React from "react"
-import { Button, Card, InputText } from "components"
+import { Button, InputText } from "components"
+import { useAuth } from "hooks"
 
 import styles from "./styles.module.scss"
-import { useAuth } from "hooks"
-import { FirebaseError } from "firebase/app"
-import { AuthError } from "firebase/auth"
 
 export const LoginPage = () => {
   const { signIn, signUp } = useAuth()
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
+  const [password2, setPassword2] = React.useState("")
+  const [showSignInForm, setShowSignInForm] = React.useState(false)
 
   const handleSignIn = async () => {
     signIn(email, password)
@@ -19,20 +19,64 @@ export const LoginPage = () => {
     signUp(email, password)
   }
 
+  const handleToggle = () => {
+    setShowSignInForm((prev) => !prev)
+  }
+
   return (
-    <Card className={styles.card}>
-      <InputText value={email} setValue={setEmail} type="email" />
-      <InputText value={password} setValue={setPassword} type="password" />
-      <Button
-        label="Sign In"
-        className={styles.loginBtn}
-        onClick={handleSignIn}
-      />
-      <Button
-        label="Sign Up"
-        className={styles.loginBtn}
-        onClick={handleSignUp}
-      />
-    </Card>
+    <div className={styles.container}>
+      <div className={styles.title}>Welcome Back!</div>
+
+      <div className={styles.content}>
+        <InputText
+          value={email}
+          setValue={setEmail}
+          type="email"
+          placeholder="Email"
+          className={styles.inputContainer}
+          inputClassName={styles.input}
+        />
+
+        <InputText
+          value={password}
+          setValue={setPassword}
+          type="password"
+          placeholder="Password"
+          className={styles.inputContainer}
+          inputClassName={styles.input}
+        />
+
+        {!showSignInForm && (
+          <InputText
+            value={password2}
+            setValue={setPassword2}
+            type="password"
+            placeholder="Re-Type Password"
+            className={styles.inputContainer}
+            inputClassName={styles.input}
+          />
+        )}
+
+        <Button
+          label={showSignInForm ? "Sign In" : "Sign Up"}
+          className={styles.loginBtn}
+          onClick={showSignInForm ? handleSignIn : handleSignUp}
+        />
+
+        {showSignInForm && (
+          <div className={styles.toggleText} onClick={handleToggle}>
+            <span>Don't have an account?</span>
+            <span className={styles.toggleTextHighlight}>&nbsp;Sign Up</span>
+          </div>
+        )}
+
+        {!showSignInForm && (
+          <div className={styles.toggleText} onClick={handleToggle}>
+            <span>Have an account?</span>
+            <span className={styles.toggleTextHighlight}>&nbsp;Sign In</span>
+          </div>
+        )}
+      </div>
+    </div>
   )
 }

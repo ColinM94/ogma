@@ -1,11 +1,46 @@
 @use "styles/vars";
 
-.card {
-  flex: 1;
-  margin: vars.$spacing-primary;
-  gap: vars.$spacing-primary;
+.container {
+  height: 100%;
+  width: 100%;
+  padding: vars.$spacing-primary;
+  align-items: center;
 
-  .loginBtn {
-    margin-top: auto;
+  .title {
+    font-size: vars.$font-size-h1;
+    align-self: center;
+    flex: 0.25;
+    justify-content: center;
+  }
+
+  .content {
+    width: 100%;
+    max-width: vars.$breakpoint-medium;
+    align-self: center;
+    gap: vars.$spacing-primary;
+    flex: 1;
+
+    .inputContainer {
+      width: 100%;
+    }
+
+    .input {
+      background-color: vars.$color-card;
+    }
+
+    .loginBtn {
+      width: 100%;
+      margin-bottom: vars.$spacing-primary;
+    }
+  }
+
+  .toggleText {
+    font-size: vars.$font-size-body;
+    flex-direction: row;
+    align-self: center;
+
+    .toggleTextHighlight {
+      color: vars.$color-primary;
+    }
   }
 }

@@ -3,9 +3,10 @@
 .inputContainer {
   .input {
     background-color: vars.$color-background;
-    padding: vars.$spacing-secondary;
+    padding: vars.$spacing-primary;
     border-radius: vars.$roundness;
     color: vars.$color-text-primary;
+    width: 100%;
 
     &:focus {
       outline: 1px solid vars.$color-primary;

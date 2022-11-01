@@ -1,30 +1,33 @@
-$color-background: #000000;
-$color-card: #181818;
+$color-background: #0a0a0a;
+$color-card: #1a1a1b;
 $color-outline: #808080;
-$color-primary: dodgerblue;
+$color-primary: hsl(235, 53%, 47%);
 $color-secondary: #fe422f;
 
-$color-text-primary: rgb(255 255 255 / 87%);
+$color-text-primary: rgb(255 255 255 / 75%);
 $color-text-secondary: rgb(255 255 255 / 60%);
 $color-text-tertiary: rgb(255 255 255 / 38%);
 
-$spacing-primary: 12px;
-$spacing-secondary: 8px;
-$spacing-tertiary: 4px;
+$spacing-primary: 1.5rem;
+$spacing-secondary: 1rem;
+$spacing-tertiary: 0.5rem;
 
-$roundness: 8px;
+$roundness: 12px;
 
 $layout-height-header: 60px;
 $layout-height-navbar: 60px;
 
-$font-size-h1: 28px;
-$font-size-h2: 24px;
-$font-size-h3: 20px;
-$font-size-body: 20px;
-$font-size-body2: 16px;
+$font-size-h1: 2rem;
+$font-size-h2: 1.75rem;
+$font-size-h3: 1.5rem;
+$font-size-body: 1rem;
+$font-size-body2: 0.75rem;
 
 $icon-size-large: 24px;
 $icon-size-medium: 20px;
+
+$breakpoint-medium: 900px;
+$breakpoint-large: 1200px;
 
 %h1 {
   font-size: $font-size-h1;
