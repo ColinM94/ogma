@@ -1,27 +1,36 @@
 import * as React from "react"
-import { Button, InputText } from "components"
+
 import { useAuth } from "hooks"
+import { Button, InputText } from "components"
+import { signIn, signUp } from "services"
 
 import styles from "./styles.module.scss"
+import { useNavigate } from "react-router-dom"
 
 export const LoginPage = () => {
-  const { signIn, signUp } = useAuth()
+  const { user } = useAuth()
+  const navigate = useNavigate()
+
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [password2, setPassword2] = React.useState("")
   const [showSignInForm, setShowSignInForm] = React.useState(false)
 
-  const handleSignIn = async () => {
+  const handleSignIn = () => {
     signIn(email, password)
   }
 
-  const handleSignUp = async () => {
+  const handleSignUp = () => {
     signUp(email, password)
   }
 
   const handleToggle = () => {
     setShowSignInForm((prev) => !prev)
   }
+
+  React.useEffect(() => {
+    if (user) navigate("/")
+  }, [user])
 
   return (
     <div className={styles.container}>

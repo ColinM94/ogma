@@ -13,6 +13,6 @@ export const signIn = async (email: string, password: string) => {
     return user
   } catch (error) {
     const e = error as AuthError
-    console.log(e.message)
+    alert(e)
   }
 }

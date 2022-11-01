@@ -1,11 +1,11 @@
 import * as React from "react"
 import { User } from "types"
 import { signIn, signOut, signUp } from "services"
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "inits"
 
 interface AuthContextData {
   user?: User
-  signIn: (email: string, password: string) => void
-  signUp: (email: string, password: string) => void
   signOut: () => void
 }
 
@@ -16,17 +16,22 @@ interface AuthProviderProps {
 const AuthContext = React.createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = React.useState()
+  const [user, setUser] = React.useState<User>()
 
-  const handleSignIn = async (email: string, password: string) => {
-    const user = await signIn(email, password)
-    user ? setUser(user) : alert("Error signing in!")
-  }
+  React.useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      console.log(firebaseUser)
+      if (firebaseUser) {
+        console.log("YES USER")
+        setUser({ email: firebaseUser.email || "" })
+      } else {
+        console.log("No User")
+        setUser(undefined)
+      }
+    })
 
-  const handleSignUp = async (email: string, password: string) => {
-    const user = await signUp(email, password)
-    user ? setUser(user) : alert("Error creating account!")
-  }
+    return () => unsubscribe()
+  }, [])
 
   const handleSignOut = async () => {
     await signOut()
@@ -35,8 +40,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const data: AuthContextData = {
     user,
-    signIn: handleSignIn,
-    signUp: handleSignUp,
     signOut: handleSignOut,
   }
 
