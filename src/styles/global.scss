@@ -21,6 +21,7 @@ html,
 #root,
 body {
   height: 100%;
+  width: 100%;
   background-color: vars.$color-background;
 
   ::-webkit-scrollbar {
@@ -35,8 +36,13 @@ svg {
   max-height: 100%;
 }
 
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/OpenSans-Regular.ttf");
+}
+
 body {
-  font-family: Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Open Sans";
   line-height: 1.2;
   font-size: calc(15px + 0.390625vw);
   color: vars.$color-text-primary;
