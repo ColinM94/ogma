@@ -15,6 +15,6 @@ export type HtmlInput = React.DetailedHTMLProps<
   HTMLInputElement
 >
 
-export type ClassName = string | undefined
+export type ClassName = string | undefined | false
 export type Children = React.ReactNode | React.ReactNode[]
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>

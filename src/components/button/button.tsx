@@ -15,6 +15,8 @@ interface ButtonProps {
   iconClassName?: ClassName
 }
 
+export type ButtonClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
+
 export const Button = (props: ButtonProps) => {
   const {
     label,

@@ -4,13 +4,108 @@
   flex-direction: row;
   align-items: center;
 
-  &:active {
-    transform: scale(0.98);
-  }
+  // &:active {
+  //   transform: scale(0.98);
+  // }
+
+  // .colorTag {
+  //   position: absolute;
+  //   width: 5px;
+  //   top: 0;
+  //   bottom: 0;
+  //   background-color: limegreen;
+  //   z-index: 100;
+  //   margin-top: -(vars.$spacing-primary);
+  //   margin-bottom: -(vars.$spacing-primary);
+  //   margin-left: -(vars.$spacing-primary);
+  // }
 
   .info {
     flex: 1;
   }
+
+  @keyframes rotateAnimation {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  .menu {
+    flex-direction: row;
+    margin-right: -150px;
+
+    .menuBtn {
+      width: 45px;
+      height: 40px;
+    }
+  }
+
+  .toggleBtnOpen {
+    animation: toggleBtnOpenAnimation 0.4s forwards;
+  }
+
+  .toggleBtnClose {
+    animation: toggleBtnCloseAnimation 0.4s forwards;
+  }
+
+  .menuVisible {
+    animation: showMenuAnimation 0.4s forwards;
+  }
+
+  .menuInvisible {
+    animation: hideMenuAnimation 0.4s forwards;
+  }
+
+  .heartBtnIcon {
+    color: #d65348;
+  }
+
+  @keyframes showMenuAnimation {
+    to {
+      margin-right: 0;
+    }
+  }
+
+  @keyframes hideMenuAnimation {
+    from {
+      margin-right: 0;
+    }
+    to {
+      margin-right: -150px;
+    }
+  }
+
+  @keyframes toggleBtnOpenAnimation {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: -360deg;
+    }
+  }
+
+  @keyframes toggleBtnCloseAnimation {
+    from {
+      rotate: -360deg;
+    }
+    to {
+      rotate: 0deg;
+    }
+  }
+
+  // @keyframes hideMenuAnimation {
+  //   from {
+  //     margin-right: 0px;
+  //     position: relative;
+  //   }
+  //   to {
+  //     margin-right: $menuHiddenPosition;
+  //     position: absolute;
+  //   }
+  // }
 
   .front {
     @extend %body;

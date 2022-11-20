@@ -1,4 +1,6 @@
-import { Button, Card } from "components"
+import * as React from "react"
+
+import { Button, ButtonClickEvent, Card } from "components"
 import { deleteFlashcard } from "services"
 import { FlashCard } from "types"
 import { classes } from "utils"
@@ -14,14 +16,32 @@ interface FlashCardItemProps {
 export const FlashCardsItem = (props: FlashCardItemProps) => {
   const { item, onClick, className } = props
 
-  const handleDelete = (id: string, e: React.MouseEvent) => {
+  const [showMenu, setShowMenu] = React.useState()
+  const [liked, setLiked] = React.useState(false)
+
+  const handleDelete = (e: React.MouseEvent) => {
     try {
       e.stopPropagation()
       const isConfirmed = confirm("Are you sure?")
-      isConfirmed && deleteFlashcard(id)
+      isConfirmed && deleteFlashcard(item.id)
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleMenuClick = (e: ButtonClickEvent) => {
+    e.stopPropagation()
+    setShowMenu((prev) => !Boolean(prev))
+  }
+
+  // const handleCloseMenuClick = (e: ButtonClickEvent) => {
+  //   e.stopPropagation()
+  //   setShowMenu(false)
+  // }
+
+  const handleLikeClick = (e: ButtonClickEvent) => {
+    e.stopPropagation()
+    setLiked((prev) => !prev)
   }
 
   return (
@@ -31,8 +51,51 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
       onClick={onClick}
     >
       <div className={styles.info}>
+        {/* <div className={styles.colorTag} /> */}
+
         <div className={styles.front}>{item.front}</div>
         <div className={styles.back}>{item.back}</div>
+      </div>
+
+      <div
+        className={classes(
+          styles.menu,
+          showMenu === true && styles.menuVisible,
+          showMenu === false && styles.menuInvisible
+        )}
+      >
+        <Button
+          icon={showMenu ? "xmark" : "ellipsis"}
+          type="icon"
+          onClick={(e) => handleMenuClick(e)}
+          className={classes(
+            styles.menuBtn,
+            showMenu === true && styles.toggleBtnOpen,
+            showMenu === false && styles.toggleBtnClose
+          )}
+        />
+        {/* <Button
+          type="icon"
+          icon="xmark"
+          onClick={(e) => {
+            handleCloseMenuClick(e)
+          }}
+          className={styles.menuBtn}
+        /> */}
+        <Button
+          type="icon"
+          icon="trash"
+          onClick={(e) => handleDelete(e)}
+          className={styles.menuBtn}
+        />
+        <Button type="icon" icon="pencil" className={styles.menuBtn} />
+        <Button
+          type="icon"
+          icon="heart"
+          iconClassName={classes(liked && styles.heartBtnIcon)}
+          className={styles.menuBtn}
+          onClick={handleLikeClick}
+        />
       </div>
     </Card>
   )
