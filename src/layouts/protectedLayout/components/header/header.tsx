@@ -30,8 +30,8 @@ export const Header = ({ className }: HeaderProps) => {
         className={styles.backBtn}
         type="icon"
       />
-      <div>{user?.email}</div>
-      <div className={styles.avatar} onClick={handleAvatarClick} />
+      {/* <div>{user?.email}</div> */}
+      {/* <div className={styles.avatar} onClick={handleAvatarClick} /> */}
     </div>
   )
 }

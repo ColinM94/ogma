@@ -11,7 +11,7 @@ export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classes(styles.container, className)}>
       <NavbarButton icon="list" page="flashcards" />
-      <NavbarButton icon="plus" page="creator" />
+      {/* <NavbarButton icon="plus" page="creator" /> */}
       <NavbarButton icon="cog" page="settings" />
     </div>
   )

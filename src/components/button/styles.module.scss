@@ -8,7 +8,7 @@
   gap: vars.$spacing-primary;
 
   &:active {
-    transform: scale(0.99);
+    transform: scale(0.985);
   }
 
   .label {
@@ -33,10 +33,8 @@
 
 .floatingBtn {
   position: fixed;
-  height: vars.$spacing-primary * 4;
-  width: vars.$spacing-primary * 4;
   padding: vars.$spacing-primary;
-  bottom: vars.$spacing-primary;
+  bottom: calc(vars.$spacing-primary + vars.$layout-height-navbar);
   right: vars.$spacing-primary;
   background-color: vars.$color-primary;
   border-radius: vars.$roundness;

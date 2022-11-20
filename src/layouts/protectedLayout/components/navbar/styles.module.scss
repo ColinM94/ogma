@@ -19,4 +19,8 @@
   padding: vars.$spacing-primary;
   gap: vars.$spacing-primary * 2;
   align-items: center;
+  // background-color: vars.$color-card;
+  // border-top: 0.1px solid vars.$color-background;
+  background-color: vars.$color-background;
+  // border-top: 0.1px solid vars.$color-card;
 }

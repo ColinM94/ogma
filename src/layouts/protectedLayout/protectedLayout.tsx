@@ -13,7 +13,7 @@ export const ProtectedLayout = () => {
 
   return (
     <>
-      <Header className={styles.header} />
+      {/* <Header className={styles.header} /> */}
       <div className={styles.content}>
         <Outlet />
       </div>

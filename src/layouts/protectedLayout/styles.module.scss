@@ -1,8 +1,6 @@
 @use "styles/vars";
 
 .header {
-  position: fixed;
-  height: vars.$layout-height-header;
   width: 100%;
   z-index: 1;
 }
@@ -10,16 +8,15 @@
 .content {
   padding: vars.$spacing-primary;
   gap: vars.$spacing-primary;
-  padding-top: calc(vars.$layout-height-header + vars.$spacing-primary);
-  padding-bottom: calc(vars.$layout-height-navbar + vars.$spacing-primary);
+  height: 100%;
   width: 100%;
   justify-content: stretch;
   align-items: stretch;
+  overflow: scroll;
 }
 
 .navbar {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: vars.$layout-height-navbar;
+  margin-top: auto;
 }
