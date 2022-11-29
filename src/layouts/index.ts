@@ -1,1 +1,1 @@
-export * from "./protectedLayout/protectedLayout"
+export * from "./mainLayout/mainLayout"

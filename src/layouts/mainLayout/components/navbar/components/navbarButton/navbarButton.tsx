@@ -14,7 +14,7 @@ export const NavbarButton = ({ label, page, icon }: NavbarButtonProps) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(page)
+    navigate(`/${page}`)
   }
 
   return (

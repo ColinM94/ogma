@@ -9,7 +9,8 @@ export const signUp = async (email: string, password: string) => {
       password
     )
 
-    const user: User = {
+    // TODO: Remove any
+    const user: User | any = {
       email: credential.user.email,
     }
 

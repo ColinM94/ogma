@@ -2,6 +2,7 @@ import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { Button, List } from "components"
+import { MainLayout } from "layouts"
 import { FlashCard } from "types/flashCard"
 import { getFlashcardsSnapshot } from "services"
 
@@ -38,7 +39,7 @@ export const FlashcardsPage = () => {
   }
 
   return (
-    <>
+    <MainLayout showHeader showSettingsButton label="My Flaschards">
       <List
         items={data}
         renderItem={({ item }) => (
@@ -52,6 +53,6 @@ export const FlashcardsPage = () => {
         className={styles.list}
       />
       <Button icon="plus" type="floating" onClick={handleAddClick} />
-    </>
+    </MainLayout>
   )
 }

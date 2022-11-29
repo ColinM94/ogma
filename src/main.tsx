@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 
 import { initIconsLibrary } from "inits"
-import { Navigation } from "./navigation"
+import { Navigation } from "./navigation/navigation"
 
 import "styles/global.scss"
 import { Providers } from "hooks"

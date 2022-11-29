@@ -6,7 +6,7 @@ export const signIn = async (email: string, password: string) => {
   try {
     const credential = await signInWithEmailAndPassword(auth, email, password)
 
-    const user: User = {
+    const user: User | any = {
       email: credential.user.email,
     }
 

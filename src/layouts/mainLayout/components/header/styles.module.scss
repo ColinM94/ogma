@@ -3,11 +3,20 @@
 .container {
   flex-direction: row;
   padding: vars.$spacing-primary;
-  background-color: vars.$color-background;
+  background-color: vars.$color-card;
   align-items: center;
   gap: vars.$spacing-primary;
 
   .backBtn {
+  }
+
+  .label {
+    @extend %body;
+    text-align: center;
+  }
+
+  .settingsBtn {
+    margin-left: auto;
   }
 
   // .avatar {

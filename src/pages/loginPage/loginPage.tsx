@@ -1,11 +1,11 @@
 import * as React from "react"
+import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "hooks"
 import { Button, InputText } from "components"
 import { signIn, signUp } from "services"
 
 import styles from "./styles.module.scss"
-import { useNavigate } from "react-router-dom"
 
 export const LoginPage = () => {
   const { user } = useAuth()
@@ -29,7 +29,7 @@ export const LoginPage = () => {
   }
 
   React.useEffect(() => {
-    if (user) navigate("/")
+    if (user) navigate("/flashcards")
   }, [user])
 
   return (

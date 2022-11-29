@@ -5,6 +5,7 @@ import { Button, Card, InputText } from "components"
 import { addFlashcard } from "services"
 
 import styles from "./styles.module.scss"
+import { MainLayout } from "layouts"
 
 export const CreatorPage = () => {
   const navigate = useNavigate()
@@ -24,13 +25,18 @@ export const CreatorPage = () => {
   }
 
   return (
-    <>
+    <MainLayout
+      showHeader
+      showBackButton
+      showSettingsButton
+      label="Create Flash Card"
+    >
       <Card className={styles.card}>
         <InputText placeholder="Front" value={front} setValue={setFront} />
         <InputText placeholder="Back" value={back} setValue={setBack} />
       </Card>
 
       <Button label="Save" onClick={handleAddClick} />
-    </>
+    </MainLayout>
   )
 }

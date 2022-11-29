@@ -1,7 +1,8 @@
-export * from "./getFlashcardsSnapshot"
-export * from "./addFlashcard"
-export * from "./deleteFlashcard"
-export * from "./getFlashcard"
 export * from "./auth/signIn"
 export * from "./auth/signUp"
 export * from "./auth/signOut"
+
+export * from "./getFlashCard"
+export * from "./getFlashCardsSnapshot"
+export * from "./addFlashCard"
+export * from "./deleteFlashCard"

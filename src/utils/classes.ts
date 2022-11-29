@@ -5,6 +5,7 @@ import { ClassName } from "types/general"
  * @params Each class name is a param.
  * @returns String of classes combined.
  */
-export const classes = (...items: ClassName[]) => {
+export const classes = (...items: any[]) => {
+  //TODO: Remove any
   return items.join(" ")
 }

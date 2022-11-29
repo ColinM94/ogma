@@ -7,6 +7,7 @@ import { FlashCard } from "types"
 import { getFlashcard } from "services"
 
 import styles from "./styles.module.scss"
+import { MainLayout } from "layouts"
 
 export const FlashcardPage = () => {
   const { pathname } = useLocation()
@@ -28,10 +29,12 @@ export const FlashcardPage = () => {
   }, [])
 
   return (
-    <Card className={styles.container}>
-      <div className={styles.front}>{flashCard.front}</div>
-      <div className={styles.divider} />
-      <div className={styles.back}>{flashCard.back}</div>
-    </Card>
+    <MainLayout showHeader showBackButton label={flashCard.id}>
+      <Card className={styles.container}>
+        <div className={styles.front}>{flashCard.front}</div>
+        <div className={styles.divider} />
+        <div className={styles.back}>{flashCard.back}</div>
+      </Card>
+    </MainLayout>
   )
 }

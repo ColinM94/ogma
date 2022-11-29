@@ -34,7 +34,8 @@
 .floatingBtn {
   position: fixed;
   padding: vars.$spacing-primary;
-  bottom: calc(vars.$spacing-primary + vars.$layout-height-navbar);
+  // bottom: calc(vars.$spacing-primary + vars.$layout-height-navbar);
+  bottom: vars.$spacing-primary;
   right: vars.$spacing-primary;
   background-color: vars.$color-primary;
   border-radius: vars.$roundness;

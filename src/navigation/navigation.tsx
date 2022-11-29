@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { ProtectedLayout } from "layouts"
 import {
   ComponentsPage,
   CreatorPage,
@@ -8,13 +7,14 @@ import {
   LoginPage,
   SettingsPage,
 } from "pages"
+import { ProtectedRoute } from "./protectedRoute"
 
 export const Navigation = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/components" element={<ComponentsPage />} />
-      <Route path="/" element={<ProtectedLayout />}>
+      <Route path="/" element={<ProtectedRoute />}>
         <Route path="flashcards" element={<FlashcardsPage />} />
         <Route path="flashcards/:id" element={<FlashcardPage />} />
         <Route path="settings" element={<SettingsPage />} />

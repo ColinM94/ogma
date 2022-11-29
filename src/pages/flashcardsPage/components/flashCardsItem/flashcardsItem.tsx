@@ -31,7 +31,8 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
 
   const handleMenuClick = (e: ButtonClickEvent) => {
     e.stopPropagation()
-    setShowMenu((prev) => !Boolean(prev))
+    // TODO: Remove Any
+    setShowMenu((prev) => !Boolean(prev) as any)
   }
 
   // const handleCloseMenuClick = (e: ButtonClickEvent) => {
