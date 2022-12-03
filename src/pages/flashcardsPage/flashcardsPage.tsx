@@ -50,6 +50,7 @@ export const FlashcardsPage = () => {
             className={styles.listItem}
           />
         )}
+        searchBy="front"
         className={styles.list}
       />
       <Button icon="plus" type="floating" onClick={handleAddClick} />

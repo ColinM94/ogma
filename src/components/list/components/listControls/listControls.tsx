@@ -5,42 +5,42 @@ import { FlashCard, SetState } from "types"
 
 import styles from "./styles.module.scss"
 
-interface ListControlsProps {
-  items: FlashCard[]
-  setFilteredItems: SetState<FlashCard[]>
-  searchBy: keyof FlashCard
+interface ListControlsProps<T> {
+  items: T[]
+  setFilteredItems: SetState<T[]>
+  searchBy?: keyof T
 }
 
-export const ListControls = (props: ListControlsProps) => {
-  const { items, setFilteredItems, searchBy = "id" } = props
+export const ListControls = <T,>(props: ListControlsProps<T>) => {
+  const { items, setFilteredItems, searchBy } = props
 
   const [search, setSearch] = React.useState("")
 
-  React.useEffect(() => {
-    try {
-      if (search === "") {
-        setFilteredItems(items)
-        return
-      }
+  const updateSearch = (searchValue: string) => {
+    setSearch(searchValue)
 
-      const _filteredItems = items.filter((item) =>
-        item[searchBy]
-          .toLowerCase()
-          .trim()
-          .includes(search?.toLowerCase().trim() || "")
-      )
-
-      setFilteredItems(_filteredItems)
-    } catch (error) {
-      console.log(error)
+    if (!searchValue) {
+      setFilteredItems(items)
+      return
     }
-  }, [search])
+
+    const _filteredItems = items.filter((item) => {
+      if (!searchBy) return false
+
+      return String(item[searchBy])
+        .toLowerCase()
+        .trim()
+        .includes(search?.toLowerCase().trim() || "")
+    })
+
+    setFilteredItems(_filteredItems)
+  }
 
   return (
     <div className={styles.container}>
       <InputText
         value={search}
-        setValue={setSearch}
+        setValue={updateSearch}
         className={styles.searchInputContainer}
         inputClassName={styles.searchInput}
         type="text"

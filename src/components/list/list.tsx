@@ -2,13 +2,16 @@ import * as React from "react"
 import { ClassName } from "types/general"
 import { ListControls } from "./components/listControls/listControls"
 
-interface ListProps {
-  items: any[]
-  renderItem: ({ item }: any) => JSX.Element
+interface ListProps<T> {
+  items: T[]
+  renderItem: ({ item }: { item: T }) => JSX.Element
+  searchBy: keyof T
   className?: ClassName
 }
 
-export const List = ({ items, renderItem, className }: ListProps) => {
+export const List = <T,>(props: ListProps<T>) => {
+  const { items, renderItem, searchBy, className } = props
+
   const [filteredItems, setFilteredItems] = React.useState(items)
 
   React.useEffect(() => {
@@ -20,7 +23,7 @@ export const List = ({ items, renderItem, className }: ListProps) => {
       <ListControls
         items={items}
         setFilteredItems={setFilteredItems}
-        searchBy="front"
+        searchBy={searchBy}
       />
       {filteredItems.map((item) => renderItem({ item }))}
     </div>
