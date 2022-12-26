@@ -1,14 +1,18 @@
 @use "styles/vars";
 
 .button {
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
   flex-direction: row;
-  gap: vars.$spacing-primary;
+  cursor: pointer;
+  background-color: vars.$color-primary;
+  border-radius: vars.$roundness;
+  justify-content: center;
+  align-items: center;
+  gap: vars.$spacing-tertiary;
+  padding: vars.$spacing-secondary;
 
-  &:active {
-    transform: scale(0.985);
+  .icon {
+    color: vars.$color-text-primary;
+    font-size: vars.$icon-size-medium;
   }
 
   .label {
@@ -16,27 +20,11 @@
     text-align: center;
   }
 
-  .icon {
-    color: vars.$color-text-primary;
-    font-size: vars.$icon-size-medium;
+  &:active {
+    scale: vars.$click-scale;
   }
 }
 
-.defaultBtn {
-  border-radius: vars.$roundness;
-  background-color: vars.$color-primary;
-  padding: vars.$spacing-primary;
-}
-
-.iconBtn {
-}
-
-.floatingBtn {
-  position: fixed;
-  padding: vars.$spacing-primary;
-  // bottom: calc(vars.$spacing-primary + vars.$layout-height-navbar);
-  bottom: vars.$spacing-primary;
-  right: vars.$spacing-primary;
-  background-color: vars.$color-primary;
-  border-radius: vars.$roundness;
+.iconOnly {
+  aspect-ratio: 1;
 }

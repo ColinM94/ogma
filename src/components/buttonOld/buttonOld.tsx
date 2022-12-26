@@ -8,48 +8,49 @@ import styles from "./styles.module.scss"
 
 interface ButtonProps {
   label?: string
-  iconLeft?: IconProp
-  iconRight?: IconProp
+  icon?: IconProp
+  type?: "default" | "icon" | "floating"
   onClick?: React.MouseEventHandler<HTMLButtonElement>
-  title?: string
   className?: ClassName
   iconClassName?: ClassName
 }
 
 export type ButtonClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 
-export const Button = (props: ButtonProps) => {
+export const ButtonOld = (props: ButtonProps) => {
   const {
     label,
-    iconLeft,
-    iconRight,
+    icon,
+    type = "default",
     onClick,
-    title,
     className,
     iconClassName,
   } = props
 
   const style = () => {
-    return classes(styles.button, className, styles.iconOnly)
+    switch (type) {
+      case "default":
+        return styles.defaultButton
+      case "icon":
+        return styles.iconBtn
+      case "floating":
+        return styles.floatingBtn
+    }
   }
 
   return (
-    <button className={style()} onClick={onClick} title={title}>
-      {iconLeft && (
+    <button
+      className={classes(styles.button, className, style())}
+      onClick={onClick}
+    >
+      {icon && (
         <FontAwesomeIcon
-          icon={iconLeft}
+          icon={icon || "plus"}
           className={classes(styles.icon, iconClassName)}
         />
       )}
 
       {label && <div className={styles.label}>{label}</div>}
-
-      {iconRight && (
-        <FontAwesomeIcon
-          icon={iconRight}
-          className={classes(styles.icon, iconClassName)}
-        />
-      )}
     </button>
   )
 }
