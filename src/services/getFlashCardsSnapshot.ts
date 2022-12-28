@@ -2,13 +2,13 @@ import { db } from "inits/firebase"
 import { collection, onSnapshot, query } from "firebase/firestore"
 import { FlashCard } from "types/flashCard"
 
-export const getFlashcardsSnapshot = async (
+export const getFlashcardsSnapshot = (
   callback: (cards: FlashCard[]) => void
 ) => {
   const collectionRef = collection(db, "cards")
   const q = query(collectionRef)
 
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  return onSnapshot(q, (querySnapshot) => {
     const flashcards: FlashCard[] = []
 
     querySnapshot.forEach((doc) => {
@@ -22,6 +22,4 @@ export const getFlashcardsSnapshot = async (
 
     callback(flashcards)
   })
-
-  return unsubscribe
 }

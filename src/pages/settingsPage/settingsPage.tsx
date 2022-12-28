@@ -1,4 +1,5 @@
 import { Button } from "components"
+import { ButtonOld } from "components/buttonOld/buttonOld"
 import { useAuth } from "hooks"
 import { MainLayout } from "layouts"
 
@@ -9,7 +10,7 @@ export const SettingsPage = () => {
 
   return (
     <MainLayout showHeader showBackButton label="Settings">
-      <Button
+      <ButtonOld
         label="Sign Out"
         onClick={signOut}
         className={styles.signOutBtn}

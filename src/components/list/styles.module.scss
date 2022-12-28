@@ -1,0 +1,21 @@
+@use "styles/vars";
+
+.container {
+  justify-content: stretch;
+  align-items: stretch;
+  flex: 1;
+
+  .search {
+  }
+
+  .headings {
+    background-color: red;
+    width: 100%;
+    height: 30px;
+  }
+
+  .listItem {
+    background-color: dodgerblue;
+    height: 30px;
+  }
+}

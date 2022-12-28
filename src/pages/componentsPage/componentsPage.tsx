@@ -1,15 +1,16 @@
 import { Button } from "components"
+import { ButtonOld } from "components/buttonOld/buttonOld"
 
 import styles from "./styles.module.scss"
 
 export const ComponentsPage = () => {
   return (
     <div className={styles.container}>
-      <Button label="Button with Label" />
+      <ButtonOld label="Button with Label" />
 
-      <Button icon="trash" label="Button with Label and Icon" />
+      <ButtonOld icon="trash" label="Button with Label and Icon" />
 
-      <Button icon="trash" label="Button with Icon" />
+      <ButtonOld icon="trash" label="Button with Icon" />
     </div>
   )
 }

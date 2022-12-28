@@ -1,0 +1,9 @@
+@use "styles/vars";
+
+.button {
+  background-color: vars.$color-card !important;
+}
+
+.buttonActive {
+  background-color: vars.$color-primary !important;
+}

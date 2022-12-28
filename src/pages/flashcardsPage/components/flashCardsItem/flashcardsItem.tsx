@@ -6,6 +6,7 @@ import { FlashCard } from "types"
 import { classes } from "utils"
 
 import styles from "./styles.module.scss"
+import { ButtonOld } from "components/buttonOld/buttonOld"
 
 interface FlashCardItemProps {
   item: FlashCard
@@ -65,7 +66,7 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
           showMenu === false && styles.menuInvisible
         )}
       >
-        <Button
+        <ButtonOld
           icon={showMenu ? "xmark" : "ellipsis"}
           type="icon"
           onClick={(e) => handleMenuClick(e)}
@@ -75,7 +76,7 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
             showMenu === false && styles.toggleBtnClose
           )}
         />
-        {/* <Button
+        {/* <ButtonOld
           type="icon"
           icon="xmark"
           onClick={(e) => {
@@ -83,14 +84,14 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
           }}
           className={styles.menuBtn}
         /> */}
-        <Button
+        <ButtonOld
           type="icon"
           icon="trash"
           onClick={(e) => handleDelete(e)}
           className={styles.menuBtn}
         />
-        <Button type="icon" icon="pencil" className={styles.menuBtn} />
-        <Button
+        <ButtonOld type="icon" icon="pencil" className={styles.menuBtn} />
+        <ButtonOld
           type="icon"
           icon="heart"
           iconClassName={classes(liked && styles.heartBtnIcon)}

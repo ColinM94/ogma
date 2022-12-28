@@ -1,0 +1,17 @@
+@use "styles/vars";
+
+.container {
+}
+
+.button {
+  height: 100%;
+  background-color: vars.$color-card !important;
+
+  .buttonIcon {
+    font-size: vars.$icon-size-large !important;
+  }
+}
+
+.buttonActive {
+  background-color: vars.$color-primary !important;
+}

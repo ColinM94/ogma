@@ -1,30 +1,32 @@
 import * as React from "react"
-import { ClassName } from "types/general"
+
+import { classes } from "utils"
+
 import { ListControls } from "./components/listControls/listControls"
 
-interface ListProps<T> {
-  items: T[]
+import styles from "./styles.module.scss"
+import { ListControl, ListItem } from "./types"
+
+export interface ListProps<T> {
+  items: ListItem<T>[]
   renderItem: ({ item }: { item: T }) => JSX.Element
-  searchBy: keyof T
-  className?: ClassName
+  controls?: ListControl<T>[]
+  className?: string
 }
 
 export const List = <T,>(props: ListProps<T>) => {
-  const { items, renderItem, searchBy, className } = props
+  const { items, renderItem, controls, className } = props
 
-  const [filteredItems, setFilteredItems] = React.useState(items)
-
-  React.useEffect(() => {
-    setFilteredItems(items)
-  }, [items])
+  const [filteredItems, setFilteredItems] = React.useState<T[]>([])
 
   return (
-    <div className={className}>
+    <div className={classes(styles.container, className)}>
       <ListControls
         items={items}
         setFilteredItems={setFilteredItems}
-        searchBy={searchBy}
+        controls={controls}
       />
+
       {filteredItems.map((item) => renderItem({ item }))}
     </div>
   )

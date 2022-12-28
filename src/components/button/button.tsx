@@ -30,7 +30,7 @@ export const Button = (props: ButtonProps) => {
   } = props
 
   const style = () => {
-    return classes(styles.button, className, styles.iconOnly)
+    return classes(className, styles.button, !label && styles.iconOnly)
   }
 
   return (

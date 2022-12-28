@@ -1,8 +1,11 @@
 import { library } from "@fortawesome/fontawesome-svg-core"
 import {
+  faArrowDown,
   faArrowLeft,
+  faArrowUp,
   faCog,
   faEllipsis,
+  faFilter,
   faHeart,
   faList,
   faMagnifyingGlass,
@@ -23,6 +26,9 @@ export const initIconsLibrary = () => {
     faEllipsis,
     faPencil,
     faXmark,
-    faHeart
+    faHeart,
+    faArrowDown,
+    faArrowUp,
+    faFilter
   )
 }

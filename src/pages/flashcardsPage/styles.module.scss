@@ -2,6 +2,7 @@
 
 .list {
   gap: vars.$spacing-primary;
+  padding-bottom: vars.$spacing-primary * 4;
 
   .listItem {
     overflow: hidden;

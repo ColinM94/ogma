@@ -5,6 +5,7 @@ import { Button, List } from "components"
 import { MainLayout } from "layouts"
 import { FlashCard } from "types/flashCard"
 import { getFlashcardsSnapshot } from "services"
+import { ButtonOld } from "components/buttonOld/buttonOld"
 
 import { FlashCardsItem } from "./components/flashCardsItem/flashcardsItem"
 import styles from "./styles.module.scss"
@@ -12,22 +13,19 @@ import styles from "./styles.module.scss"
 export const FlashcardsPage = () => {
   const navigate = useNavigate()
 
-  const [data, setData] = React.useState<FlashCard[]>([])
+  const [flashCards, setFlashCards] = React.useState<FlashCard[]>([])
+
+  const updateData = (data: FlashCard[]) => {
+    setFlashCards(data)
+  }
 
   React.useEffect(() => {
-    const loadData = async () => {
-      try {
-        const unsubscribe = await getFlashcardsSnapshot(setData)
-
-        return () => {
-          unsubscribe()
-        }
-      } catch (error) {
-        console.log(error)
-      }
+    try {
+      const unsubscribe = getFlashcardsSnapshot(updateData)
+      return () => unsubscribe()
+    } catch (error) {
+      console.log(error)
     }
-
-    loadData()
   }, [])
 
   const handleItemClick = (route: string) => {
@@ -41,19 +39,34 @@ export const FlashcardsPage = () => {
   return (
     <MainLayout showHeader showSettingsButton label="My Flaschards">
       <List
-        items={data}
+        items={flashCards}
+        controls={[
+          {
+            key: "front",
+            label: "English",
+            sort: true,
+            filter: true,
+            search: true,
+          },
+          {
+            key: "back",
+            label: "German",
+            sort: true,
+            filter: true,
+            search: true,
+          },
+        ]}
         renderItem={({ item }) => (
           <FlashCardsItem
             item={item}
             onClick={() => handleItemClick(item.id)}
-            key={item.id}
             className={styles.listItem}
+            key={item.id}
           />
         )}
-        searchBy="front"
         className={styles.list}
       />
-      <Button icon="plus" type="floating" onClick={handleAddClick} />
+      <ButtonOld icon="plus" type="floating" onClick={handleAddClick} />
     </MainLayout>
   )
 }

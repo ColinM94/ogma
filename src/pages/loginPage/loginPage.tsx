@@ -2,8 +2,9 @@ import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "hooks"
-import { Button, InputText } from "components"
+import { InputText } from "components"
 import { signIn, signUp } from "services"
+import { ButtonOld } from "components/buttonOld/buttonOld"
 
 import styles from "./styles.module.scss"
 
@@ -66,7 +67,7 @@ export const LoginPage = () => {
           />
         )}
 
-        <Button
+        <ButtonOld
           label={showSignInForm ? "Sign In" : "Sign Up"}
           className={styles.loginBtn}
           onClick={showSignInForm ? handleSignIn : handleSignUp}

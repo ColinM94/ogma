@@ -1,0 +1,8 @@
+@use "styles/vars";
+
+.container {
+  flex-direction: row;
+  gap: vars.$spacing-primary;
+  justify-content: stretch;
+  align-items: stretch;
+}

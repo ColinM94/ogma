@@ -1,17 +1,24 @@
 @use "styles/vars";
 
 .container {
-  width: 100%;
-  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: vars.$spacing-primary;
 
-  .searchInputContainer {
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+  .row {
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: vars.$spacing-primary;
+
+    .search {
+      flex: 1;
+    }
+
+    .filter {
+    }
   }
 
-  .searchInput {
-    background-color: vars.$color-card;
-    @extend %body;
+  .sort {
   }
 }

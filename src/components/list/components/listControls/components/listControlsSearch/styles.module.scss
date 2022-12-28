@@ -1,0 +1,8 @@
+@use "styles/vars";
+
+.container {
+  .input {
+    background-color: vars.$color-card;
+    @extend %body;
+  }
+}

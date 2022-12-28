@@ -1,52 +1,89 @@
 import * as React from "react"
 
-import { InputText } from "components"
-import { FlashCard, SetState } from "types"
+import { ListProps } from "components"
+import { classes, normaliseString } from "utils"
+import { SetState } from "types"
+import { ListControl, ListItem } from "components/list/types"
+
+import { ListControlsSearch } from "./components/listControlsSearch/listControlsSearch"
+import { ListControlsFilter } from "./components/listControlsFilter/listControlsFilter"
+import { ListControlsSort } from "./components/listControlsSort/listControlsSort"
 
 import styles from "./styles.module.scss"
 
-interface ListControlsProps<T> {
-  items: T[]
-  setFilteredItems: SetState<T[]>
-  searchBy?: keyof T
+interface Props<T> {
+  items: ListProps<T>["items"]
+  setFilteredItems: SetState<ListProps<T>["items"]>
+  controls?: ListControl<T>[]
 }
 
-export const ListControls = <T,>(props: ListControlsProps<T>) => {
-  const { items, setFilteredItems, searchBy } = props
+export const ListControls = <T,>(props: Props<T>) => {
+  const { items, controls, setFilteredItems } = props
 
   const [search, setSearch] = React.useState("")
+  const [sortBy, setSortBy] = React.useState("front")
+  const [sortOrder, setSortOrder] = React.useState<"ascending" | "descending">(
+    "descending"
+  )
+  const [showFilters, setShowFilters] = React.useState(false)
 
-  const updateSearch = (searchValue: string) => {
-    setSearch(searchValue)
+  React.useEffect(() => {
+    const searchKeys: string[] = []
 
-    if (!searchValue) {
-      setFilteredItems(items)
-      return
-    }
+    if (!controls) return
 
-    const _filteredItems = items.filter((item) => {
-      if (!searchBy) return false
+    controls.forEach((control) => {
+      const { key, search } = control
 
-      return String(item[searchBy])
-        .toLowerCase()
-        .trim()
-        .includes(search?.toLowerCase().trim() || "")
+      if (search) searchKeys.push(String(key))
     })
 
-    setFilteredItems(_filteredItems)
-  }
+    let filteredItems: ListItem<T>[] = []
+
+    if (search) {
+      items.forEach((item, index1) => {
+        searchKeys.some((searchKey, index2) => {
+          const _item = item as any
+
+          if (normaliseString(_item[searchKey]).includes(search)) {
+            filteredItems.push(item)
+            return true
+          }
+        })
+      })
+    } else {
+      filteredItems = [...items]
+    }
+
+    filteredItems.sort((a, b) => {
+      const comparison = normaliseString(a[sortBy]).localeCompare(
+        normaliseString(b[sortBy])
+      )
+      return sortOrder === "ascending" ? comparison : -comparison
+    })
+
+    setFilteredItems(filteredItems)
+  }, [search, items, sortBy, sortOrder, setFilteredItems])
 
   return (
-    <div className={styles.container}>
-      <InputText
-        value={search}
-        setValue={updateSearch}
-        className={styles.searchInputContainer}
-        inputClassName={styles.searchInput}
-        type="text"
-        placeholder="Search..."
-        icon="magnifying-glass"
-      />
+    <div className={classes(styles.row, styles.container)}>
+      <div className={styles.row}>
+        <ListControlsSearch
+          search={search}
+          setSearch={setSearch}
+          className={styles.search}
+        />
+        <ListControlsFilter show={showFilters} setShow={setShowFilters} />
+      </div>
+      {showFilters && (
+        <ListControlsSort
+          controls={controls}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+        />
+      )}
     </div>
   )
 }
