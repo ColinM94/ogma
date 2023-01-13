@@ -17,7 +17,7 @@ interface Props extends HeaderProps {
 export const MainLayout = (props: Props) => {
   const {
     showHeader = false,
-    showNavbar = false,
+    showNavbar = true,
     showBackButton,
     showSettingsButton,
     label,

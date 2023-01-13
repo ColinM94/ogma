@@ -1,26 +1,11 @@
 @use "styles/vars";
-// Revolut style floating navbar.
-// .container {
-//   position: fixed;
-//   bottom: vars.$spacing-primary;
-//   flex-direction: row;
-//   background-color: rgba(20, 20, 20, 0.95);
-//   align-self: center;
-//   border-radius: vars.$roundness;
-//   padding: vars.$spacing-primary;
-//   gap: vars.$spacing-primary * 2;
-// }
 
 .container {
   flex-direction: row;
   background-color: vars.$color-background;
   border-top-left-radius: vars.$roundness;
   border-top-right-radius: vars.$roundness;
-  padding: vars.$spacing-primary;
-  gap: vars.$spacing-primary * 2;
-  align-items: center;
-  // background-color: vars.$color-card;
-  // border-top: 0.1px solid vars.$color-background;
   background-color: vars.$color-background;
-  // border-top: 0.1px solid vars.$color-card;
+  justify-content: stretch;
+  align-items: stretch;
 }

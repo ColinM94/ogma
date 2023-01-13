@@ -1,9 +1,12 @@
 @use "styles/vars";
 
+.default {
+  background-color: vars.$color-primary;
+}
+
 .button {
   flex-direction: row;
   cursor: pointer;
-  background-color: vars.$color-primary;
   border-radius: vars.$roundness;
   justify-content: center;
   align-items: center;

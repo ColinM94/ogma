@@ -1,12 +1,11 @@
 import * as React from "react"
 
-import { Button, ButtonClickEvent, Card } from "components"
+import { Button, Card } from "components"
 import { deleteFlashcard } from "services"
-import { FlashCard } from "types"
+import { ButtonClickEvent, FlashCard } from "types"
 import { classes } from "utils"
 
 import styles from "./styles.module.scss"
-import { ButtonOld } from "components/buttonOld/buttonOld"
 
 interface FlashCardItemProps {
   item: FlashCard
@@ -66,8 +65,8 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
           showMenu === false && styles.menuInvisible
         )}
       >
-        <ButtonOld
-          icon={showMenu ? "xmark" : "ellipsis"}
+        <Button
+          iconLeft={showMenu ? "xmark" : "ellipsis"}
           type="icon"
           onClick={(e) => handleMenuClick(e)}
           className={classes(
@@ -76,24 +75,19 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
             showMenu === false && styles.toggleBtnClose
           )}
         />
-        {/* <ButtonOld
+
+        <Button
+          iconLeft="trash"
           type="icon"
-          icon="xmark"
-          onClick={(e) => {
-            handleCloseMenuClick(e)
-          }}
-          className={styles.menuBtn}
-        /> */}
-        <ButtonOld
-          type="icon"
-          icon="trash"
           onClick={(e) => handleDelete(e)}
           className={styles.menuBtn}
         />
-        <ButtonOld type="icon" icon="pencil" className={styles.menuBtn} />
-        <ButtonOld
+
+        <Button iconLeft="pencil" type="icon" className={styles.menuBtn} />
+
+        <Button
+          iconLeft="heart"
           type="icon"
-          icon="heart"
           iconClassName={classes(liked && styles.heartBtnIcon)}
           className={styles.menuBtn}
           onClick={handleLikeClick}

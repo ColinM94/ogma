@@ -29,7 +29,7 @@ export const FlashcardPage = () => {
   }, [])
 
   return (
-    <MainLayout showHeader showBackButton label={flashCard.id}>
+    <MainLayout showBackButton label={flashCard.id}>
       <Card className={styles.container}>
         <div className={styles.front}>{flashCard.front}</div>
         <div className={styles.divider} />

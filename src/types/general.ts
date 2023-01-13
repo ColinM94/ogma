@@ -16,5 +16,9 @@ export type HtmlInput = React.DetailedHTMLProps<
 >
 
 export type ClassName = string | undefined
+
 export type Children = React.ReactNode | React.ReactNode[]
+
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>
+
+export type ButtonClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>

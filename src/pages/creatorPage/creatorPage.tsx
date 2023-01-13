@@ -6,7 +6,6 @@ import { addFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 import { MainLayout } from "layouts"
-import { ButtonOld } from "components/buttonOld/buttonOld"
 
 export const CreatorPage = () => {
   const navigate = useNavigate()
@@ -37,7 +36,7 @@ export const CreatorPage = () => {
         <InputText placeholder="Back" value={back} setValue={setBack} />
       </Card>
 
-      <ButtonOld label="Save" onClick={handleAddClick} />
+      <Button label="Save" onClick={handleAddClick} />
     </MainLayout>
   )
 }
