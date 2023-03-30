@@ -1,9 +1,8 @@
-import { Button, ListProps } from "components"
 import { ListControl } from "components/list/types"
 import { SetState } from "types"
 import { classes } from "utils"
-import { ListControlsSortButton } from "./components/listControlsSortButton/listControlsSortButton"
 
+import { ListControlsSortButton } from "./components/listControlsSortButton/listControlsSortButton"
 import styles from "./styles.module.scss"
 
 interface Props<T> {
@@ -28,6 +27,7 @@ export const ListControlsSort = <T,>(props: Props<T>) => {
           setSortBy={setSortBy}
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}
+          key={String(control.key)}
         />
       ))}
     </div>

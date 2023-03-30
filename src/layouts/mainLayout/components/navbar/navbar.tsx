@@ -10,9 +10,9 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classes(styles.container, className)}>
-      <NavbarButton icon="list" page="flashcards" />
-      {/* <NavbarButton icon="plus" page="creator" /> */}
-      <NavbarButton icon="cog" page="settings" />
+      <NavbarButton icon="house" page="home" className={styles.button} />
+      <NavbarButton icon="list" page="flashcards" className={styles.button} />
+      <NavbarButton icon="cog" page="settings" className={styles.button} />
     </div>
   )
 }

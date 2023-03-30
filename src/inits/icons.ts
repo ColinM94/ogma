@@ -7,9 +7,11 @@ import {
   faEllipsis,
   faFilter,
   faHeart,
+  faHouse,
   faList,
   faMagnifyingGlass,
   faPencil,
+  faPlay,
   faPlus,
   faTrash,
   faXmark,
@@ -29,6 +31,8 @@ export const initIconsLibrary = () => {
     faHeart,
     faArrowDown,
     faArrowUp,
-    faFilter
+    faFilter,
+    faHouse,
+    faPlay
   )
 }

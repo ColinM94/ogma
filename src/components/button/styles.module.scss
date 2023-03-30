@@ -1,16 +1,23 @@
 @use "styles/vars";
 
+.default {
+  background-color: vars.$color-primary;
+}
+
 .button {
   flex-direction: row;
   cursor: pointer;
-  background-color: vars.$color-primary;
   border-radius: vars.$roundness;
-  justify-content: center;
   align-items: center;
   gap: vars.$spacing-tertiary;
   padding: vars.$spacing-secondary;
 
-  .icon {
+  .iconLeft {
+    color: vars.$color-text-primary;
+    font-size: vars.$icon-size-medium;
+  }
+
+  .iconRight {
     color: vars.$color-text-primary;
     font-size: vars.$icon-size-medium;
   }
@@ -18,7 +25,8 @@
   .label {
     font-size: vars.$font-size-body;
     color: vars.$color-text-primary;
-    text-align: center;
+    flex: 1;
+    align-items: center;
   }
 
   &:active {

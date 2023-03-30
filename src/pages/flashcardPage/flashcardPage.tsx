@@ -1,18 +1,18 @@
 import * as React from "react"
 import { useLocation } from "react-router-dom"
 
+import { FlashCardInfo } from "types"
 import { Card } from "components"
-import { getCurrentRoute } from "utils"
-import { FlashCard } from "types"
-import { getFlashcard } from "services"
+import { MainLayout } from "layouts"
+import { getDocument } from "services"
 
 import styles from "./styles.module.scss"
-import { MainLayout } from "layouts"
+import { getPath } from "utils"
 
 export const FlashcardPage = () => {
   const { pathname } = useLocation()
 
-  const [flashCard, setFlashCard] = React.useState<FlashCard>({
+  const [flashCard, setFlashCard] = React.useState<FlashCardInfo>({
     front: "",
     back: "",
     id: "",
@@ -20,8 +20,8 @@ export const FlashcardPage = () => {
 
   React.useEffect(() => {
     const loadData = async () => {
-      const id = getCurrentRoute(pathname)
-      const _flashCard = await getFlashcard(id)
+      const id = getPath(pathname)
+      const _flashCard = await getDocument<FlashCardInfo>("cards", id)
       setFlashCard(_flashCard)
     }
 
@@ -29,7 +29,7 @@ export const FlashcardPage = () => {
   }, [])
 
   return (
-    <MainLayout showHeader showBackButton label={flashCard.id}>
+    <MainLayout showBackButton label={flashCard.id}>
       <Card className={styles.container}>
         <div className={styles.front}>{flashCard.front}</div>
         <div className={styles.divider} />

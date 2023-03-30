@@ -1,3 +1,3 @@
 export * from "./classes"
-export * from "./getCurrentRoute"
+export * from "./getPath"
 export * from "./normaliseString"

@@ -2,11 +2,10 @@ import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { Button, Card, InputText } from "components"
-import { addFlashcard } from "services"
 
 import styles from "./styles.module.scss"
 import { MainLayout } from "layouts"
-import { ButtonOld } from "components/buttonOld/buttonOld"
+import { addDocument } from "services"
 
 export const CreatorPage = () => {
   const navigate = useNavigate()
@@ -18,7 +17,7 @@ export const CreatorPage = () => {
     try {
       if (front === "" && back === "") return
 
-      addFlashcard({ front, back })
+      addDocument("cards", { front, back })
       navigate("/flashcards")
     } catch (error) {
       console.log(error)
@@ -37,7 +36,7 @@ export const CreatorPage = () => {
         <InputText placeholder="Back" value={back} setValue={setBack} />
       </Card>
 
-      <ButtonOld label="Save" onClick={handleAddClick} />
+      <Button label="Save" onClick={handleAddClick} />
     </MainLayout>
   )
 }

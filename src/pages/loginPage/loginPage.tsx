@@ -2,9 +2,8 @@ import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "hooks"
-import { InputText } from "components"
+import { Button, InputText } from "components"
 import { signIn, signUp } from "services"
-import { ButtonOld } from "components/buttonOld/buttonOld"
 
 import styles from "./styles.module.scss"
 
@@ -30,7 +29,8 @@ export const LoginPage = () => {
   }
 
   React.useEffect(() => {
-    if (user) navigate("/flashcards")
+    if (user) navigate("/home")
+    // if (user) navigate("/study")
   }, [user])
 
   return (
@@ -67,7 +67,7 @@ export const LoginPage = () => {
           />
         )}
 
-        <ButtonOld
+        <Button
           label={showSignInForm ? "Sign In" : "Sign Up"}
           className={styles.loginBtn}
           onClick={showSignInForm ? handleSignIn : handleSignUp}

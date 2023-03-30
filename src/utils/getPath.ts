@@ -3,7 +3,7 @@
  * @params Pos number, if 2 wil take /games, if 1 will take /dashboard.
  * @return {string} Current route name e.g. "games"
  */
-export const getCurrentRoute = (path: string, position?: number) => {
+export const getPath = (path: string, position?: number) => {
   const parts = path.split("/")
   const length = parts.length
 

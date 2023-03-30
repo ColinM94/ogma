@@ -1,15 +1,14 @@
 import * as React from "react"
 
-import { Button, ButtonClickEvent, Card } from "components"
-import { deleteFlashcard } from "services"
-import { FlashCard } from "types"
+import { Button, Card } from "components"
+import { ButtonClickEvent, FlashCardInfo } from "types"
 import { classes } from "utils"
+import { deleteDocument } from "services"
 
 import styles from "./styles.module.scss"
-import { ButtonOld } from "components/buttonOld/buttonOld"
 
 interface FlashCardItemProps {
-  item: FlashCard
+  item: FlashCardInfo
   onClick: () => void
   className?: string
 }
@@ -24,7 +23,7 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
     try {
       e.stopPropagation()
       const isConfirmed = confirm("Are you sure?")
-      isConfirmed && deleteFlashcard(item.id)
+      isConfirmed && deleteDocument("cards", item.id)
     } catch (error) {
       console.log(error)
     }
@@ -66,8 +65,8 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
           showMenu === false && styles.menuInvisible
         )}
       >
-        <ButtonOld
-          icon={showMenu ? "xmark" : "ellipsis"}
+        <Button
+          iconLeft={showMenu ? "xmark" : "ellipsis"}
           type="icon"
           onClick={(e) => handleMenuClick(e)}
           className={classes(
@@ -76,24 +75,19 @@ export const FlashCardsItem = (props: FlashCardItemProps) => {
             showMenu === false && styles.toggleBtnClose
           )}
         />
-        {/* <ButtonOld
+
+        <Button
+          iconLeft="trash"
           type="icon"
-          icon="xmark"
-          onClick={(e) => {
-            handleCloseMenuClick(e)
-          }}
-          className={styles.menuBtn}
-        /> */}
-        <ButtonOld
-          type="icon"
-          icon="trash"
           onClick={(e) => handleDelete(e)}
           className={styles.menuBtn}
         />
-        <ButtonOld type="icon" icon="pencil" className={styles.menuBtn} />
-        <ButtonOld
+
+        <Button iconLeft="pencil" type="icon" className={styles.menuBtn} />
+
+        <Button
+          iconLeft="heart"
           type="icon"
-          icon="heart"
           iconClassName={classes(liked && styles.heartBtnIcon)}
           className={styles.menuBtn}
           onClick={handleLikeClick}

@@ -1,0 +1,39 @@
+@use "styles/vars";
+
+.flashCards {
+  flex: 1;
+  // justify-content: stretch;
+  // align-items: stretch;
+  flex-direction: row;
+  gap: vars.$spacing-primary;
+  overflow: scroll;
+  padding-left: vars.$spacing-primary;
+  padding-right: vars.$spacing-primary;
+  margin-left: -(vars.$spacing-primary);
+  margin-right: -(vars.$spacing-primary);
+
+  .flashCard {
+    flex: 1;
+    min-width: calc(100vw - vars.$spacing-primary * 2);
+    height: 100%;
+  }
+}
+
+.buttons {
+  flex-direction: row;
+  gap: vars.$spacing-primary;
+
+  .button {
+    flex: 1;
+  }
+
+  .yesButton {
+    @extend .button;
+    background-color: vars.$color-green;
+  }
+
+  .noButton {
+    @extend .button;
+    background-color: vars.$color-red;
+  }
+}

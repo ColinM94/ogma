@@ -1,0 +1,24 @@
+@use "styles/vars";
+
+.button {
+  cursor: pointer;
+  position: fixed;
+  padding: vars.$spacing-primary;
+  bottom: calc(vars.$spacing-primary + vars.$layout-height-navbar);
+  right: vars.$spacing-primary;
+  background-color: vars.$color-primary;
+  border-radius: vars.$roundness;
+
+  &:active {
+    transform: scale(0.985);
+  }
+
+  .label {
+    color: vars.$color-text-primary;
+    text-align: center;
+  }
+
+  .icon {
+    color: vars.$color-text-primary;
+  }
+}

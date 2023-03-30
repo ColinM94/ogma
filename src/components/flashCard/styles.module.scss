@@ -1,0 +1,26 @@
+@use "styles/vars";
+
+.container {
+  align-items: center;
+  background-color: vars.$color-card;
+  border-radius: vars.$roundness;
+
+  .front {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .divider {
+    height: 2px;
+    width: calc(100% - vars.$spacing-primary);
+    border-radius: vars.$roundness;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .back {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+}

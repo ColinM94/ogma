@@ -1,11 +1,10 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
-import { Button, List } from "components"
+import { FloatingActionButton, List } from "components"
 import { MainLayout } from "layouts"
-import { FlashCard } from "types/flashCard"
-import { getFlashcardsSnapshot } from "services"
-import { ButtonOld } from "components/buttonOld/buttonOld"
+import { FlashCardInfo } from "types"
+import { getDocumentsSnapshot } from "services"
 
 import { FlashCardsItem } from "./components/flashCardsItem/flashcardsItem"
 import styles from "./styles.module.scss"
@@ -13,15 +12,15 @@ import styles from "./styles.module.scss"
 export const FlashcardsPage = () => {
   const navigate = useNavigate()
 
-  const [flashCards, setFlashCards] = React.useState<FlashCard[]>([])
+  const [flashCards, setFlashCards] = React.useState<FlashCardInfo[]>([])
 
-  const updateData = (data: FlashCard[]) => {
+  const updateData = (data: FlashCardInfo[]) => {
     setFlashCards(data)
   }
 
   React.useEffect(() => {
     try {
-      const unsubscribe = getFlashcardsSnapshot(updateData)
+      const unsubscribe = getDocumentsSnapshot("cards", updateData)
       return () => unsubscribe()
     } catch (error) {
       console.log(error)
@@ -37,7 +36,7 @@ export const FlashcardsPage = () => {
   }
 
   return (
-    <MainLayout showHeader showSettingsButton label="My Flaschards">
+    <MainLayout showNavbar label="My Flaschards">
       <List
         items={flashCards}
         controls={[
@@ -66,7 +65,7 @@ export const FlashcardsPage = () => {
         )}
         className={styles.list}
       />
-      <ButtonOld icon="plus" type="floating" onClick={handleAddClick} />
+      <FloatingActionButton icon="plus" onClick={handleAddClick} />
     </MainLayout>
   )
 }

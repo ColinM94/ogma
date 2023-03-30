@@ -5,8 +5,6 @@ import { Button } from "components"
 import { useAuth } from "hooks"
 
 import styles from "./styles.module.scss"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ButtonOld } from "components/buttonOld/buttonOld"
 
 export interface HeaderProps {
   className?: string
@@ -39,18 +37,17 @@ export const Header = (props: HeaderProps) => {
   return (
     <div className={classes(styles.container, className)}>
       {showBackButton && (
-        <ButtonOld
-          icon="arrow-left"
+        <Button
+          iconLeft="arrow-left"
           onClick={handleBackClick}
-          className={styles.backBtn}
           type="icon"
+          className={styles.backBtn}
         />
       )}
       <div className={styles.label}>{label}</div>
       {showSettingsButton && (
-        <ButtonOld
-          type="icon"
-          icon="cog"
+        <Button
+          iconLeft="cog"
           onClick={() => navigate("/settings")}
           className={styles.settingsBtn}
         />

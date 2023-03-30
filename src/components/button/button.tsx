@@ -1,25 +1,26 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import { ClassName } from "types/general"
+import { Children, ClassName } from "types/general"
 import { classes } from "utils/classes"
 
 import styles from "./styles.module.scss"
 
 interface ButtonProps {
+  type?: "default" | "icon"
   label?: string
   iconLeft?: IconProp
   iconRight?: IconProp
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   title?: string
+  children?: Children
   className?: ClassName
   iconClassName?: ClassName
 }
 
-export type ButtonClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
-
 export const Button = (props: ButtonProps) => {
   const {
+    type = "default",
     label,
     iconLeft,
     iconRight,
@@ -30,7 +31,12 @@ export const Button = (props: ButtonProps) => {
   } = props
 
   const style = () => {
-    return classes(className, styles.button, !label && styles.iconOnly)
+    return classes(
+      className,
+      styles.button,
+      !label && styles.iconOnly,
+      type === "default" && styles.default
+    )
   }
 
   return (
@@ -38,7 +44,7 @@ export const Button = (props: ButtonProps) => {
       {iconLeft && (
         <FontAwesomeIcon
           icon={iconLeft}
-          className={classes(styles.icon, iconClassName)}
+          className={classes(styles.iconLeft, iconClassName)}
         />
       )}
 
@@ -47,7 +53,7 @@ export const Button = (props: ButtonProps) => {
       {iconRight && (
         <FontAwesomeIcon
           icon={iconRight}
-          className={classes(styles.icon, iconClassName)}
+          className={classes(styles.iconRight, iconClassName)}
         />
       )}
     </button>
