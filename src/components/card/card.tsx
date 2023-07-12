@@ -1,12 +1,7 @@
-import { Children, ClassName } from "types/general"
-import { classes } from "utils/classes"
-import styles from "./styles.module.scss"
+import { classes } from "utils"
 
-interface CardProps {
-  children?: Children
-  className?: ClassName
-  onClick?: () => void
-}
+import styles from "./styles.module.scss"
+import { CardProps } from "./types"
 
 export const Card = ({ children, className, onClick, ...rest }: CardProps) => {
   return (

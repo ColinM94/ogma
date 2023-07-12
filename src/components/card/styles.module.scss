@@ -1,7 +1,7 @@
 @use "styles/vars";
 
 .card {
-  background-color: vars.$color-card;
+  background-color: vars.$color-surface;
   padding: vars.$spacing-primary;
   border-radius: vars.$roundness;
 }

@@ -2,7 +2,7 @@
 
 .container {
   .input {
-    background-color: vars.$color-card;
+    background-color: vars.$color-surface;
     @extend %body;
   }
 }

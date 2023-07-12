@@ -1,3 +1,23 @@
+@use "styles/vars";
+
 .signOutBtn {
   margin-top: auto;
+}
+
+.card1 {
+  background-color: vars.$color-surface;
+  flex: 1;
+  width: 100%;
+}
+
+.card2 {
+  background-color: vars.$color-surface2;
+  flex: 1;
+  width: 100%;
+}
+
+.card3 {
+  background-color: vars.$color-surface3;
+  flex: 1;
+  width: 100%;
 }

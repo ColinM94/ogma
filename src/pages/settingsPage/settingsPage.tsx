@@ -1,4 +1,4 @@
-import { Button } from "components"
+import { Button, Card } from "components"
 import { useAuth } from "hooks"
 import { MainLayout } from "layouts"
 
@@ -9,6 +9,11 @@ export const SettingsPage = () => {
 
   return (
     <MainLayout showNavbar label="Settings">
+      <Card className={styles.card1}>
+        <Card className={styles.card2}>
+          <Card className={styles.card3} />
+        </Card>
+      </Card>
       <Button
         label="Sign Out"
         onClick={signOut}
