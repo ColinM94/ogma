@@ -2,10 +2,10 @@ import * as React from "react"
 import { useNavigate } from "react-router-dom"
 
 import { Button, Card, InputText } from "components"
-
-import styles from "./styles.module.scss"
 import { MainLayout } from "layouts"
 import { addDocument } from "services"
+
+import styles from "./styles.module.scss"
 
 export const CreatorPage = () => {
   const navigate = useNavigate()
