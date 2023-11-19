@@ -1,37 +1,37 @@
-import * as React from "react"
-import { useNavigate } from "react-router-dom"
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useAuth } from "hooks"
-import { Button, InputText } from "components"
-import { signIn, signUp } from "services"
+import { Button, InputText } from 'components';
+import { signIn, signUp } from 'services';
+import { useAuthStore } from 'store';
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss';
 
 export const LoginPage = () => {
-  const { user } = useAuth()
-  const navigate = useNavigate()
+  const { user } = useAuthStore();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-  const [password2, setPassword2] = React.useState("")
-  const [showSignInForm, setShowSignInForm] = React.useState(false)
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [password2, setPassword2] = React.useState('');
+  const [showSignInForm, setShowSignInForm] = React.useState(false);
 
   const handleSignIn = () => {
-    signIn(email, password)
-  }
+    signIn(email, password);
+  };
 
   const handleSignUp = () => {
-    signUp(email, password)
-  }
+    signUp(email, password);
+  };
 
   const handleToggle = () => {
-    setShowSignInForm((prev) => !prev)
-  }
+    setShowSignInForm((prev) => !prev);
+  };
 
   React.useEffect(() => {
-    if (user) navigate("/home")
-    // if (user) navigate("/study")
-  }, [user])
+    console.log(user);
+    if (user) navigate('/home');
+  }, [user]);
 
   return (
     <div className={styles.container}>
@@ -68,8 +68,8 @@ export const LoginPage = () => {
         )}
 
         <Button
-          label={showSignInForm ? "Sign In" : "Sign Up"}
-          className={styles.loginBtn}
+          label={showSignInForm ? 'Sign In' : 'Sign Up'}
+          className={styles.signInBtn}
           onClick={showSignInForm ? handleSignIn : handleSignUp}
         />
 
@@ -88,5 +88,5 @@ export const LoginPage = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

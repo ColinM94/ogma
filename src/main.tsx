@@ -1,18 +1,14 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
+import { RouterProvider } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 
-import { initIconsLibrary } from "inits"
-import { Navigation } from "./navigation/navigation"
+import { initIconsLibrary } from 'inits';
+import { LoadingOverlay } from 'components';
 
-import "styles/global.scss"
-import { Providers } from "hooks"
+import { router } from './routes';
+import 'styles/global.scss';
 
-initIconsLibrary()
+initIconsLibrary();
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Providers>
-      <Navigation />
-    </Providers>
-  </React.StrictMode>
-)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <RouterProvider router={router} fallbackElement={<LoadingOverlay />} />
+);

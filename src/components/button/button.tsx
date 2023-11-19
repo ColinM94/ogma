@@ -1,13 +1,13 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { Children, ClassName } from "types/general"
-import { classes } from "utils/classes"
+import { Children, ClassName } from 'types/general'
+import { classes } from 'utils/classes'
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss'
 
 interface ButtonProps {
-  type?: "default" | "icon"
+  type?: 'default' | 'icon'
   label?: string
   iconLeft?: IconProp
   iconRight?: IconProp
@@ -20,7 +20,7 @@ interface ButtonProps {
 
 export const Button = (props: ButtonProps) => {
   const {
-    type = "default",
+    type = 'default',
     label,
     iconLeft,
     iconRight,
@@ -35,26 +35,20 @@ export const Button = (props: ButtonProps) => {
       className,
       styles.button,
       !label && styles.iconOnly,
-      type === "default" && styles.default
+      type === 'default' && styles.default
     )
   }
 
   return (
     <button className={style()} onClick={onClick} title={title}>
       {iconLeft && (
-        <FontAwesomeIcon
-          icon={iconLeft}
-          className={classes(styles.iconLeft, iconClassName)}
-        />
+        <FontAwesomeIcon icon={iconLeft} className={classes(styles.iconLeft, iconClassName)} />
       )}
 
       {label && <div className={styles.label}>{label}</div>}
 
       {iconRight && (
-        <FontAwesomeIcon
-          icon={iconRight}
-          className={classes(styles.iconRight, iconClassName)}
-        />
+        <FontAwesomeIcon icon={iconRight} className={classes(styles.iconRight, iconClassName)} />
       )}
     </button>
   )

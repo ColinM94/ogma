@@ -1,38 +1,33 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 
-import { classes } from "utils"
-import { Button } from "components"
-import { useAuth } from "hooks"
+import { classes } from 'utils';
+import { Button } from 'components';
+import { useAuthStore } from 'store';
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss';
 
 export interface HeaderProps {
-  className?: string
+  className?: string;
   /** Toggle back button. Defaults to false. */
-  showBackButton?: boolean
+  showBackButton?: boolean;
   /** Toggle settings button. Defaults to false. */
-  showSettingsButton?: boolean
-  label?: string
+  showSettingsButton?: boolean;
+  label?: string;
 }
 
 export const Header = (props: HeaderProps) => {
-  const {
-    className,
-    showBackButton = false,
-    showSettingsButton = false,
-    label,
-  } = props
+  const { className, showBackButton = false, showSettingsButton = false, label } = props;
 
-  const navigate = useNavigate()
-  const { signOut, user } = useAuth()
+  const navigate = useNavigate();
+  const { logOut } = useAuthStore();
 
   const handleBackClick = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
 
   const handleAvatarClick = () => {
-    signOut()
-  }
+    logOut();
+  };
 
   return (
     <div className={classes(styles.container, className)}>
@@ -48,12 +43,12 @@ export const Header = (props: HeaderProps) => {
       {showSettingsButton && (
         <Button
           iconLeft="cog"
-          onClick={() => navigate("/settings")}
+          onClick={() => navigate('/settings')}
           className={styles.settingsBtn}
         />
       )}
       {/* <div>{user?.email}</div> */}
       {/* <div className={styles.avatar} onClick={handleAvatarClick} /> */}
     </div>
-  )
-}
+  );
+};

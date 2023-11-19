@@ -1,5 +1,3 @@
-@use "styles/vars";
-
 .container {
   height: 100%;
   width: 100%;
@@ -28,7 +26,7 @@
       background-color: vars.$color-surface;
     }
 
-    .loginBtn {
+    .signInBtn {
       width: 100%;
       margin-bottom: vars.$spacing-primary;
     }

@@ -1,10 +1,7 @@
-import React from "react"
-import { AuthProvider } from "./useAuth/useAuth"
+import * as React from 'react';
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export const Providers = ({ children }: Props) => (
-  <AuthProvider>{children}</AuthProvider>
-)
+export const Providers = ({ children }: Props) => <>{children}</>;

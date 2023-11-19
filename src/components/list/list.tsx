@@ -1,11 +1,11 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { classes } from "utils"
+import { classes } from 'utils'
 
-import { ListControls } from "./components/listControls/listControls"
+import { ListControls } from './components/listControls/listControls'
 
-import styles from "./styles.module.scss"
-import { ListControl, ListItem } from "./types"
+import { ListControl, ListItem } from './types'
+import styles from './styles.module.scss'
 
 export interface ListProps<T> {
   items: ListItem<T>[]
@@ -21,11 +21,7 @@ export const List = <T,>(props: ListProps<T>) => {
 
   return (
     <div className={classes(styles.container, className)}>
-      <ListControls
-        items={items}
-        setFilteredItems={setFilteredItems}
-        controls={controls}
-      />
+      <ListControls items={items} setFilteredItems={setFilteredItems} controls={controls} />
 
       {filteredItems.map((item) => renderItem({ item }))}
     </div>

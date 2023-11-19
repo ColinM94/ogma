@@ -1,10 +1,6 @@
-import { WhereFilterOp } from "firebase/firestore"
-import { KeyOf } from "./general"
+import type { WhereFilterOp } from 'firebase/firestore';
+import type { KeyOf } from './general';
 
-export type FirestoreWhereGeneric<T> = [
-  KeyOf<T>,
-  WhereFilterOp,
-  string | number | string[]
-]
+export type FirestoreWhereGeneric<T> = [KeyOf<T>, WhereFilterOp, string | number | string[]];
 
-export type FirestoreCollectionName = "cards" | "users"
+export type FirestoreCollection = 'cards' | 'users';

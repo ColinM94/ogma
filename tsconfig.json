@@ -4,7 +4,7 @@
     "target": "ESNext",
     "esModuleInterop": false,
     "skipLibCheck": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "allowJs": false,
     "resolveJsonModule": true,
     "moduleDetection": "force",

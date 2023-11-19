@@ -1,2 +1,1 @@
-export * from "./useAuth/useAuth"
-export * from "./providers"
+export * from './providers';

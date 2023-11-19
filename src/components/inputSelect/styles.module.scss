@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+
+  .input {
+    @extend %textInput;
+    flex: 1;
+    cursor: pointer;
+  }
+
+  .icon {
+    position: absolute;
+    right: vars.$spacing-secondary;
+    font-size: vars.$icon-size-medium;
+    top: 50%;
+    transform: translateY(-50%);
+    color: vars.$color-text-secondary;
+    pointer-events: none;
+  }
+}
+option {
+  line-height: vars.$spacing-primary * 3;
+  padding: 50px;
+}

@@ -1,0 +1,26 @@
+.container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  gap: vars.$spacing-primary;
+  z-index: 5;
+
+  .icon {
+    margin-bottom: vars.$spacing-primary * 2;
+  }
+
+  .progress {
+    min-width: 400px;
+    background-color: vars.$color-surface;
+    outline: 1px solid vars.$color-surface2;
+  }
+
+  .message {
+    font-size: vars.$font-size-h2;
+  }
+}

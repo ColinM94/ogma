@@ -1,5 +1,3 @@
-@use "styles/vars";
-
 .container {
   flex-direction: row;
   align-items: center;
@@ -108,10 +106,11 @@
   // }
 
   .front {
-    @extend %body;
+    font-size: vars.$font-size-h3;
   }
 
   .back {
-    @extend %body2;
+    font-size: vars.$font-size-body;
+    color: vars.$color-text-secondary;
   }
 }

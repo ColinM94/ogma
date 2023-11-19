@@ -60,3 +60,15 @@ $breakpoint-large: 1200px;
   font-size: $font-size-body2;
   color: $color-text-secondary;
 }
+
+%textInput {
+  background-color: $color-surface2;
+  border-radius: $roundness;
+  padding: $spacing-primary;
+  color: $color-text-primary;
+  font-size: $font-size-body;
+
+  &:focus {
+    outline: 1px solid $color-primary;
+  }
+}

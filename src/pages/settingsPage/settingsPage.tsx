@@ -1,11 +1,11 @@
-import { Button, Card } from "components"
-import { useAuth } from "hooks"
-import { MainLayout } from "layouts"
+import { Button, Card } from 'components';
+import { MainLayout } from 'layouts';
+import { useAuthStore } from 'store';
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss';
 
 export const SettingsPage = () => {
-  const { signOut } = useAuth()
+  const { logOut } = useAuthStore();
 
   return (
     <MainLayout showNavbar label="Settings">
@@ -14,11 +14,7 @@ export const SettingsPage = () => {
           <Card className={styles.card3} />
         </Card>
       </Card>
-      <Button
-        label="Sign Out"
-        onClick={signOut}
-        className={styles.signOutBtn}
-      />
+      <Button label="Sign Out" onClick={logOut} className={styles.signOutBtn} />
     </MainLayout>
-  )
-}
+  );
+};

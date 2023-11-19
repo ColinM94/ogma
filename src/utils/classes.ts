@@ -1,5 +1,3 @@
-import { ClassName } from "types/general"
-
 /**
  * Combines sass class names into one string.
  * @params Each class name is a param.
@@ -7,5 +5,5 @@ import { ClassName } from "types/general"
  */
 export const classes = (...items: any[]) => {
   //TODO: Remove any
-  return items.join(" ")
-}
+  return items.join(' ');
+};
